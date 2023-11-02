@@ -1,0 +1,17 @@
+.divLogotipo{
+    text-align: left;
+}
+
+.divLogotipo img{
+    height: 3em;
+}
+.divLog{
+    text-align: right;
+}
+.divLog img{
+    height: 2em;
+}
+.divTituloApp{
+    text-align: center;
+    font-size: 1.5em;
+}
