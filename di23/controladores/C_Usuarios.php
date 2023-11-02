@@ -39,5 +39,11 @@
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
         }
 
+        public function buscarTelefono($filtros=array()){
+            $usuarios=$this->modelo->buscarTelefono($filtros);
+            //echo json_encode($usuarios);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
+        }
+
     }
 ?>

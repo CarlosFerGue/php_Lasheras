@@ -8,6 +8,7 @@ echo 'Hola desde usuarios';
         <input type="text" id="b_texto" name="b_texto">
     </label>
     <button type="button" onclick="buscarUsuarios()">Buscar</button>
+    <button type="button" onclick="buscarTelefono()">Buscar Tel</button>
 </form>
 <div id="CapaResultadoBusqueda">
 
