@@ -83,9 +83,7 @@
 
 
         </section>
-        <section id="secContenidoPagina" class="container-fluid">
-
-        </section>
+        <section id="secContenidoPagina" class="container-fluid"></section>
         
         
 

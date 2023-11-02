@@ -68,18 +68,14 @@ class M_Usuarios extends Modelo
 
             $aTexto = explode(' ', $b_texto); //jason del back
 
-            $SQL .= " AND (1=2 ";
             foreach ($aTexto as $telefono) {
-                // $SQL .= " OR movil = '$telefono' ";
 
-                // $SQL .= " ) ";
-                // //$SQL.=" AND apellido_1='".$b_texto."' ";
-
-                $SQL2 = "SELECT * FROM usuarios
-                WHERE movil = '$telefono' AND movil IS NOT NULL";
+                $SQL = "SELECT * FROM usuarios
+                WHERE movil IS NOT NULL AND movil LIKE '%$telefono%'
+                ";
             }
-            echo $SQL2; //esto nos muestra el sql que esta ejecutando
-            $usuarios = $this->DAO->consultar($SQL2);
+            //echo $SQL; //esto nos muestra el sql que esta ejecutando
+            $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
         }
     }

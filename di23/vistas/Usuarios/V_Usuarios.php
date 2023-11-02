@@ -1,8 +1,3 @@
-<?php
-echo 'Hola desde usuarios';
-?>
-
-
 <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
     <label for="b_texto">
         <input type="text" id="b_texto" name="b_texto">
