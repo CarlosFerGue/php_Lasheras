@@ -41,7 +41,7 @@
                 document.getElementById("msj").innerHTML=mensaje;
             }
         </script>
-
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
     <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">

@@ -40,7 +40,7 @@ class M_Usuarios extends Modelo
             $SQL .= " ) ";
             //$SQL.=" AND apellido_1='".$b_texto."' ";
         }
-        echo $SQL; //esto nos muestra el sql que esta ejecutando
+        //echo $SQL; //esto nos muestra el sql que esta ejecutando
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }

@@ -29,6 +29,7 @@
 		}
 
 		public function insertar($SQL){
+            //Meter nuevos campos
             $this->conexion->query($SQL, MYSQLI_USE_RESULT);
             if($this->conexion->connect_errno){
                 die('Error insertar BD: '.$SQL);
