@@ -43,18 +43,21 @@
         </script>
         <link rel="stylesheet" href="css/login.css">
     </head>
-    <body>
-    <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">
-        <label for="usuario">Usuario:</label><br>
-            <input type="text" id="usuario" name="usuario" 
-                value="<?php echo $usuario; ?>">
-                <br>
-        <label for="pass">Contraseña:</label><br>   
-            <input type="password" id="pass" name="pass" 
-                value="<?php echo $pass; ?>"><br>
-        <span id="msj"><?php echo $mensa; ?></span>
-            <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
-    </form>
 
+    
+    <body>
+        <div id="contenedor">
+            <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">
+            <label for="usuario">Usuario:</label><br>
+                <input type="text" id="usuario" name="usuario" 
+                    value="<?php echo $usuario; ?>">
+                    <br>
+            <label for="pass">Contraseña:</label><br>   
+                <input type="password" id="pass" name="pass" 
+                    value="<?php echo $pass; ?>"><br>
+            <span id="msj"><?php echo $mensa; ?></span>
+                <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
+            </form>
+        </div>
     </body>
 </html>
