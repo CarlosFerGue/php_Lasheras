@@ -1,7 +1,7 @@
 <?php
     define('HOST', '127.0.0.1');
     define('USER', 'root');
-    define('PASS', '');
+    define('PASS', '1234');
     define('DB', 'di23');
 
     class DAO{
