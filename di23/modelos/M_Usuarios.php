@@ -19,7 +19,7 @@ class M_Usuarios extends Modelo
         $pass = '';
         extract($filtro);
 
-        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+        // $SQL = "SELECT * FROM usuarios WHERE 1=1";
 
         if ($usuario != '' && $pass != '') {
             $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
@@ -30,6 +30,7 @@ class M_Usuarios extends Modelo
         //Este if de abajo es para buscar por usuarios
 
         if ($b_texto != '') {
+            $SQL = "SELECT * FROM usuarios WHERE 1=1";
             $aTexto = explode(' ', $b_texto);
             $SQL .= " AND (1=2 ";
             foreach ($aTexto as $palabra) {
@@ -38,12 +39,17 @@ class M_Usuarios extends Modelo
                 $SQL .= " OR nombre LIKE '%$palabra%' ";
             }
             $SQL .= " ) ";
-            //$SQL.=" AND apellido_1='".$b_texto."' ";
+            $SQL.=" AND apellido_1='".$b_texto."' ";
+            
         }
-        //echo $SQL; //esto nos muestra el sql que esta ejecutando
+        echo $SQL; //esto nos muestra el sql que esta ejecutando
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
+
+
+
+
 
     public function buscarTelefono($filtro = array())
     {
@@ -74,7 +80,7 @@ class M_Usuarios extends Modelo
                 WHERE movil IS NOT NULL AND movil LIKE '%$telefono%'
                 ";
             }
-            //echo $SQL; //esto nos muestra el sql que esta ejecutando
+            echo $SQL; //esto nos muestra el sql que esta ejecutando
             $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
         }
