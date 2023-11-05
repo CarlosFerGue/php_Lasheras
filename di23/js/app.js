@@ -13,7 +13,7 @@ function getVistaMenuSeleccionado(controlador, metodo){
     fetch("C_Ajax.php?"+parametros, opciones)
         .then(res => {
             if(res.ok){
-                console.log('respuesta ok');
+                console.log('respuesta ok APP');
                 return res.text();
             }
         })

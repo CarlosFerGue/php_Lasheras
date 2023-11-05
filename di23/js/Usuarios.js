@@ -1,12 +1,13 @@
+
 function buscarUsuarios(){
     let opciones={method: "GET"};
     let parametros= "controlador=Usuarios&metodo=buscarUsuarios";
     parametros+="&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-
+    
     fetch("C_Ajax.php?"+parametros, opciones)
         .then(res => {
             if(res.ok){
-                console.log('respuesta ok');
+                console.log('respuesta ok User');
                 return res.text();
             }
         })
@@ -26,7 +27,7 @@ function buscarTelefono(){
     fetch("C_Ajax.php?"+parametros, opciones)
         .then(res => {
             if(res.ok){
-                console.log('respuesta ok');
+                console.log('respuesta ok Telefono');
                 return res.text();
             }
         })
