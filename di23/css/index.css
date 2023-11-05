@@ -1,0 +1,39 @@
+.divLogotipo{
+    text-align: left;
+}
+
+.divLogotipo img{
+    height: 3em;
+}
+.divLog{
+    text-align: right;
+}
+.divLog img{
+    height: 2em;
+}
+.divTituloApp{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Estilos generales */
+body {
+    background-color: #c8d5e6; /* Fondo verde claro */
+}
+
+.navbar {
+    background-color: #4c7faf; /* Barra de navegación verde */
+}
+
+.nav-link {
+    color: #fff; /* Texto blanco para enlaces en la barra de navegación */
+}
+
+/* Estilos para los enlaces en el menú desplegable */
+.dropdown-menu a {
+    color: #4c68af; /* Texto verde en el menú desplegable */
+}
+
+.dropdown-menu a:hover {
+    background-color: #eae8f5; /* Fondo verde claro en el menú desplegable al pasar el cursor */
+}
