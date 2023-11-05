@@ -72,6 +72,13 @@ class M_Usuarios extends Modelo{
             echo $SQL; //esto nos muestra el sql que esta ejecutando
             $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
+
+        }else{
+            $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+         
+            $usuarios = $this->DAO->consultar($SQL);
+            return $usuarios; 
         }
     }
 }
