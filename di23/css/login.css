@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#contenedor {
+    margin: 50px auto;
+    max-width: 500px;
+    background-color: #a8bee0;
+    padding: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px; 
+}
+
+
+input[type="text"],
+input[type="password"] {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#aceptar {
+    background-color: #4c72af;
+    border: none;
+    color: white;
+    padding: 10px 20px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 0; 
+    cursor: pointer;
+}
+
+body {
+    background-color: #c8d5e6; 
+}
+
+.volver-link {
+    text-decoration: none; /* Para quitar el subrayado predeterminado del enlace */
+    color: #000; /* Cambiar el color del texto a negro */
+    display: block; /* Convertirlo en un bloque para que ocupe toda la anchura disponible */
+    padding: 10px; /* Agregar espaciado para darle un aspecto más agradable */
+    position: absolute; /* Posición absoluta para ubicarlo en la esquina superior izquierda */
+    top: 0;
+    left: 0;
+}
