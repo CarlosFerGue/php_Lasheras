@@ -3,6 +3,7 @@ function cargarUnScript(url){
     script.src = url;
     document.head.appendChild(script);
 }
+
 function getVistaMenuSeleccionado(controlador, metodo){
     let opciones={method: "GET"};
     let parametros= "controlador="+controlador+"&metodo="+metodo;

@@ -1,44 +1,14 @@
 <?php
 require_once 'modelos/Modelo.php';
 require_once 'modelos/DAO.php';
-class M_Usuarios extends Modelo{
+class M_Usuarios extends Modelo
+{
     public $DAO;
 
     public function __construct()
     {
         parent::__construct(); //ejecuta constructor padre
         $this->DAO = new DAO();
-    }
-
-
-    public function buscarUsuarios($filtro=array()){
-        $b_texto='';
-        $usuario=''; //login
-        $pass='';
-        extract($filtro);
-
-        $SQL="SELECT * FROM usuarios WHERE 1=1";
-
-        if ($usuario!='' && $pass!='') {
-            $usuario=addslashes($usuario); //añade \ delante de caracterres especiales
-            $pass=addslashes($pass);        // como la ' , "" para que pierda funcionalidad
-            $SQL.= " AND login = '$usuario' AND pass = MD5('$pass') ";
-        } 
-        
-        if($b_texto!=''){
-            $aTexto=explode(' ', $b_texto);
-            $SQL.=" AND (1=2 ";
-            foreach($aTexto as $palabra){
-                $SQL.=" OR apellido_1 LIKE '%$palabra%' ";
-                $SQL.=" OR apellido_2 LIKE '%$palabra%' ";
-                $SQL.=" OR nombre LIKE '%$palabra%' ";
-            }
-            $SQL.=" ) ";
-            //$SQL.=" AND apellido_1='".$b_texto."' ";
-        }
-        //echo $SQL;
-        $usuarios= $this->DAO->consultar($SQL);
-        return $usuarios;
     }
 
     public function buscarTelefono($filtro = array())
@@ -72,25 +42,30 @@ class M_Usuarios extends Modelo{
             //echo $SQL; //esto nos muestra el sql que esta ejecutando
             $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
-
-        }else{
+        } else {
             $SQL = "SELECT * FROM usuarios WHERE 1=1";
 
-         
-            $usuarios = $this->DAO->consultar($SQL);
-            return $usuarios; 
+
+            $usuarios = $this->DAO->consultar($SQL); //this.DAO.consultar(SQL); es lo mismo
+            return $usuarios;
         }
     }
 
-    public function buscarTelefonoyUsuario($filtro = array())
+    public function anadirUsuario($filtro = array())
     {
-        $usuario = ''; //login
+        $b_nombre = '';
+        $b_apellido1 = '';
+        $b_apellido2 = '';
+        $b_sexo = '';
+        $b_email = '';
+        $b_movil = '';
+        $b_user = '';
+        $b_pass = '';
+        $usuario = '';
         $pass = '';
-        $b_telefono = '';
-        $b_texto='';
-        extract($filtro);
+        extract($filtro); //El filtro es un array y el extract saca los valores de dentro de ese array y los pone en las variables asociadas
 
-        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+        $SQL = "LOL";
 
         //Esto es para que vea que estas logea
         if ($usuario != '' && $pass != '') {
@@ -102,11 +77,61 @@ class M_Usuarios extends Modelo{
 
 
 
+        echo $SQL;
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
 
 
 
+    public function buscarUsuarios($filtro = array())
+    {
+        $b_texto = '';
+        $usuario = ''; //login
+        $pass = '';
+        extract($filtro);
+
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
+
+        if ($b_texto != '') {
+            $aTexto = explode(' ', $b_texto);
+            $SQL .= " AND (1=2 ";
+            foreach ($aTexto as $palabra) {
+                $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+                $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+                $SQL .= " OR nombre LIKE '%$palabra%' ";
+            }
+            $SQL .= " ) ";
+            //$SQL.=" AND apellido_1='".$b_texto."' ";
+        }
+        //echo $SQL;
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
 
 
+    public function buscarTelefonoyUsuario($filtro = array())
+    {
+        $usuario = ''; //login
+        $pass = '';
+        $b_telefono = '';
+        $b_texto = '';
+        extract($filtro);
+
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+        //Esto es para que vea que estas logea
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
 
         //AQUIIIII
 
@@ -132,14 +157,12 @@ class M_Usuarios extends Modelo{
             //echo $SQL; //esto nos muestra el sql que esta ejecutando
             $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
-
-        }else{
+        } else {
             $SQL = "SELECT * FROM usuarios WHERE 1=1";
 
-         
+
             $usuarios = $this->DAO->consultar($SQL);
-            return $usuarios; 
+            return $usuarios;
         }
     }
 }
-?>

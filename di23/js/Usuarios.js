@@ -84,3 +84,26 @@ function buscarTelefono() {
             console.log("Error al realizar la petición", err.message);
         });
 }
+
+function anadirUsuario() {
+    console.log("hey");
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=anadirUsuario";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('respuesta ok Insertar');
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
+
+

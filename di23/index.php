@@ -72,9 +72,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" 
                                         
-                                        onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios'); buscar()">Usuarios</a></li>
+                                        onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
                                     <li><a class="dropdown-item" href="#"
-                                        onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Pedidos</a></li>
+                                        onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
@@ -88,7 +88,6 @@
         <section id="secContenidoPagina" class="container-fluid"></section>
 
         <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/Usuarios.js" defer></script>
     </body>
 
 </html>

@@ -33,6 +33,11 @@
         public function getVistaUsuarios(){
             Vista::render('vistas/Usuarios/V_Usuarios.php');
         }
+
+        public function getVistaInserciones(){
+            Vista::render('vistas/Inserciones/V_Inserciones.php');
+        }
+
         public function buscarUsuarios($filtros=array()){
             $usuarios=$this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
