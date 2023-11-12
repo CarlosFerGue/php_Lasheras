@@ -38,6 +38,8 @@
             Vista::render('vistas/Inserciones/V_Inserciones.php');
         }
 
+        
+
         public function buscarUsuarios($filtros=array()){
             $usuarios=$this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
@@ -54,6 +56,12 @@
             $usuarios=$this->modelo->buscarTelefonoyUsuario($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
+        }
+
+        public function insertarUsuario($filtros=array()){
+            $usuarios=$this->modelo->insertarUsuario($filtros);
+            //echo json_encode($usuarios);
+            // Vista::render('vistas/Inserciones/V_Inserciones.php', array('usuarios' => $usuarios));
         }
 
     }

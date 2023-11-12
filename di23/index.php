@@ -71,7 +71,6 @@
                                      aria-expanded="false">CRUD's</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" 
-                                        
                                         onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
                                     <li><a class="dropdown-item" href="#"
                                         onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>

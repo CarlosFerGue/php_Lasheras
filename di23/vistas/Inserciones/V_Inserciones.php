@@ -7,7 +7,7 @@
 
 <body>
     <div id="container">
-        <form id="anadirUsuario" name="anadirUsuario" onkeydown="return event.key != 'Enter';">
+        <form id="formularioInsertar" name="formularioInsertar" onkeydown="return event.key != 'Enter';">
             <label for="b_nombre">Nombre del usuario:</label>
             <input type="text" id="b_nombre" name="b_nombre">
             
@@ -33,7 +33,7 @@
             <input type="text" id="b_pass" name="b_pass">
         </form>
 
-        <button type="button" onclick="anadirUsuario()">Añadir usuario</button>
+        <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
 
     </div>
 

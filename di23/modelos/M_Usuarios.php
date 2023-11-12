@@ -51,7 +51,7 @@ class M_Usuarios extends Modelo
         }
     }
 
-    public function anadirUsuario($filtro = array())
+    public function insertarUsuario($filtro = array())
     {
         $b_nombre = '';
         $b_apellido1 = '';
@@ -65,7 +65,7 @@ class M_Usuarios extends Modelo
         $pass = '';
         extract($filtro); //El filtro es un array y el extract saca los valores de dentro de ese array y los pone en las variables asociadas
 
-        $SQL = "LOL";
+        $SQL = "";
 
         //Esto es para que vea que estas logea
         if ($usuario != '' && $pass != '') {
@@ -75,11 +75,16 @@ class M_Usuarios extends Modelo
         }
 
 
+        if ($b_nombre != '' && $b_user != '' && $b_pass != '') {
+            $SQL = "INSERT INTO `usuarios` (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
+            ('$b_nombre', '$b_apellido1', '$b_apellido2', '$b_sexo', '$b_email', '$b_email', '$b_movil', '$b_user', '$b_pass', 'S')";
+            echo "El usuario $b_user se registró correctamente";
 
-
-        echo $SQL;
-        $usuarios = $this->DAO->consultar($SQL);
-        return $usuarios;
+        }else{
+            echo "No se realizó la inserción del usuario, por favor repitala.";
+        }
+        //echo $SQL;
+        $usuarios = $this->DAO->insertar($SQL);
     }
 
 

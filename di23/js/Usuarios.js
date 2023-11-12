@@ -85,10 +85,9 @@ function buscarTelefono() {
         });
 }
 
-function anadirUsuario() {
-    console.log("hey");
+function insertarUsuario() {
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=anadirUsuario";
+    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
 
     fetch("C_Ajax.php?" + parametros, opciones)
