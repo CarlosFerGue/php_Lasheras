@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/V_Usuarios.css">
+    <link rel="stylesheet" href="css/V_Inserciones.css">
 </head>
 
 <body>
+    
     <div id="container">
         <form id="formularioInsertar" name="formularioInsertar" onkeydown="return event.key != 'Enter';">
             <label for="b_nombre">Nombre del usuario:</label>
@@ -31,9 +32,11 @@
 
             <label for="b_pass">Contraseña:</label>
             <input type="text" id="b_pass" name="b_pass">
+
+            <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
         </form>
 
-        <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
+        
 
     </div>
 

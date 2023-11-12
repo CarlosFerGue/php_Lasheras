@@ -79,7 +79,7 @@ class M_Usuarios extends Modelo
             $SQL = "INSERT INTO `usuarios` (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
             ('$b_nombre', '$b_apellido1', '$b_apellido2', '$b_sexo', '$b_email', '$b_email', '$b_movil', '$b_user', '$b_pass', 'S')";
             echo "El usuario $b_user se registró correctamente";
-
+            
         }else{
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
