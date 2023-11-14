@@ -16,7 +16,7 @@
         <form id="formularioBuscarTelefono" name="formularioBuscarTelefono" onkeydown="return event.key != 'Enter';">
             <label for="b_telefono">Buscar por número de teléfono:</label>
             <input type="text" id="b_telefono" name="b_telefono">
-            
+
         </form>
 
         <button type="button" onclick="buscar()">Buscar</button>

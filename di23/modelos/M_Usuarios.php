@@ -83,7 +83,7 @@ class M_Usuarios extends Modelo
         }else{
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
-        //echo $SQL;
+        echo $SQL;
         $usuarios = $this->DAO->insertar($SQL);
     }
 
@@ -115,7 +115,7 @@ class M_Usuarios extends Modelo
             $SQL .= " ) ";
             //$SQL.=" AND apellido_1='".$b_texto."' ";
         }
-        //echo $SQL;
+        echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
