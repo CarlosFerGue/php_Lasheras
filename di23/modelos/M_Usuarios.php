@@ -79,8 +79,7 @@ class M_Usuarios extends Modelo
             $SQL = "INSERT INTO `usuarios` (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
             ('$b_nombre', '$b_apellido1', '$b_apellido2', '$b_sexo', '$b_email', '$b_email', '$b_movil', '$b_user', '$b_pass', 'S')";
             echo "El usuario $b_user se registró correctamente";
-            
-        }else{
+        } else {
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
         echo $SQL;
@@ -121,53 +120,115 @@ class M_Usuarios extends Modelo
     }
 
 
+    // public function buscarTelefonoyUsuario($filtro = array())
+    // {
+    //     $usuario = ''; //login
+    //     $pass = '';
+    //     $b_telefono = '';
+    //     $b_texto = '';
+    //     extract($filtro);
+
+    //     $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+    //     //Esto es para que vea que estas logea
+    //     if ($usuario != '' && $pass != '') {
+    //         $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+    //         $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+    //         $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+    //     }
+
+    //     //Este if de abajo es para buscar por usuarios
+
+    //     if ($b_telefono != '' && $b_texto != '') {
+
+    //         $aTexto = explode(' ', $b_telefono); //jason del back
+
+
+    //         if ($b_texto != '') {
+    //             $aTexto = explode(' ', $b_texto);
+    //             $SQL .= " AND (1=2 ";
+    //             foreach ($aTexto as $palabra) {
+    //                 $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+    //                 $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+    //                 $SQL .= " OR nombre LIKE '%$palabra%' ";
+    //             }
+    //             $SQL .= " ) ";
+    //         }
+
+            
+
+
+
+
+    //         foreach ($aTexto as $b_telefono) {
+
+    //             $SQL = "SELECT *
+    //             FROM usuarios
+    //             WHERE 1=1
+    //                 AND (
+    //                     1=2
+    //                     OR apellido_1 LIKE '%%'
+    //                     OR apellido_2 LIKE '%%'
+    //                     OR nombre LIKE '%%'
+    //                 )
+    //                 AND (
+    //                     movil IS NOT NULL
+    //                     AND movil LIKE '%$b_telefono%'
+    //                 );
+    //             ";
+    //         }
+    //         echo $SQL; //esto nos muestra el sql que esta ejecutando
+    //         $usuarios = $this->DAO->consultar($SQL);
+    //         return $usuarios;
+    //     } else {
+    //         $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+
+    //         $usuarios = $this->DAO->consultar($SQL);
+    //         return $usuarios;
+    //     }
+    // }
+
     public function buscarTelefonoyUsuario($filtro = array())
-    {
-        $usuario = ''; //login
-        $pass = '';
-        $b_telefono = '';
-        $b_texto = '';
-        extract($filtro);
+{
+    $b_texto = '';
+    $usuario = ''; // login
+    $pass = '';
+    $b_telefono = '';
+    extract($filtro);
 
-        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+    $SQL = "SELECT * FROM usuarios WHERE 1=1";
 
-        //Esto es para que vea que estas logea
-        if ($usuario != '' && $pass != '') {
-            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
-            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
-            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+    // Esto es para la autenticación
+    if ($usuario != '' && $pass != '') {
+        $usuario = addslashes($usuario);
+        $pass = addslashes($pass);
+        $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+    }
+
+    // Este bloque es para buscar por texto (apellido_1, apellido_2, nombre)
+    if ($b_texto != '') {
+        $aTexto = explode(' ', $b_texto);
+        $SQL .= " AND (1=2 ";
+        foreach ($aTexto as $palabra) {
+            $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+            $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+            $SQL .= " OR nombre LIKE '%$palabra%' ";
         }
+        $SQL .= " ) ";
+    }
 
-        //AQUIIIII
-
-
-
-
-
-
-
-
-        //Este if de abajo es para buscar por usuarios
-
-        if ($b_telefono != '' && $b_texto != '') {
-
-            $aTexto = explode(' ', $b_telefono); //jason del back
-
-            foreach ($aTexto as $b_telefono) {
-
-                $SQL = "SELECT * FROM usuarios
-                WHERE movil IS NOT NULL AND movil LIKE '%$b_telefono%'
-                ";
-            }
-            //echo $SQL; //esto nos muestra el sql que esta ejecutando
-            $usuarios = $this->DAO->consultar($SQL);
-            return $usuarios;
-        } else {
-            $SQL = "SELECT * FROM usuarios WHERE 1=1";
-
-
-            $usuarios = $this->DAO->consultar($SQL);
-            return $usuarios;
+    // Este bloque es para buscar por teléfono
+    if ($b_telefono != '') {
+        $aTelefonos = explode(' ', $b_telefono);
+        foreach ($aTelefonos as $telefono) {
+            $SQL .= " AND (movil IS NOT NULL AND movil LIKE '%$telefono%') ";
         }
     }
+
+    //echo $SQL; // esto nos muestra el SQL que está ejecutando
+    $usuarios = $this->DAO->consultar($SQL);
+    return $usuarios;
+}
+
 }
