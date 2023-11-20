@@ -113,13 +113,7 @@ label{
     background-color: rgb(0, 0, 0);
     height: 40px;
 }
-/* .selectorActividad{
-    display: flex;
-    border: solid 2px black;
-    padding: 0 5px 0 5px;
-    border-radius: 5px;
-    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
-} */
+
 .selection{
     margin: 0 5px 0 15px;
     border-radius: 5px;
@@ -176,3 +170,10 @@ a{
     transform: translateY(-2px);
 }
 
+
+#CapaResultadoBusqueda {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
