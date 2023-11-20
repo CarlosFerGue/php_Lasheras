@@ -41,7 +41,7 @@
     </div>
 
     <div id="CapaResultadoBusqueda">
-        <!-- Aquí se mostrarán los resultados de la búsqueda -->
+       
     </div>
 
 

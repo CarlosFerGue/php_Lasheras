@@ -1,6 +1,8 @@
 #container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -39,7 +41,7 @@ button:hover {
     text-align: center;
     margin: 20px;
     padding: 10px;
-    /* border: 1px solid #ccc;
-    background-color: #f4f4f4; */
     border-radius: 5px;
 }
+
+

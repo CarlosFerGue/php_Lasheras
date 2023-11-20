@@ -1,6 +1,8 @@
 #container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
@@ -41,4 +43,16 @@ button:hover {
     /* border: 1px solid #ccc;
     background-color: #f4f4f4; */
     border-radius: 5px;
+}
+
+.sexo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    justify-content: space-evenly;
 }
