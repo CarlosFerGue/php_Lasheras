@@ -1,8 +1,6 @@
 #container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 
@@ -23,8 +21,6 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-
 
 button {
     background-color: #0074d9;

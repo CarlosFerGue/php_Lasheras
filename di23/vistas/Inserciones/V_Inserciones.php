@@ -6,32 +6,24 @@
 </head>
 
 <body>
-
+    
     <div id="container">
         <form id="formularioInsertar" name="formularioInsertar" onkeydown="return event.key != 'Enter';">
             <label for="b_nombre">Nombre del usuario:</label>
             <input type="text" id="b_nombre" name="b_nombre">
-
+            
             <label for="b_apellido1">Apellido 1:</label>
             <input type="text" id="b_apellido1" name="b_apellido1">
-
+            
             <label for="b_apellido2">Apellido 2:</label>
             <input type="text" id="b_apellido2" name="b_apellido2">
-
+            
             <label for="b_sexo">Sexo:</label>
-
-            <div class="sexo">
-                <input type="radio" name="b_sexo" value="H">
-                <label>Hombre</label></p>
-                <input type="radio" name="b_sexo" value="M">
-                <label>Mujer</label></p>
-            </div>
-
-            <!-- <input type="text" id="b_sexo" name="b_sexo"> -->
-
+            <input type="text" id="b_sexo" name="b_sexo">
+            
             <label for="b_email">Email:</label>
             <input type="text" id="b_email" name="b_email">
-
+            
             <label for="b_movil">Movil:</label>
             <input type="text" id="b_movil" name="b_movil">
 
@@ -44,7 +36,7 @@
             <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
         </form>
 
-
+        
 
     </div>
 
