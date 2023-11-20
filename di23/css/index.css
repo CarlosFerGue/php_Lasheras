@@ -42,6 +42,10 @@
     flex-direction: column;
 }
 
+#b_texto {
+    width: 30vw; 
+}
+
 #b_telefono {
     width: 30vw; 
 }
