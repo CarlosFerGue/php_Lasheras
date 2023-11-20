@@ -2,7 +2,6 @@
     $usuarios=$datos['usuarios'];
 
     foreach($usuarios as $fila){
-<<<<<<< HEAD
         echo '<tr class="filaTr">';
         echo '<td>'.$fila['nombre'].'</td>';
         echo '<td>'.$fila['apellido_1'].' '.$fila['apellido_2'].'</td>';
@@ -32,8 +31,5 @@
         }elseif($fila['activo'] == 'N'){
             return"Inactivo";
         }
-=======
-        echo $fila['apellido_1'].' '.$fila['apellido_2'].', '.$fila['nombre'].'<br>';
->>>>>>> parent of d90af24 (Tablatura)
     }
 ?>
