@@ -25,7 +25,7 @@
         echo '<td>'.$fila['mail'].'</td>';
         echo '<td>'.$fila['movil'].'</td>';
         echo '<td>'.returnActivo($fila).'</td>';
-        echo '<td class="editTd"><img src="imagenes/editar.png" type="button" ';
+        echo '<td class="editTd"><img src="imagenes/edit.png" type="button" ';
         echo 'onclick="mostrarEditar(' . $fila['id_Usuario'] . ', \'' . $fila['nombre'] . '\', \'' . $fila['apellido_1'] . '\', \'' . $fila['apellido_2'] . '\', \'' . $fila['sexo'] . '\', \'' . $fila['mail'] . '\', \'' . $fila['movil'] . '\', \'' . $fila['activo'] . '\');" ';
             echo 'class="editBtn"></td>';
         echo '</tr>';

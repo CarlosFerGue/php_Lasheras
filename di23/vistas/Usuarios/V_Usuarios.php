@@ -10,7 +10,7 @@
         <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
             <label for="b_texto">Buscar por nombre de usuario:</label>
             <input type="text" id="b_texto" name="b_texto">
-
+            
         </form>
 
         <form id="formularioBuscarTelefono" name="formularioBuscarTelefono" onkeydown="return event.key != 'Enter';">
@@ -24,7 +24,7 @@
     </div>
 
     <div id="CapaResultadoBusqueda">
-        <!-- Aquí se mostrarán los resultados de la búsqueda  -->
+        <!-- Aquí se mostrarán los resultados de la búsqueda -->
     </div>
 
 

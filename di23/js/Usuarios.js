@@ -105,6 +105,4 @@ function insertarUsuario() {
         });
 }
 
-function mostrarEditar(){
-    console.log("editar");
-}
+
