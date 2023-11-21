@@ -105,10 +105,22 @@ function insertarUsuario() {
         });
 }
 
-function mostrarEditar() {
-    console.log("editar");
-}
-
 function cambiarSexo(sexo) {
     document.getElementById("b_sexo").value = sexo;
+    console.log(sexo);
+}
+
+function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
+    // Aquí puedes hacer lo que desees con los valores recuperados.
+    // Por ejemplo, imprimirlos en la consola.
+    console.log('ID Usuario:', idUsuario);
+    console.log('Nombre:', nombre);
+    console.log('Apellido 1:', apellido1);
+    console.log('Apellido 2:', apellido2);
+    console.log('Sexo:', sexo);
+    console.log('Email:', mail);
+    console.log('Móvil:', movil);
+    console.log('Activo:', activo);
+
+    // Puedes realizar otras acciones con estos valores según tus necesidades.
 }

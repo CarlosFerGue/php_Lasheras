@@ -24,6 +24,7 @@
     echo '</tr>';
 }
 echo '</table>';
+
 function returnGenero($fila) {
     if ($fila['sexo'] == 'H') {
         return "Masculino" ;
@@ -31,6 +32,7 @@ function returnGenero($fila) {
         return "Femenino";
     }
 }
+
 function returnActivo($fila){
     if($fila['activo'] == 'S'){
         return "Activo";
