@@ -105,6 +105,10 @@ function insertarUsuario() {
         });
 }
 
-function mostrarEditar(){
+function mostrarEditar() {
     console.log("editar");
+}
+
+function cambiarSexo(sexo) {
+    document.getElementById("b_sexo").value = sexo;
 }

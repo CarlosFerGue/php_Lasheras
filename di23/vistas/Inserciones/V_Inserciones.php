@@ -19,8 +19,13 @@
             <input type="text" id="b_apellido2" name="b_apellido2">
             
             <label for="b_sexo">Sexo:</label>
-            <input type="text" id="b_sexo" name="b_sexo">
-            
+           <!-- <input type="text" id="b_sexo" name="b_sexo"> -->
+
+            <div id="sexo" class="sexo">
+                <button type="button" id="b_sexo_hombre" name="b_sexo" onclick="cambiarSexo('H')">Hombre</button>
+                <button type="button" id="b_sexo_mujer" name="b_sexo" onclick="cambiarSexo('M')">Mujer</button>
+            </div> 
+
             <label for="b_email">Email:</label>
             <input type="text" id="b_email" name="b_email">
             

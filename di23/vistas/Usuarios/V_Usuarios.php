@@ -8,7 +8,7 @@
 <body>
     <div id="container">
         <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
-            <label for="b_texto">Buscar por nombre de usuario:</label>
+            <label for="b_texto">Buscar por nombre:</label>
             <input type="text" id="b_texto" name="b_texto">
 
         </form>

@@ -52,7 +52,7 @@
 
 #formularioInsertar{
     width: 30vw;
-}
+} 
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -85,14 +85,13 @@ body{
     text-align: center;
     font-size: 1.5em;
 }
-#formularioBuscar{
-    display: flex;
-    margin: 55px 0 10px 0;
-}
-label{
+
+
+ label{
     font-weight: bold;
     font-size: 17px;
-}
+} 
+
 #genero, #telefono, #busquedas{
     background: linear-gradient(0deg, rgb(255, 0, 0) 22%, rgb(0, 238, 255) 100%);
     border: solid 2px black;
