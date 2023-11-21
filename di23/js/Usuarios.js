@@ -111,16 +111,32 @@ function cambiarSexo(sexo) {
 }
 
 function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
-    // Aquí puedes hacer lo que desees con los valores recuperados.
-    // Por ejemplo, imprimirlos en la consola.
-    console.log('ID Usuario:', idUsuario);
-    console.log('Nombre:', nombre);
-    console.log('Apellido 1:', apellido1);
-    console.log('Apellido 2:', apellido2);
-    console.log('Sexo:', sexo);
-    console.log('Email:', mail);
-    console.log('Móvil:', movil);
-    console.log('Activo:', activo);
+    // Crear el div emergente
+    var popup = document.createElement('div');
+    popup.id = 'popup';
+    popup.innerHTML = `
+        <h2>ID Usuario: ${idUsuario}</h2>
+        <p>Nombre: ${nombre}</p>
+        <p>Apellido 1: ${apellido1}</p>
+        <p>Apellido 2: ${apellido2}</p>
+        <p>Sexo: ${sexo}</p>
+        <p>Email: ${mail}</p>
+        <p>Móvil: ${movil}</p>
+        <p>Activo: ${activo}</p>
+        <button onclick="cerrarPopup()">Cerrar</button>
+    `;
 
-    // Puedes realizar otras acciones con estos valores según tus necesidades.
+    // Añadir el div emergente al body
+    document.body.appendChild(popup);
+
+    // Mostrar el div emergente
+    popup.style.display = 'block';
+}
+
+function cerrarPopup() {
+    // Eliminar el div emergente al hacer clic en el botón Cerrar
+    var popup = document.getElementById('popup');
+    if (popup) {
+        document.body.removeChild(popup);
+    }
 }
