@@ -110,28 +110,42 @@ function cambiarSexo(sexo) {
     console.log(sexo);
 }
 
+
 function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
+    // Verificar si el div popup ya existe
+    var popupExistente = document.getElementById('popup');
+
+    // Si existe, eliminarlo antes de crear uno nuevo
+    if (popupExistente) {
+        popupExistente.remove();
+    }
+
     // Crear el div emergente
     var popup = document.createElement('div');
     popup.id = 'popup';
     popup.innerHTML = `
-        <h2>ID Usuario: ${idUsuario}</h2>
-        <p>Nombre: ${nombre}</p>
-        <p>Apellido 1: ${apellido1}</p>
-        <p>Apellido 2: ${apellido2}</p>
-        <p>Sexo: ${sexo}</p>
-        <p>Email: ${mail}</p>
-        <p>Móvil: ${movil}</p>
-        <p>Activo: ${activo}</p>
-        <button onclick="cerrarPopup()">Cerrar</button>
-    `;
+            <h2>ID Usuario: ${idUsuario}</h2>
+            <p>Nombre: ${nombre}</p>
+            <p>Apellido 1: ${apellido1}</p>
+            <p>Apellido 2: ${apellido2}</p>
+            <p>Sexo: ${sexo}</p>
+            <p>Email: ${mail}</p>
+            <p>Móvil: ${movil}</p>
+            <p>Activo: ${activo}</p>
+            <button onclick="cerrarPopup()">Cerrar</button>
+        `;
 
     // Añadir el div emergente al body
     document.body.appendChild(popup);
 
     // Mostrar el div emergente
     popup.style.display = 'block';
+
+    // Agregar un listener para clics en el documento
+    document.addEventListener("click", cerrarPopupSiClicasFuera);
 }
+
+
 
 function cerrarPopup() {
     // Eliminar el div emergente al hacer clic en el botón Cerrar
