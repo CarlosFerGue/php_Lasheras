@@ -87,7 +87,7 @@ class M_Usuarios extends Modelo
     }
 
 
-
+    //Login
     public function buscarUsuarios($filtro = array())
     {
         $b_texto = '';
@@ -114,7 +114,7 @@ class M_Usuarios extends Modelo
             $SQL .= " ) ";
             //$SQL.=" AND apellido_1='".$b_texto."' ";
         }
-        //echo $SQL;
+        echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
