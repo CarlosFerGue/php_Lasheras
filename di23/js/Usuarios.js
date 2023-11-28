@@ -111,6 +111,32 @@ function cambiarSexo(sexo) {
 }
 
 
+function actualizarUsuario() {
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('respuesta ok Insertar');
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
+
+function cambiarSexo(sexo) {
+    document.getElementById("b_sexo").value = sexo;
+    console.log(sexo);
+}
+
+
 function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
     // Verificar si el div popup ya existe
     var popupExistente = document.getElementById('popup');
@@ -134,9 +160,13 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
     //         <p>Activo: ${activo}</p>
     //         <button onclick="cerrarPopup()">Cerrar</button>
     //     `;
-
+//<h2 id="b_id" name="b_id">ID Usuario: ${idUsuario}</h2>
     popup.innerHTML = `
-        <h2>ID Usuario: ${idUsuario}</h2>
+
+    <form id="formularioActualizar" name="formularioActualizar" onkeydown="return event.key != 'Enter';">
+        <label for="b_id">ID Usuario: </label>
+        <input  id="b_id" name="b_id" value="${idUsuario}">
+
         <label for="b_nombre">Nombre del usuario:</label>
         <input type="text" id="b_nombre" name="b_nombre" value="${nombre}">
         
@@ -158,11 +188,10 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <label for="b_movil">Movil:</label>
         <input type="text" id="b_movil" name="b_movil" value="${movil}">
 
-
-
-
-        <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
+        <button type="button" onclick="insertarUsuario()">Editar usuario</button>
         <button type="button" onclick="cerrarPopup()">Cerrar</button>
+        </form>
+
     `;
 
 
@@ -172,8 +201,6 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
     // Mostrar el div emergente
     popup.style.display = 'block';
 
-    // Agregar un listener para clics en el documento
-    document.addEventListener("click", cerrarPopupSiClicasFuera);
 }
 
 

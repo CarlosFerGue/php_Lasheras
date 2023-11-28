@@ -86,6 +86,55 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->insertar($SQL);
     }
 
+    public function editarUsuario($filtro = array())
+    {
+        $b_id = '';
+        $b_nombre = '';
+        $b_apellido1 = '';
+        $b_apellido2 = '';
+        $b_sexo = '';
+        $b_email = '';
+        $b_movil = '';
+        $b_user = '';
+        $b_pass = '';
+        $usuario = '';
+        $pass = '';
+        extract($filtro); //El filtro es un array y el extract saca los valores de dentro de ese array y los pone en las variables asociadas
+
+        $SQL = "";
+
+        //Esto es para que vea que estas logea
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
+
+
+        if ($b_nombre != '' && $b_user != '' && $b_pass != '') {
+            // $SQL = "INSERT INTO `usuarios` (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
+            // ('$b_nombre', '$b_apellido1', '$b_apellido2', '$b_sexo', '$b_email', '$b_email', '$b_movil', '$b_user', '$b_pass', 'S')";
+            $SQL ="UPDATE `usuarios` SET 
+              `nombre` = '$b_nombre',
+              `apellido_1` = '$b_apellido1',
+              `apellido_2` = '$b_apellido2',
+              `sexo` = '$b_sexo',
+              `mail` = '$b_email',
+              `movil` = '$b_movil',
+              `login` = '$b_user',
+              `pass` = '$b_pass',
+              `activo` = 'S'
+            WHERE
+              `id_usuario` = '$b_id;";
+            
+
+            echo "El usuario $b_user se registró correctamente";
+        } else {
+            echo "No se realizó la inserción del usuario, por favor repitala.";
+        }
+        //echo $SQL;
+        $usuarios = $this->DAO->insertar($SQL);
+    }
 
     //Login
     public function buscarUsuarios($filtro = array())
