@@ -64,5 +64,7 @@
             // Vista::render('vistas/Inserciones/V_Inserciones.php', array('usuarios' => $usuarios));
         }
 
+        public function editarUsuario()
+
     }
 ?>
