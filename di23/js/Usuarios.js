@@ -111,15 +111,15 @@ function cambiarSexo(sexo) {
 }
 
 
-function actualizarUsuario() {
+function editarUsuario() {
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+    let parametros = "controlador=Usuarios&metodo=editarUsuario";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioActualizar"))).toString();
 
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
-                console.log('respuesta ok Insertar');
+                console.log('respuesta ok Editar');
                 return res.text();
             }
         })
@@ -188,12 +188,11 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <label for="b_movil">Movil:</label>
         <input type="text" id="b_movil" name="b_movil" value="${movil}">
 
-        <button type="button" onclick="insertarUsuario()">Editar usuario</button>
+        <button type="button" onclick="editarUsuario()">Editar usuario</button>
         <button type="button" onclick="cerrarPopup()">Cerrar</button>
         </form>
 
     `;
-
 
     // Añadir el div emergente al body
     document.body.appendChild(popup);

@@ -64,7 +64,10 @@
             // Vista::render('vistas/Inserciones/V_Inserciones.php', array('usuarios' => $usuarios));
         }
 
-        public function editarUsuario()
+        public function editarUsuario($filtros=array()){
+            $usuarios=$this->modelo->editarUsuario($filtros);
+            echo json_encode($usuarios);
+        }
 
     }
 ?>

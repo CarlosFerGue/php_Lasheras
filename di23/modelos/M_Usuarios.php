@@ -110,8 +110,8 @@ class M_Usuarios extends Modelo
             $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
         }
 
-
-        if ($b_nombre != '' && $b_user != '' && $b_pass != '') {
+// && $b_user != '' && $b_pass != ''
+        if ($b_nombre != '') {
             // $SQL = "INSERT INTO `usuarios` (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
             // ('$b_nombre', '$b_apellido1', '$b_apellido2', '$b_sexo', '$b_email', '$b_email', '$b_movil', '$b_user', '$b_pass', 'S')";
             $SQL ="UPDATE `usuarios` SET 
@@ -121,19 +121,17 @@ class M_Usuarios extends Modelo
               `sexo` = '$b_sexo',
               `mail` = '$b_email',
               `movil` = '$b_movil',
-              `login` = '$b_user',
-              `pass` = '$b_pass',
               `activo` = 'S'
             WHERE
-              `id_usuario` = '$b_id;";
+              `id_usuario` = $b_id;";
             
-
             echo "El usuario $b_user se registró correctamente";
+            echo $SQL;
         } else {
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
-        //echo $SQL;
-        $usuarios = $this->DAO->insertar($SQL);
+        echo $SQL;
+        $usuarios = $this->DAO->actualizar($SQL);
     }
 
     //Login
