@@ -160,12 +160,14 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
     //         <p>Activo: ${activo}</p>
     //         <button onclick="cerrarPopup()">Cerrar</button>
     //     `;
-//<h2 id="b_id" name="b_id">ID Usuario: ${idUsuario}</h2>
+    //<h2 id="b_id" name="b_id">ID Usuario: ${idUsuario}</h2>
     popup.innerHTML = `
 
     <form id="formularioActualizar" name="formularioActualizar" onkeydown="return event.key != 'Enter';">
-        <label for="b_id">ID Usuario: </label>
-        <input  id="b_id" name="b_id" value="${idUsuario}">
+        <div id="hide"><label for="b_id">ID Usuario: </label>
+        <input  id="b_id" name="b_id" value="${idUsuario}"></div>
+
+        <h2>El id: ${idUsuario}</h2>
 
         <label for="b_nombre">Nombre del usuario:</label>
         <input type="text" id="b_nombre" name="b_nombre" value="${nombre}">
@@ -193,6 +195,10 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         </form>
 
     `;
+    let oculto = document.getElementById('hide');
+    if (oculto != null) {
+        oculto.style.display = "none";
+    }
 
     // Añadir el div emergente al body
     document.body.appendChild(popup);
