@@ -129,6 +129,24 @@ function editarUsuario() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+
+        // opciones = { method: "GET" };
+        // parametros = "controlador=Usuarios&metodo=buscarUsuarios";
+        // parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+    
+        // fetch("C_Ajax.php?" + parametros, opciones)
+        //     .then(res => {
+        //         if (res.ok) {
+        //             console.log('respuesta ok Usuarios');
+        //             return res.text();
+        //         }
+        //     })
+        //     .then(vista => {
+        //         document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        //     })
+        //     .catch(err => {
+        //         console.log("Error al realizar la petición", err.message);
+        //     });
 }
 
 function cambiarSexo(sexo) {
@@ -149,20 +167,8 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
     // Crear el div emergente
     var popup = document.createElement('div');
     popup.id = 'popup';
-    // popup.innerHTML = `
-    //         <h2>ID Usuario: ${idUsuario}</h2>
-    //         <p>Nombre: ${nombre}</p>
-    //         <p>Apellido 1: ${apellido1}</p>
-    //         <p>Apellido 2: ${apellido2}</p>
-    //         <p>Sexo: ${sexo}</p>
-    //         <p>Email: ${mail}</p>
-    //         <p>Móvil: ${movil}</p>
-    //         <p>Activo: ${activo}</p>
-    //         <button onclick="cerrarPopup()">Cerrar</button>
-    //     `;
-    //<h2 id="b_id" name="b_id">ID Usuario: ${idUsuario}</h2>
-    popup.innerHTML = `
 
+    popup.innerHTML = `
     <form id="formularioActualizar" name="formularioActualizar" onkeydown="return event.key != 'Enter';">
         <div id="hide"><label for="b_id">ID Usuario: </label>
         <input  id="b_id" name="b_id" value="${idUsuario}"></div>
@@ -193,8 +199,8 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <button type="button" onclick="editarUsuario()">Editar usuario</button>
         <button type="button" onclick="cerrarPopup()">Cerrar</button>
         </form>
-
     `;
+
     let oculto = document.getElementById('hide');
     if (oculto != null) {
         oculto.style.display = "none";

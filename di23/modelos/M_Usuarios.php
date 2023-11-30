@@ -130,6 +130,11 @@ class M_Usuarios extends Modelo
         }
         //echo $SQL;
         $usuarios = $this->DAO->actualizar($SQL);
+
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
     }
 
     //Login

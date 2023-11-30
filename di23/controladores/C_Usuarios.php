@@ -67,6 +67,7 @@
         public function editarUsuario($filtros=array()){
             $usuarios=$this->modelo->editarUsuario($filtros);
             echo json_encode($usuarios);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
         }
 
     }
