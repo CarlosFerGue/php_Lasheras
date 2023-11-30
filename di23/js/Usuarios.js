@@ -130,23 +130,8 @@ function editarUsuario() {
             console.log("Error al realizar la petición", err.message);
         });
 
-        // opciones = { method: "GET" };
-        // parametros = "controlador=Usuarios&metodo=buscarUsuarios";
-        // parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-    
-        // fetch("C_Ajax.php?" + parametros, opciones)
-        //     .then(res => {
-        //         if (res.ok) {
-        //             console.log('respuesta ok Usuarios');
-        //             return res.text();
-        //         }
-        //     })
-        //     .then(vista => {
-        //         document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-        //     })
-        //     .catch(err => {
-        //         console.log("Error al realizar la petición", err.message);
-        //     });
+        cerrarPopup();
+
 }
 
 function cambiarSexo(sexo) {
@@ -170,7 +155,7 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
 
     popup.innerHTML = `
     <form id="formularioActualizar" name="formularioActualizar" onkeydown="return event.key != 'Enter';">
-        <div id="hide"><label for="b_id">ID Usuario: </label>
+        <div id="hide" style="display:none"><label for="b_id">ID Usuario: </label>
         <input  id="b_id" name="b_id" value="${idUsuario}"></div>
 
         <h2>El id: ${idUsuario}</h2>
@@ -196,15 +181,14 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <label for="b_movil">Movil:</label>
         <input type="text" id="b_movil" name="b_movil" value="${movil}">
 
-        <button type="button" onclick="editarUsuario()">Editar usuario</button>
-        <button type="button" onclick="cerrarPopup()">Cerrar</button>
+        <button type="button" onclick="editarUsuario()">Guardar cambios</button>
+        <button type="button" onclick="cerrarPopup()">Cancelar</button>
         </form>
     `;
 
-    let oculto = document.getElementById('hide');
-    if (oculto != null) {
-        oculto.style.display = "none";
-    }
+    // let oculto = document.getElementById('hide');   
+    //     oculto.style.display = "none";
+    
 
     // Añadir el div emergente al body
     document.body.appendChild(popup);
