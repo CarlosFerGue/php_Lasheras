@@ -185,6 +185,7 @@ a{
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 #popup {
+    border-radius: 2%;
     display: none;
     position: fixed;
     top: 50%;
@@ -196,3 +197,23 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
+
+.idPop{
+    background-color: #4c7faf;
+    height: 5%;
+    width: 30%;
+}
+
+.sexo{
+    display: flex;
+    justify-content: space-around;
+}
+
+#b_sexo_hombre{
+    width: 40%;
+}
+
+#b_sexo_mujer{
+    width: 40%;
+}
+

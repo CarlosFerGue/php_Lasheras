@@ -158,7 +158,9 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <div id="hide" style="display:none"><label for="b_id">ID Usuario: </label>
         <input  id="b_id" name="b_id" value="${idUsuario}"></div>
 
+        <div class="idPop">
         <h2>El id: ${idUsuario}</h2>
+        </div>
 
         <label for="b_nombre">Nombre del usuario:</label>
         <input type="text" id="b_nombre" name="b_nombre" value="${nombre}">
@@ -181,8 +183,14 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         <label for="b_movil">Movil:</label>
         <input type="text" id="b_movil" name="b_movil" value="${movil}">
 
+        
         <button type="button" onclick="editarUsuario()">Guardar cambios</button>
         <button type="button" onclick="cerrarPopup()">Cancelar</button>
+
+        <div id="guardar">
+        
+        </div>
+
         </form>
     `;
 
