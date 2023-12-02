@@ -23,6 +23,7 @@ function buscar() {
 }
 
 
+
 function buscarTelefonoyUsuario() {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarTelefonoyUsuario";
@@ -47,6 +48,7 @@ function buscarTelefonoyUsuario() {
 
 function buscarUsuarios() {
     let opciones = { method: "GET" };
+    // let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
 
@@ -64,6 +66,13 @@ function buscarUsuarios() {
             console.log("Error al realizar la petición", err.message);
         });
 }
+
+
+function cambiarPagina(pagina) {
+    // window.location.href = '?pagina=' + pagina;
+    console.log(pagina);
+}
+
 
 function buscarTelefono() {
     let opciones = { method: "GET" };
@@ -259,6 +268,4 @@ function cerrarPopup() {
 }
 
 
-function cambiarPagina(pagina) {
-    window.location.href = '?pagina=' + pagina;
-}
+buscar();

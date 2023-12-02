@@ -5,8 +5,9 @@ class M_Usuarios extends Modelo
 {
     //Varibales para que accedan todas las funciones
     public $DAO;
-    public $numListado = 10;
-    // public $paginaLisatdo = $_GET['page'];
+    public $numListado = 40;
+    public $SQLplantilla = "SELECT * FROM usuarios WHERE 1=1";
+    public $OFFset = 0;
 
     public function __construct(){
         parent::__construct(); //ejecuta constructor padre
@@ -38,10 +39,10 @@ class M_Usuarios extends Modelo
                 $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
                 $SQL .= " OR nombre LIKE '%$palabra%' ";
             }
-            $SQL .= " )  LIMIT " . $this->numListado;
+            $SQL .= " )  LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
             //$SQL.=" AND apellido_1='".$b_texto."' ";
         }else{
-            $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado;
+            $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
         }
         echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);

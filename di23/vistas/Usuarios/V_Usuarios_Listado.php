@@ -1,6 +1,8 @@
 <?php
 
+
     $usuarios=$datos['usuarios'];
+
     echo '<table id=lista_usuarios>
             <tr>
               <th>NOMBRE</th>
@@ -10,6 +12,9 @@
               <th>TELÉFONO</th>
               <th>ACTIVIDAD</th>
             </tr>';
+
+
+    //Lo mismo que el whuile de ese gacho
     foreach($usuarios as $fila){
 
     echo '<tr class="filaTr">';
@@ -47,7 +52,7 @@ function returnActivo($fila){
 
 // Paginador
 $numUsuarios = count($usuarios);
-$usuariosPorPagina = 5; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
+$usuariosPorPagina = 10; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
 $numPaginas = ceil($numUsuarios / $usuariosPorPagina);
 
 // Obtener el número de página actual
