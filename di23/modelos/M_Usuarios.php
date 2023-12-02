@@ -40,6 +40,8 @@ class M_Usuarios extends Modelo
             }
             $SQL .= " )  LIMIT " . $this->numListado;
             //$SQL.=" AND apellido_1='".$b_texto."' ";
+        }else{
+            $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado;
         }
         echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);

@@ -153,6 +153,7 @@ function validarFormulario(){
 
 
 function editarUsuario() {
+    
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=editarUsuario";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioActualizar"))).toString();
@@ -255,4 +256,9 @@ function cerrarPopup() {
     if (popup) {
         document.body.removeChild(popup);
     }
+}
+
+
+function cambiarPagina(pagina) {
+    window.location.href = '?pagina=' + pagina;
 }

@@ -1,4 +1,5 @@
 <?php
+
     $usuarios=$datos['usuarios'];
     echo '<table id=lista_usuarios>
             <tr>
@@ -40,5 +41,36 @@ function returnActivo($fila){
         return"Inactivo";
     }
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// Paginador
+$numUsuarios = count($usuarios);
+$usuariosPorPagina = 5; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
+$numPaginas = ceil($numUsuarios / $usuariosPorPagina);
+
+// Obtener el número de página actual
+$paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+$inicio = ($paginaActual - 1) * $usuariosPorPagina;
+$usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
+
+// Imprimir el paginador
+echo '<div id="paginador">';
+echo '<span>Página ' . $paginaActual . ' de ' . $numPaginas . '</span>';
+echo '<button onclick="cambiarPagina(1)">Primera</button>';
+echo '<button onclick="cambiarPagina(' . max(1, $paginaActual - 1) . ')">Anterior</button>';
+
+for ($i = max(1, $paginaActual - 2); $i <= min($numPaginas, $paginaActual + 2); $i++) {
+    if ($i == $paginaActual) {
+        echo '<button class="paginaActual">' . $i . '</button>';
+    } else {
+        echo '<button onclick="cambiarPagina(' . $i . ')">' . $i . '</button>';
+    }
+}
+
+echo '<button onclick="cambiarPagina(' . min($numPaginas, $paginaActual + 1) . ')">Siguiente</button>';
+echo '<button onclick="cambiarPagina(' . $numPaginas . ')">Última</button>';
+echo '</div>';
 ?>
 
