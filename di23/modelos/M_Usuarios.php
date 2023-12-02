@@ -5,8 +5,8 @@ class M_Usuarios extends Modelo
 {
     //Varibales para que accedan todas las funciones
     public $DAO;
-    public $numListado = 5;
-    public $paginaLisatdo = $_GET['page'];
+    public $numListado = 10;
+    // public $paginaLisatdo = $_GET['page'];
 
     public function __construct(){
         parent::__construct(); //ejecuta constructor padre
@@ -22,7 +22,7 @@ class M_Usuarios extends Modelo
         $pass = '';
         extract($filtro);
 
-        $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT 10";
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
 
         if ($usuario != '' && $pass != '') {
             $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
@@ -38,10 +38,10 @@ class M_Usuarios extends Modelo
                 $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
                 $SQL .= " OR nombre LIKE '%$palabra%' ";
             }
-            $SQL .= " ) ";
+            $SQL .= " )  LIMIT " . $this->numListado;
             //$SQL.=" AND apellido_1='".$b_texto."' ";
         }
-        //echo $SQL;
+        echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
@@ -52,7 +52,7 @@ class M_Usuarios extends Modelo
         $b_telefono = '';
         extract($filtro);
 
-        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado;
 
         //Esto es para que vea que estas logea
         if ($usuario != '' && $pass != '') {
@@ -70,10 +70,9 @@ class M_Usuarios extends Modelo
             foreach ($aTexto as $b_telefono) {
 
                 $SQL = "SELECT * FROM usuarios
-                WHERE movil IS NOT NULL AND movil LIKE '%$b_telefono%'
-                ";
+                WHERE movil IS NOT NULL AND movil LIKE '%$b_telefono%' LIMIT " . $this->numListado;
             }
-            //echo $SQL; //esto nos muestra el sql que esta ejecutando
+            echo $SQL; //esto nos muestra el sql que esta ejecutando
             $usuarios = $this->DAO->consultar($SQL);
             return $usuarios;
         } else {
@@ -112,20 +111,21 @@ class M_Usuarios extends Modelo
             $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
             $SQL .= " OR nombre LIKE '%$palabra%' ";
         }
-        $SQL .= " ) ";
+        $SQL .= " )";
     }
 
     // Este bloque es para buscar por teléfono
     if ($b_telefono != '') {
         $aTelefonos = explode(' ', $b_telefono);
         foreach ($aTelefonos as $telefono) {
-            $SQL .= " AND (movil IS NOT NULL AND movil LIKE '%$telefono%') ";
+            $SQL .= " AND (movil IS NOT NULL AND movil LIKE '%$telefono%') LIMIT " . $this->numListado;;
         }
     }
 
-    //echo $SQL; // esto nos muestra el SQL que está ejecutando
+    echo $SQL; // esto nos muestra el SQL que está ejecutando
     $usuarios = $this->DAO->consultar($SQL);
     return $usuarios;
+}
        
     public function insertarUsuario($filtro = array()){
         $b_nombre = '';
@@ -211,6 +211,6 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }
 
-}
+
 
 }
