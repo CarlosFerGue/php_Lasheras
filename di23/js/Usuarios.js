@@ -86,6 +86,9 @@ function buscarTelefono() {
 }
 
 function insertarUsuario() {
+
+    validarFormulario();
+
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=insertarUsuario";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
@@ -108,6 +111,44 @@ function insertarUsuario() {
 function cambiarSexo(sexo) {
     document.getElementById("b_sexo").value = sexo;
     console.log(sexo);
+}
+
+function validarFormulario(){
+       // Obtener los valores de los campos
+       var nombre = document.getElementById("b_nombre").value;
+       var apellido1 = document.getElementById("b_apellido1").value;
+       var apellido2 = document.getElementById("b_apellido2").value;
+       var email = document.getElementById("b_email").value;
+       var movil = document.getElementById("b_movil").value;
+       var usuario = document.getElementById("b_user").value;
+       var password = document.getElementById("b_pass").value;
+
+       // Validar que todos los campos estén completos
+       if (!nombre || !apellido1 || !apellido2 || !email || !movil || !usuario || !password) {
+           alert("Debe rellenar todos los campos");
+           return;
+       }
+
+       // Validar el formato del email
+       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+       if (!emailRegex.test(email)) {
+           alert("El formato del correo electrónico no es válido");
+           return;
+       }
+
+       // Validar el formato del número de móvil
+       var movilRegex = /^[0-9]{9}$/;
+       if (!movilRegex.test(movil)) {
+           alert("El número de móvil no es válido, ej: 666777333");
+           return;
+       }
+
+       // Realizar cualquier otra validación que necesites
+
+       // Si todas las validaciones son exitosas, puedes enviar el formulario
+       alert("Usuario insertado correctamente");
+       // Aquí puedes agregar código para enviar el formulario al servidor si es necesario
+
 }
 
 
