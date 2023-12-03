@@ -5,7 +5,7 @@ class M_Usuarios extends Modelo
 {
     //Varibales para que accedan todas las funciones
     public $DAO;
-    public $numListado = 40;
+    public $numListado = 10;
     public $SQLplantilla = "SELECT * FROM usuarios WHERE 1=1";
     public $OFFset = 0;
 
@@ -87,7 +87,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    
+
 
     public function buscarTelefono($filtro = array()){
         $usuario = ''; //login

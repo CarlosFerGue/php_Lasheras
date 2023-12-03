@@ -52,7 +52,8 @@ function returnActivo($fila){
 
 // Paginador
 $numUsuarios = count($usuarios);
-$usuariosPorPagina = 10; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
+echo ("hay " . $numUsuarios . " usuarios");
+$usuariosPorPagina = 1; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
 $numPaginas = ceil($numUsuarios / $usuariosPorPagina);
 
 // Obtener el número de página actual
@@ -66,11 +67,11 @@ echo '<span>Página ' . $paginaActual . ' de ' . $numPaginas . '</span>';
 echo '<button onclick="cambiarPagina(1)">Primera</button>';
 echo '<button onclick="cambiarPagina(' . max(1, $paginaActual - 1) . ')">Anterior</button>';
 
-for ($i = max(1, $paginaActual - 2); $i <= min($numPaginas, $paginaActual + 2); $i++) {
-    if ($i == $paginaActual) {
-        echo '<button class="paginaActual">' . $i . '</button>';
+for ($contadorPagina = max(1, $paginaActual - 2); $contadorPagina <= min($numPaginas, $paginaActual + 2); $contadorPagina++) {
+    if ($contadorPagina == $paginaActual) {
+        echo '<button class="paginaActual">' . $contadorPagina . '</button>';
     } else {
-        echo '<button onclick="cambiarPagina(' . $i . ')">' . $i . '</button>';
+        echo '<button onclick="cambiarPagina(' . $contadorPagina . ')">' . $contadorPagina . '</button>';
     }
 }
 
