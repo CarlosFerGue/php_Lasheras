@@ -76,6 +76,8 @@ function buscarUsuarios(numeroPagina) {
 
     let parametros = `controlador=Usuarios&metodo=buscarUsuarios&pagina=${numeroPagina}&${parametrosFormulario}`;
 
+    console.log(parametros);
+
     fetch(`C_Ajax.php?${parametros}`, opciones)
         .then(res => {
             if (res.ok) {
@@ -93,8 +95,8 @@ function buscarUsuarios(numeroPagina) {
 
 
 function cambiarPagina(pagina) {
-    // window.location.href = '?pagina=' + pagina;
     console.log(pagina);
+    buscarUsuarios(pagina);
 }
 
 
