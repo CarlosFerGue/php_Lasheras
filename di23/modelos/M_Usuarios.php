@@ -58,6 +58,18 @@ class M_Usuarios extends Modelo
         $pass = '';
         //Con esto pillamos la pagina de los filtros
         $pagina = isset($filtro['pagina']) ? (int)$filtro['pagina'] : 1;
+
+            echo " Primera pag es: " . $pagina . " ";
+
+            $pagina = $pagina-1;
+
+        if ($pagina == null || $pagina == -1) {
+            $pagina = 0;
+        }
+
+
+
+        echo " Segunda pag pagina es " . $pagina . " ";
         extract($filtro);
 
         $SQL = "SELECT * FROM usuarios WHERE 1=1";

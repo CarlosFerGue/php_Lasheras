@@ -52,14 +52,21 @@ function returnActivo($fila){
 
 // Paginador
 $numUsuarios = count($usuarios);
-echo ("hay " . $numUsuarios . " usuarios");
+
 $usuariosPorPagina = 1; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
 $numPaginas = ceil($numUsuarios / $usuariosPorPagina);
 
 // Obtener el número de página actual
+
+
 $paginaActual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($paginaActual - 1) * $usuariosPorPagina;
 $usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
+
+echo "Numero users: " . $numUsuarios . " ";
+echo "Numero paginas: " . $numPaginas . " ";
+echo "Pagina actual: " . $paginaActual . " ";
+echo "Inicio: " . $inicio . " ";
 
 // Imprimir el paginador
 echo '<div id="paginador">';

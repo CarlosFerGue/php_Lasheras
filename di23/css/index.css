@@ -1,4 +1,4 @@
-.divLogotipo{
+/* .divLogotipo{
     text-align: left;
 }
 
@@ -14,23 +14,59 @@
 .divTituloApp{
     text-align: center;
     font-size: 1.5em;
+} */
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.divLogotipo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.divTituloApp h1 {
+    margin: 0;
+}
+
+.divLog img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media queries para dispositivos más pequeños */
+@media (max-width: 992px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .divLogotipo,
+    .divTituloApp,
+    .divLog {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 
 .navbar {
-    background-color: #4c7faf; /* Barra de navegación verde */
+    background-color: #4c7faf; 
 }
 
 .nav-link {
-    color: #fff; /* Texto blanco para enlaces en la barra de navegación */
+    color: #fff; 
 }
 
-/* Estilos para los enlaces en el menú desplegable */
 .dropdown-menu a {
-    color: #4c68af; /* Texto verde en el menú desplegable */
+    color: #4c68af; 
 }
 
 .dropdown-menu a:hover {
-    background-color: #eae8f5; /* Fondo verde claro en el menú desplegable al pasar el cursor */
+    background-color: #eae8f5; 
 }
 
 #b_texto {

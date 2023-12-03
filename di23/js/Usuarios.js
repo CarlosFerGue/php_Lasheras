@@ -95,7 +95,7 @@ function buscarUsuarios(numeroPagina) {
 
 
 function cambiarPagina(pagina) {
-    console.log(pagina);
+    console.log("La pagina es " + pagina);
     buscarUsuarios(pagina);
 }
 
@@ -295,3 +295,4 @@ function cerrarPopup() {
 
 
 buscar();
+
