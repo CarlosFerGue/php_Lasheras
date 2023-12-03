@@ -56,7 +56,7 @@ $usuariosPorPagina = 10; // Puedes ajustar la cantidad de usuarios por página s
 $numPaginas = ceil($numUsuarios / $usuariosPorPagina);
 
 // Obtener el número de página actual
-$paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+$paginaActual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($paginaActual - 1) * $usuariosPorPagina;
 $usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
 

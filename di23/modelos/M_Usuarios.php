@@ -16,11 +16,48 @@ class M_Usuarios extends Modelo
 
 
     //Buscar general
+    // public function buscarUsuarios($filtro = array())
+    // {
+    //     $b_texto = '';
+    //     $usuario = ''; //login
+    //     $pass = '';
+
+    //     extract($filtro);
+
+    //     $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+    //     if ($usuario != '' && $pass != '') {
+    //         $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+    //         $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+    //         $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+    //     }
+
+    //     if ($b_texto != '') {
+    //         $aTexto = explode(' ', $b_texto);
+    //         $SQL .= " AND (1=2 ";
+    //         foreach ($aTexto as $palabra) {
+    //             $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+    //             $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+    //             $SQL .= " OR nombre LIKE '%$palabra%' ";
+    //         }
+    //         $SQL .= " )  LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
+    //         //$SQL.=" AND apellido_1='".$b_texto."' ";
+    //     }else{
+    //         $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
+    //     }
+    //     echo $SQL;
+    //     $usuarios = $this->DAO->consultar($SQL);
+    //     return $usuarios;
+    // }
+
+
     public function buscarUsuarios($filtro = array())
     {
         $b_texto = '';
         $usuario = ''; //login
         $pass = '';
+        //Con esto pillamos la pagina de los filtros
+        $pagina = isset($filtro['pagina']) ? (int)$filtro['pagina'] : 1;
         extract($filtro);
 
         $SQL = "SELECT * FROM usuarios WHERE 1=1";
@@ -31,23 +68,26 @@ class M_Usuarios extends Modelo
             $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
         }
 
-        if ($b_texto != '') {
-            $aTexto = explode(' ', $b_texto);
-            $SQL .= " AND (1=2 ";
-            foreach ($aTexto as $palabra) {
-                $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
-                $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
-                $SQL .= " OR nombre LIKE '%$palabra%' ";
-            }
-            $SQL .= " )  LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
-            //$SQL.=" AND apellido_1='".$b_texto."' ";
-        }else{
-            $SQL = "SELECT * FROM usuarios WHERE 1=1 LIMIT " . $this->numListado . " OFFSET " . $this->OFFset;
-        }
+      if ($b_texto != '') {
+          $aTexto = explode(' ', $b_texto);
+          $SQL .= " AND (1=2 ";
+          foreach ($aTexto as $palabra) {
+              $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+              $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+              $SQL .= " OR nombre LIKE '%$palabra%' ";
+          }
+          $SQL .= " )";
+
+          //$SQL.=" AND apellido_1='".$b_texto."' ";
+      }else{
+          $SQL = "SELECT * FROM usuarios WHERE 1=1";
+      }
+      $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
         echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
+    
 
     public function buscarTelefono($filtro = array()){
         $usuario = ''; //login
