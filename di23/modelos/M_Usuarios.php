@@ -15,7 +15,28 @@ class M_Usuarios extends Modelo
     }
 
 
-    //Buscar general
+    //Login
+    public function buscarUsuariosLogin($filtro = array())
+    {
+        $b_texto = '';
+        $usuario = ''; //login
+        $pass = '';
+
+        extract($filtro);
+
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
+
+        echo $SQL;
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+
     // public function buscarUsuarios($filtro = array())
     // {
     //     $b_texto = '';
@@ -63,9 +84,9 @@ class M_Usuarios extends Modelo
 
             $pagina = $pagina-1;
 
-        if ($pagina == null || $pagina == -1) {
-            $pagina = 0;
-        }
+        // if ($pagina == null || $pagina == -1) {
+        //     $pagina = 0;
+        // }
 
 
 

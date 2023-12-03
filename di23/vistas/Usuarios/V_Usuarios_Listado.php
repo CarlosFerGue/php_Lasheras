@@ -71,10 +71,10 @@ echo "Inicio: " . $inicio . " ";
 // Imprimir el paginador
 echo '<div id="paginador">';
 echo '<span>Página ' . $paginaActual . ' de ' . $numPaginas . '</span>';
-echo '<button onclick="cambiarPagina(1)">Primera</button>';
-echo '<button onclick="cambiarPagina(' . max(1, $paginaActual - 1) . ')">Anterior</button>';
+echo '<button onclick="cambiarPagina(0)">Primera</button>';
+echo '<button onclick="cambiarPagina(' . max(0, $paginaActual - 1) . ')">Anterior</button>';
 
-for ($contadorPagina = max(1, $paginaActual - 2); $contadorPagina <= min($numPaginas, $paginaActual + 2); $contadorPagina++) {
+for ($contadorPagina = max(1, $paginaActual - 2); $contadorPagina <= min($numPaginas - 1, $paginaActual + 2); $contadorPagina++) {
     if ($contadorPagina == $paginaActual) {
         echo '<button class="paginaActual">' . $contadorPagina . '</button>';
     } else {

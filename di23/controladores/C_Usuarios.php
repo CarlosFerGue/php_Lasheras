@@ -21,8 +21,9 @@
                 header('Location: index.php'); 
                 echo $valido;
             } */
+
             $valido='N';
-            $usuarios = $this->modelo->buscarUsuarios($filtros);
+            $usuarios = $this->modelo->buscarUsuariosLogin($filtros);
             if (!empty($usuarios)) {
                 $valido='S';
                 $_SESSION['usuario']=$usuarios[0]['login'];
