@@ -150,9 +150,26 @@ function insertarUsuario() {
 }
 
 
+function cambiarSexoInsertar(sexo) {
+
+    let labelSexo1 = document.getElementById("b_sexo");
+    let divSexo = document.getElementById("sexo");
+    labelSexo1.parentNode.removeChild(labelSexo1);
+    divSexo.parentNode.removeChild(divSexo);
+
+    let nuevoContenido = `
+        <div style = "display:none">
+        <label for="b_sexo" style="display:none">Sexo:</label>
+        <input type="text" id="b_sexo" name="b_sexo" value="${sexo}"></div>
+    `;
+    document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
+
+    console.log(sexo);
+}
+
 
 function validarFormulario() {
-    // Obtener los valores de los campos
+
     var nombre = document.getElementById("b_nombre").value;
     var apellido1 = document.getElementById("b_apellido1").value;
     var apellido2 = document.getElementById("b_apellido2").value;
@@ -161,60 +178,27 @@ function validarFormulario() {
     var usuario = document.getElementById("b_user").value;
     var password = document.getElementById("b_pass").value;
 
-    // Validar que todos los campos estén completos
+  
     if (!nombre || !apellido1 || !apellido2 || !email || !movil || !usuario || !password) {
         alert("Debe rellenar todos los campos");
         return;
     }
 
-    // Validar el formato del email
+
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert("El formato del correo electrónico no es válido");
         return;
     }
 
-    // Validar el formato del número de móvil
+
     var movilRegex = /^[0-9]{9}$/;
     if (!movilRegex.test(movil)) {
         alert("El número de móvil no es válido, ej: 666777333");
         return;
     }
-
-    // Realizar cualquier otra validación que necesites
-
-    // Si todas las validaciones son exitosas, puedes enviar el formulario
-    alert("Usuario insertado correctamente");
-    // Aquí puedes agregar código para enviar el formulario al servidor si es necesario
-
 }
 
-
-// function editarUsuario() {
-
-//     let opciones = { method: "GET" };
-//     let parametros = "controlador=Usuarios&metodo=editarUsuario";
-//     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioActualizar"))).toString();
-
-//     console.log(parametros);
-
-//     fetch("C_Ajax.php?" + parametros, opciones)
-//         .then(res => {
-//             if (res.ok) {
-//                 console.log('respuesta ok Editar');
-//                 return res.text();
-//             }
-//         })
-//         .then(vista => {
-//             document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-//         })
-//         .catch(err => {
-//             console.log("Error al realizar la petición", err.message);
-//         });
-
-//         cerrarPopup();
-
-// }
 
 function editarUsuario() {
     let opciones = { method: "GET" };
@@ -241,9 +225,22 @@ function editarUsuario() {
 }
 
 
-function cambiarSexo(sexo) {
-    document.getElementById("b_sexo1").value = sexo;
-    console.log(sexo);
+function cambiarSexoEditar(sexo) {
+
+     let labelSexo1 = document.getElementById("b_sexo1");
+     let divSexo = document.getElementById("sexo");
+     labelSexo1.parentNode.removeChild(labelSexo1);
+     divSexo.parentNode.removeChild(divSexo);
+ 
+
+     let nuevoContenido = `
+         <div style = "display:none">
+         <label for="b_sexo" style="display:none">Sexo:</label>
+         <input type="text" id="b_sexo" name="b_sexo" value="${sexo}"></div>
+     `;
+     document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
+ 
+     console.log(sexo);
 }
 
 
@@ -277,14 +274,11 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         
         <label for="b_apellido2">Apellido 2:</label>
         <input type="text" id="b_apellido2" name="b_apellido2" value="${apellido2}">
-        
-        <label for="b_sexo" style="display:none">Sexo:</label>
-        <input type="text" id="b_sexo" name="b_sexo" value="">
 
-        <label for="b_sexo">Sexo:</label>
+        <label for="b_sexo1" id="b_sexo1">Sexo:</label>
         <div id="sexo" class="sexo">
-            <button type="button" id="b_sexo1" name="b_sexo1" onclick="cambiarSexo('H')" ${sexo === 'H' ? 'disabled' : ''}>Hombre</button>
-            <button type="button" id="b_sexo1" name="b_sexo1" onclick="cambiarSexo('M')" ${sexo === 'M' ? 'disabled' : ''}>Mujer</button>
+            <button type="button" id="b_sexo1" name="b_sexo1" onclick="cambiarSexoEditar('H')" ${sexo === 'H' ? 'disabled' : ''}>Hombre</button>
+            <button type="button" id="b_sexo1" name="b_sexo1" onclick="cambiarSexoEditar('M')" ${sexo === 'M' ? 'disabled' : ''}>Mujer</button>
         </div>
 
         <label for="b_email">Email:</label>

@@ -9,7 +9,7 @@
     
     <div id="container">
         <form id="formularioInsertar" name="formularioInsertar" onkeydown="return event.key != 'Enter';">
-            <label for="b_nombre">Nombre del usuario:</label>
+            <label for="b_nombre">Nombre:</label>
             <input type="text" id="b_nombre" name="b_nombre">
             
             <label for="b_apellido1">Apellido 1:</label>
@@ -22,8 +22,8 @@
            <!-- <input type="text" id="b_sexo" name="b_sexo"> -->
 
             <div id="sexo" class="sexo">
-                <button type="button" id="b_sexo_hombre" name="b_sexo" onclick="cambiarSexo('H')">Hombre</button>
-                <button type="button" id="b_sexo_mujer" name="b_sexo" onclick="cambiarSexo('M')">Mujer</button>
+                <button type="button" id="b_sexo_hombre" name="b_sexo" onclick="cambiarSexoInsertar('H')">Hombre</button>
+                <button type="button" id="b_sexo_mujer" name="b_sexo" onclick="cambiarSexoInsertar('M')">Mujer</button>
             </div> 
 
             <label for="b_email">Email:</label>
