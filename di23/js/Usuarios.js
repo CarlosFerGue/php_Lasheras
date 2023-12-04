@@ -50,6 +50,10 @@ function buscarTelefonoyUsuario(numeroPagina) {
     let parametrosFormularioTelefono = new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
     let parametrosFormularioUsuario = new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
 
+    if (numeroPagina == null) {
+        numeroPagina = 0;
+    }
+
     let parametros = `controlador=Usuarios&metodo=buscarTelefonoyUsuario&pagina=${numeroPagina}&${parametrosFormularioTelefono}&${parametrosFormularioUsuario}`;
 
     fetch(`C_Ajax.php?${parametros}`, opciones)
@@ -72,6 +76,10 @@ function buscarUsuarios(numeroPagina) {
     let opciones = { method: "GET" };
 
     let parametrosFormulario = new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+
+    if (numeroPagina == null) {
+        numeroPagina = 0;
+    }
 
     let parametros = `controlador=Usuarios&metodo=buscarUsuarios&pagina=${numeroPagina}&${parametrosFormulario}`;
 
@@ -123,7 +131,15 @@ function buscarTelefono(numeroPagina) {
     let opciones = { method: "GET" };
     let parametrosFormularioTelefono = new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
 
+
+    if (numeroPagina == null) {
+        numeroPagina = 0;
+    }
+
+
     let parametros = `controlador=Usuarios&metodo=buscarTelefono&pagina=${numeroPagina}&${parametrosFormularioTelefono}`;
+
+    console.log(numeroPagina);
 
     fetch(`C_Ajax.php?${parametros}`, opciones)
         .then(res => {

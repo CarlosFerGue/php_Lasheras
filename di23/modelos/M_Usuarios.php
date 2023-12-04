@@ -279,6 +279,8 @@ public function buscarTelefonoyUsuario($filtro = array())
         }
     }
 
+
+    $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
     // Eliminamos la LIMIT y OFFSET de esta función
     // echo $SQL; // esto nos muestra el SQL que está ejecutando
     $usuarios = $this->DAO->consultar($SQL);
