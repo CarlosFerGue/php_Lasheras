@@ -208,7 +208,12 @@ public function buscarTelefono($filtro = array())
     $pass = '';
     $b_telefono = '';
 
+        //Con esto pillamos la pagina de los filtros
+        $pagina = isset($filtro['pagina']) ? (int)$filtro['pagina'] : 1;
 
+        // echo " Primera pag es: " . $pagina . " ";
+    
+         $pagina = $pagina - 1;
 
     extract($filtro);
 
@@ -231,12 +236,7 @@ public function buscarTelefono($filtro = array())
         $SQL .= " )";
     }
 
-        //Con esto pillamos la pagina de los filtros
-        $pagina = isset($filtro['pagina']) ? (int)$filtro['pagina'] : 1;
 
-        // echo " Primera pag es: " . $pagina . " ";
-    
-        // $pagina = $pagina - 1;
 
 
     $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
@@ -245,8 +245,8 @@ public function buscarTelefono($filtro = array())
 }
 
 
-
-    public function buscarTelefonoyUsuario($filtro = array()){
+public function buscarTelefonoyUsuario($filtro = array())
+{
     $b_texto = '';
     $usuario = ''; // login
     $pass = '';
@@ -278,14 +278,16 @@ public function buscarTelefono($filtro = array())
     if ($b_telefono != '') {
         $aTelefonos = explode(' ', $b_telefono);
         foreach ($aTelefonos as $telefono) {
-            $SQL .= " AND (movil IS NOT NULL AND movil LIKE '%$telefono%') LIMIT " . $this->numListado;;
+            $SQL .= " AND (movil IS NOT NULL AND movil LIKE '%$telefono%') ";
         }
     }
 
-    echo $SQL; // esto nos muestra el SQL que está ejecutando
+    // Eliminamos la LIMIT y OFFSET de esta función
+    // echo $SQL; // esto nos muestra el SQL que está ejecutando
     $usuarios = $this->DAO->consultar($SQL);
     return $usuarios;
 }
+
 
     public function insertarUsuario($filtro = array()){
         $b_nombre = '';
