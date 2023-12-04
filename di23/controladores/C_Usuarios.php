@@ -60,12 +60,18 @@
         }
 
         public function buscarTelefono($filtros=array()){
+            //Obtengo el numero de la pagina del GET
+            $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
             $usuarios=$this->modelo->buscarTelefono($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
         }
 
         public function buscarTelefonoyUsuario($filtros=array()){
+            //Obtengo el numero de la pagina del GET
+            $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
             $usuarios=$this->modelo->buscarTelefonoyUsuario($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));

@@ -63,10 +63,10 @@ $paginaActual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($paginaActual - 1) * $usuariosPorPagina;
 $usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
 
-echo "Numero users: " . $numUsuarios . " ";
-echo "Numero paginas: " . $numPaginas . " ";
-echo "Pagina actual: " . $paginaActual . " ";
-echo "Inicio: " . $inicio . " ";
+// echo "Numero users: " . $numUsuarios . " ";
+// echo "Numero paginas: " . $numPaginas . " ";
+// echo "Pagina actual: " . $paginaActual . " ";
+// echo "Inicio: " . $inicio . " ";
 
 // Imprimir el paginador
 echo '<div id="paginador">';
