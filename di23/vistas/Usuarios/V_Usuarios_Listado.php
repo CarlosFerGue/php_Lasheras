@@ -18,7 +18,7 @@ $usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
 //Modificar cuantos usuarios salen por cada apgina
 echo '<form method="get" action="" id="usuariosPorPaginaForm" name="usuariosPorPaginaForm">';
 echo '<label for="usuariosPorPagina">Usuarios por página:</label>';
-echo '<select name="usuariosPorPagina" id="usuariosPorPagina" onchange="cambiarUsuariosPorPagina()">';
+echo '<select name="usuariosPorPagina" id="usuariosPorPagina" onchange="buscar('. $paginaActual .')">';
 echo '<option value="5" ' . ($usuariosPorPagina == 5 ? 'selected' : '') . '>5</option>';
 echo '<option value="10" ' . ($usuariosPorPagina == 10 ? 'selected' : '') . '>10</option>';
 echo '<option value="20" ' . ($usuariosPorPagina == 20 ? 'selected' : '') . '>20</option>';

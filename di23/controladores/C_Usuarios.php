@@ -39,13 +39,6 @@
             Vista::render('vistas/Inserciones/V_Inserciones.php');
         }
 
-        
-
-        // public function buscarUsuarios($filtros=array()){
-        //     $usuarios=$this->modelo->buscarUsuarios($filtros);
-        //     //echo json_encode($usuarios);
-        //     Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios));
-        // }
 
         public function buscarUsuarios($filtros=array()){
             //Obtengo el numero de la pagina del GET

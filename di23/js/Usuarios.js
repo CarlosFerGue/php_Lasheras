@@ -213,13 +213,13 @@ function cambiarSexoInsertar(sexo) {
 
 function validarFormulario() {
 
-    var nombre = document.getElementById("b_nombre").value;
-    var apellido1 = document.getElementById("b_apellido1").value;
-    var apellido2 = document.getElementById("b_apellido2").value;
-    var email = document.getElementById("b_email").value;
-    var movil = document.getElementById("b_movil").value;
-    var usuario = document.getElementById("b_user").value;
-    var password = document.getElementById("b_pass").value;
+    let nombre = document.getElementById("b_nombre").value;
+    let apellido1 = document.getElementById("b_apellido1").value;
+    let apellido2 = document.getElementById("b_apellido2").value;
+    let email = document.getElementById("b_email").value;
+    let movil = document.getElementById("b_movil").value;
+    let usuario = document.getElementById("b_user").value;
+    let password = document.getElementById("b_pass").value;
 
 
     if (!nombre || !apellido1 || !apellido2 || !email || !movil || !usuario || !password) {
@@ -228,14 +228,14 @@ function validarFormulario() {
     }
 
 
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert("El formato del correo electrónico no es válido");
         return;
     }
 
 
-    var movilRegex = /^[0-9]{9}$/;
+    let movilRegex = /^[0-9]{9}$/;
     if (!movilRegex.test(movil)) {
         alert("El número de móvil no es válido, ej: 666777333");
         return;
@@ -289,7 +289,7 @@ function cambiarSexoEditar(sexo) {
 
 function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
     // Verificar si el div popup ya existe
-    var popupExistente = document.getElementById('popup');
+    let popupExistente = document.getElementById('popup');
 
     // Si existe, eliminarlo antes de crear uno nuevo
     if (popupExistente) {
@@ -297,7 +297,7 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
     }
 
     // Crear el div emergente
-    var popup = document.createElement('div');
+    let popup = document.createElement('div');
     popup.id = 'popup';
 
     popup.innerHTML = `
@@ -352,7 +352,7 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
 
 
 function cerrarPopup() {
-    var popup = document.getElementById('popup');
+    let popup = document.getElementById('popup');
     if (popup) {
         document.body.removeChild(popup);
     }
