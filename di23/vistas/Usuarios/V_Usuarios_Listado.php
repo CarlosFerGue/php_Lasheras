@@ -80,15 +80,14 @@ function returnActivo($fila){
     echo '<button onclick="cambiarPagina(' . min($numPaginas, $paginaActual + 1) . ')">Siguiente</button>';
     echo '<button onclick="cambiarPagina(' . $numPaginas . ')">Última</button>';
     echo '</div>';
+    
+
 
     }
 
-
-
-
-echo "Numero users: " . $numUsuarios . " ";
-echo "Numero paginas: " . $numPaginas . " ";
-echo "Pagina actual: " . $paginaActual . " ";
-echo "Inicio: " . $inicio . " ";
+// echo "Numero users: " . $numUsuarios . " ";
+// echo "Numero paginas: " . $numPaginas . " ";
+// echo "Pagina actual: " . $paginaActual . " ";
+// echo "Inicio: " . $inicio . " ";
 ?>
 

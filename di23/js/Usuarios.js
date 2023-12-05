@@ -1,22 +1,24 @@
-function buscar() {
+let numeroPagina = 0;
+
+function buscar(numeroPagina) {
     const input1 = document.getElementById("b_texto").value;
     const input2 = document.getElementById("b_telefono").value;
     console.log(input1);
     console.log(input2);
     if (input1 && !input2) {
         // Caso 1: Solo input1 tiene texto
-        buscarUsuarios();
+        buscarUsuarios(numeroPagina);
         console.log("Solo input1 tiene texto.");
     } else if (!input1 && input2) {
-        buscarTelefono();
+        buscarTelefono(numeroPagina);
         // Caso 2: Solo input2 tiene texto
         console.log("Solo input2 tiene texto.");
     } else if (input1 && input2) {
         // Caso 3: Ambos inputs tienen texto
-        buscarTelefonoyUsuario();
+        buscarTelefonoyUsuario(numeroPagina);
         console.log("Ambos inputs tienen texto.");
     } else {
-        buscarUsuarios();
+        buscarUsuarios(numeroPagina);
         // Caso 4: Ningún input tiene texto
         console.log("Ninguno de los inputs tiene texto.");
     }
@@ -55,6 +57,8 @@ function buscarTelefonoyUsuario(numeroPagina) {
     }
 
     let parametros = `controlador=Usuarios&metodo=buscarTelefonoyUsuario&pagina=${numeroPagina}&${parametrosFormularioTelefono}&${parametrosFormularioUsuario}`;
+
+    console.log(parametros);
 
     fetch(`C_Ajax.php?${parametros}`, opciones)
         .then(res => {
@@ -103,7 +107,7 @@ function buscarUsuarios(numeroPagina) {
 
 function cambiarPagina(pagina) {
     console.log("La pagina es " + pagina);
-    buscarUsuarios(pagina);
+    buscar(pagina);
 }
 
 
@@ -217,7 +221,7 @@ function validarFormulario() {
     var usuario = document.getElementById("b_user").value;
     var password = document.getElementById("b_pass").value;
 
-  
+
     if (!nombre || !apellido1 || !apellido2 || !email || !movil || !usuario || !password) {
         alert("Debe rellenar todos los campos");
         return;
@@ -270,7 +274,7 @@ function cambiarSexoEditar(sexo) {
      let divSexo = document.getElementById("sexo");
      labelSexo1.parentNode.removeChild(labelSexo1);
      divSexo.parentNode.removeChild(divSexo);
- 
+
 
      let nuevoContenido = `
          <div style = "display:none">
@@ -278,7 +282,7 @@ function cambiarSexoEditar(sexo) {
          <input type="text" id="b_sexo" name="b_sexo" value="${sexo}"></div>
      `;
      document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
- 
+
      console.log(sexo);
 }
 
@@ -307,10 +311,10 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
 
         <label for="b_nombre">Nombre del usuario:</label>
         <input type="text" id="b_nombre" name="b_nombre" value="${nombre}">
-        
+
         <label for="b_apellido1">Apellido 1:</label>
         <input type="text" id="b_apellido1" name="b_apellido1" value="${apellido1}">
-        
+
         <label for="b_apellido2">Apellido 2:</label>
         <input type="text" id="b_apellido2" name="b_apellido2" value="${apellido2}">
 
@@ -322,16 +326,16 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
 
         <label for="b_email">Email:</label>
         <input type="text" id="b_email" name="b_email" value="${mail}">
-        
+
         <label for="b_movil">Movil:</label>
         <input type="text" id="b_movil" name="b_movil" value="${movil}">
 
-        
+
         <button type="button" onclick="editarUsuario()">Guardar cambios</button>
         <button type="button" onclick="cerrarPopup()">Cancelar</button>
 
         <div id="guardar">
-        
+
         </div>
 
         </form>
@@ -356,5 +360,5 @@ function cerrarPopup() {
 }
 
 
-buscar();
+buscar(numeroPagina);
 
