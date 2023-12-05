@@ -237,7 +237,7 @@ public function buscarTelefono($filtro = array())
     }
 
     // $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
-    echo $SQL;
+    //echo $SQL;
     $usuarios = $this->DAO->consultar($SQL);
     return $usuarios;
 }

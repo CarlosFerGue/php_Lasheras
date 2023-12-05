@@ -341,10 +341,10 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         </form>
     `;
 
-    // Añadir el div emergente al body
+    // Añadimos el div emergente al body
     document.body.appendChild(popup);
 
-    // Mostrar el div emergente
+    // Muestro el div emergente
     popup.style.display = 'block';
 
 }
@@ -352,13 +352,11 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
 
 
 function cerrarPopup() {
-    // Eliminar el div emergente al hacer clic en el botón Cerrar
     var popup = document.getElementById('popup');
     if (popup) {
         document.body.removeChild(popup);
     }
 }
-
 
 buscar(numeroPagina);
 

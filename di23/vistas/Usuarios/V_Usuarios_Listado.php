@@ -1,18 +1,33 @@
 <?php
 
-$usuarios=$datos['usuarios'];
-    
+$usuarios = $datos['usuarios'];
+
+// Obtener la cantidad de usuarios por pagina desde el formulario o por defecto
+$usuariosPorPagina = 10;
+
 // Paginador
 $numUsuarios = count($usuarios);
-
-$usuariosPorPagina = 10; // Puedes ajustar la cantidad de usuarios por página según tus necesidades
 $numPaginas = ceil($numUsuarios / $usuariosPorPagina);
 
-// Obtener el número de página actual
+// Obetnecion del numero de pagina actual
 $paginaActual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($paginaActual - 1) * $usuariosPorPagina;
 $usuariosPagina = array_slice($usuarios, $inicio, $usuariosPorPagina);
 
+
+//Modificar cuantos usuarios salen por cada apgina
+echo '<form method="get" action="" id="usuariosPorPaginaForm" name="usuariosPorPaginaForm">';
+echo '<label for="usuariosPorPagina">Usuarios por página:</label>';
+echo '<select name="usuariosPorPagina" id="usuariosPorPagina" onchange="cambiarUsuariosPorPagina()">';
+echo '<option value="5" ' . ($usuariosPorPagina == 5 ? 'selected' : '') . '>5</option>';
+echo '<option value="10" ' . ($usuariosPorPagina == 10 ? 'selected' : '') . '>10</option>';
+echo '<option value="20" ' . ($usuariosPorPagina == 20 ? 'selected' : '') . '>20</option>';
+echo '</select>';
+echo '</form>';
+
+
+
+//La parte de arriba de la tabla
 echo '<table id=lista_usuarios>
         <tr>
           <th>NOMBRE</th>
@@ -23,7 +38,9 @@ echo '<table id=lista_usuarios>
           <th>ACTIVIDAD</th>
         </tr>';
 
-// Modificar el foreach para trabajar con $usuariosPagina
+
+
+// Impresion linea por linea de los usuarios
 foreach ($usuariosPagina as $fila) {
     echo '<tr class="filaTr">';
     echo '<td>' . $fila['nombre'] . '</td>';
@@ -63,7 +80,12 @@ function returnActivo($fila){
     if ($numPaginas == 1) {
         
     }else{
-    // Imprimir el paginador
+
+  // Parte en la que imprimimos el paginador
+
+
+    if ($numPaginas > 1) {
+
     echo '<div id="paginador">';
     echo '<span>Página ' . $paginaActual . ' de ' . $numPaginas . '</span>';
     echo '<button onclick="cambiarPagina(0)">Primera</button>';
@@ -80,10 +102,10 @@ function returnActivo($fila){
     echo '<button onclick="cambiarPagina(' . min($numPaginas, $paginaActual + 1) . ')">Siguiente</button>';
     echo '<button onclick="cambiarPagina(' . $numPaginas . ')">Última</button>';
     echo '</div>';
-    
 
 
     }
+}
 
 // echo "Numero users: " . $numUsuarios . " ";
 // echo "Numero paginas: " . $numPaginas . " ";
