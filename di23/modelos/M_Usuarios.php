@@ -5,7 +5,7 @@ class M_Usuarios extends Modelo
 {
     //Varibales para que accedan todas las funciones
     public $DAO;
-    public $numListado = 10;
+    // public $numListado = 100;
     public $SQLplantilla = "SELECT * FROM usuarios WHERE 1=1";
     public $OFFset = 0;
 
@@ -194,7 +194,7 @@ class M_Usuarios extends Modelo
       }else{
           $SQL = "SELECT * FROM usuarios WHERE 1=1";
       }
-      $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
+    //   $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
         // echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
@@ -236,7 +236,8 @@ public function buscarTelefono($filtro = array())
         $SQL .= " )";
     }
 
-    $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
+    // $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
+    echo $SQL;
     $usuarios = $this->DAO->consultar($SQL);
     return $usuarios;
 }
@@ -280,9 +281,9 @@ public function buscarTelefonoyUsuario($filtro = array())
     }
 
 
-    $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
-    // Eliminamos la LIMIT y OFFSET de esta función
-    // echo $SQL; // esto nos muestra el SQL que está ejecutando
+    // $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
+
+    echo $SQL;
     $usuarios = $this->DAO->consultar($SQL);
     return $usuarios;
 }
@@ -358,8 +359,8 @@ public function buscarTelefonoyUsuario($filtro = array())
             WHERE
               `id_usuario` = $b_id;";
             
-            echo "El usuario $b_user se registró correctamente";
-            echo $SQL;
+            echo "El usuario $b_user se actualizo correctamente";
+            //echo $SQL;
         } else {
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
