@@ -173,7 +173,7 @@ function insertarUsuario() {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=insertarUsuario";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
-    parametros += "&b_sexo=" + sexoSeleccionado; // Agrega el valor del sexo a los parámetros
+    parametros += "&b_sexo=" + sexoSeleccionado; // Agrega el valor del sexo a los parametros
 
     console.log(parametros)
 
@@ -288,15 +288,12 @@ function cambiarSexoEditar(sexo) {
 
 
 function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movil, activo) {
-    // Verificar si el div popup ya existe
     let popupExistente = document.getElementById('popup');
 
-    // Si existe, eliminarlo antes de crear uno nuevo
     if (popupExistente) {
         popupExistente.remove();
     }
 
-    // Crear el div emergente
     let popup = document.createElement('div');
     popup.id = 'popup';
 
@@ -341,10 +338,8 @@ function mostrarEditar(idUsuario, nombre, apellido1, apellido2, sexo, mail, movi
         </form>
     `;
 
-    // Añadimos el div emergente al body
     document.body.appendChild(popup);
 
-    // Muestro el div emergente
     popup.style.display = 'block';
 
 }

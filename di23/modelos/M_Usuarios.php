@@ -198,8 +198,8 @@ public function buscarTelefonoyUsuario($filtro = array())
         } else {
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
-        echo $SQL;
-        $usuarios = $this->DAO->insertar($SQL);
+        //echo $SQL;
+        // $usuarios = $this->DAO->insertar($SQL);
     }
 
     public function editarUsuario($filtro = array()){
