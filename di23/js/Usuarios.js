@@ -168,28 +168,32 @@ let sexoSeleccionado = '';
 
 function insertarUsuario() {
 
-    validarFormulario();
+    if (validarFormulario() != 1) {
 
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
-    parametros += "&b_sexo=" + sexoSeleccionado; // Agrega el valor del sexo a los parametros
+    } else {
 
-    console.log(parametros)
 
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log('respuesta ok Insertar');
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        });
+        let opciones = { method: "GET" };
+        let parametros = "controlador=Usuarios&metodo=insertarUsuario";
+        parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+        parametros += "&b_sexo=" + sexoSeleccionado; // Agrega el valor del sexo a los parametros
+
+        console.log(parametros)
+
+        fetch("C_Ajax.php?" + parametros, opciones)
+            .then(res => {
+                if (res.ok) {
+                    console.log('respuesta ok Insertar');
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
+    }
 }
 
 
@@ -220,25 +224,19 @@ function validarFormulario() {
     let movil = document.getElementById("b_movil").value;
     let usuario = document.getElementById("b_user").value;
     let password = document.getElementById("b_pass").value;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let movilRegex = /^[0-9]{9}$/;
 
 
     if (!nombre || !apellido1 || !apellido2 || !email || !movil || !usuario || !password) {
         alert("Debe rellenar todos los campos");
-        return;
-    }
-
-
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    } else if (!emailRegex.test(email)) {
         alert("El formato del correo electrónico no es válido");
-        return;
-    }
-
-
-    let movilRegex = /^[0-9]{9}$/;
-    if (!movilRegex.test(movil)) {
+    } if (!movilRegex.test(movil)) {
         alert("El número de móvil no es válido, ej: 666777333");
-        return;
+
+    } else {
+        return 1;
     }
 }
 
@@ -270,20 +268,20 @@ function editarUsuario() {
 
 function cambiarSexoEditar(sexo) {
 
-     let labelSexo1 = document.getElementById("b_sexo1");
-     let divSexo = document.getElementById("sexo");
-     labelSexo1.parentNode.removeChild(labelSexo1);
-     divSexo.parentNode.removeChild(divSexo);
+    let labelSexo1 = document.getElementById("b_sexo1");
+    let divSexo = document.getElementById("sexo");
+    labelSexo1.parentNode.removeChild(labelSexo1);
+    divSexo.parentNode.removeChild(divSexo);
 
 
-     let nuevoContenido = `
+    let nuevoContenido = `
          <div style = "display:none">
          <label for="b_sexo" style="display:none">Sexo:</label>
          <input type="text" id="b_sexo" name="b_sexo" value="${sexo}"></div>
      `;
-     document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
+    document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
 
-     console.log(sexo);
+    console.log(sexo);
 }
 
 

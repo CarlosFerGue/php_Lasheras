@@ -36,7 +36,7 @@
             <input type="text" id="b_user" name="b_user">
 
             <label for="b_pass">Contraseña:</label>
-            <input type="text" id="b_pass" name="b_pass">
+            <input type="password" id="b_pass" name="b_pass">
 
             <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
         </form>
