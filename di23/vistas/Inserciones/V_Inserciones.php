@@ -39,6 +39,7 @@
             <input type="password" id="b_pass" name="b_pass">
 
             <button type="button" onclick="insertarUsuario()">Añadir usuario</button>
+            
         </form>
 
         

@@ -74,7 +74,7 @@ class M_Usuarios extends Modelo
           $SQL = "SELECT * FROM usuarios WHERE 1=1";
       }
     //   $SQL .= " LIMIT $this->numListado OFFSET " . $pagina * 10;
-        echo $SQL;
+        //echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
@@ -198,8 +198,8 @@ public function buscarTelefonoyUsuario($filtro = array())
         } else {
             echo "No se realizó la inserción del usuario, por favor repitala.";
         }
-        echo $SQL;
-        // $usuarios = $this->DAO->insertar($SQL);
+        //echo $SQL;
+        $usuarios = $this->DAO->insertar($SQL);
     }
 
     public function editarUsuario($filtro = array()){

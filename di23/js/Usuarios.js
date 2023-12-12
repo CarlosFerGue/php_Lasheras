@@ -166,19 +166,56 @@ function buscarTelefono(numeroPagina) {
 let sexoSeleccionado = '';
 
 
+// function insertarUsuario() {
+
+//     if (validarFormulario() != 1) {
+
+//     } else {
+
+
+//         let opciones = { method: "GET" };
+//         let parametros = "controlador=Usuarios&metodo=insertarUsuario";
+//         parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+     
+
+//         console.log(parametros)
+
+//         fetch("C_Ajax.php?" + parametros, opciones)
+//             .then(res => {
+//                 if (res.ok) {
+//                     console.log('respuesta ok Insertar');
+//                     return res.text();
+//                 }
+//             })
+//             .then(vista => {
+//                 document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+//             })
+//             .catch(err => {
+//                 console.log("Error al realizar la petición", err.message);
+//             });
+//     }
+// }
+
 function insertarUsuario() {
-
     if (validarFormulario() != 1) {
-
+        // Haz algo si el formulario no es válido
     } else {
-
-
         let opciones = { method: "GET" };
         let parametros = "controlador=Usuarios&metodo=insertarUsuario";
-        parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
-        parametros += "&b_sexo=" + sexoSeleccionado; // Agrega el valor del sexo a los parametros
 
-        console.log(parametros)
+        // Agregar los parámetros del formulario
+        parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
+
+        // Obtener el valor del sexo seleccionado
+        let sexoButton = document.querySelector('input[name="b_sexo"]:checked');
+        
+        // Verificar si se seleccionó un botón de opción antes de obtener el valor
+        let sexo = sexoButton ? sexoButton.value : '';
+        
+        // Agregar el valor del sexo a los parámetros
+        parametros += "&b_sexo=" + sexo;
+
+        console.log(parametros);
 
         fetch("C_Ajax.php?" + parametros, opciones)
             .then(res => {
@@ -197,22 +234,6 @@ function insertarUsuario() {
 }
 
 
-function cambiarSexoInsertar(sexo) {
-
-    let labelSexo1 = document.getElementById("b_sexo");
-    let divSexo = document.getElementById("sexo");
-    labelSexo1.parentNode.removeChild(labelSexo1);
-    divSexo.parentNode.removeChild(divSexo);
-
-    let nuevoContenido = `
-        <div style = "display:none">
-        <label for="b_sexo" style="display:none">Sexo:</label>
-        <input type="text" id="b_sexo" name="b_sexo" value="${sexo}"></div>
-    `;
-    document.getElementById("hide").insertAdjacentHTML('afterend', nuevoContenido);
-
-    console.log(sexo);
-}
 
 
 function validarFormulario() {
