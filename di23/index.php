@@ -77,7 +77,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>
+                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
@@ -85,9 +85,15 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                 </div>
             </div>
         </nav>
-
-
     </section>
+
+    <?php 
+        require_once 'controladores/C_Menus.php';
+        $menu = new C_Menus();
+        $menu->getMenuBD(); 
+    ?>
+
+
     <section id="secContenidoPagina" class="container-fluid"></section>
 
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>

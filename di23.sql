@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 21:26:49
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 09-01-2024 a las 12:22:23
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,8 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `di23`
 --
-CREATE DATABASE IF NOT EXISTS `di23` DEFAULT CHARACTER SET latin1 COLLATE latin1_spanish_ci;
-USE `di23`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menus`
+--
+
+CREATE TABLE `menus` (
+  `id_Menu` int(11) UNSIGNED NOT NULL,
+  `nombre` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `id_Padre` int(11) UNSIGNED NOT NULL,
+  `accion` varchar(200) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `orden` int(11) UNSIGNED NOT NULL,
+  `privado` char(1) NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `menus`
+--
+
+INSERT INTO `menus` (`id_Menu`, `nombre`, `id_Padre`, `accion`, `orden`, `privado`) VALUES
+(1, 'menu 1', 1, 'accion 1', 1, 'N'),
+(2, 'menu 2', 1, 'accion 2', 2, 'S'),
+(3, 'menu 3', 2, 'accion 3', 1, 'N'),
+(4, 'menu 4', 3, 'accion 4', 1, 'S'),
+(5, 'menu 5', 3, 'accion 5', 2, 'N');
 
 -- --------------------------------------------------------
 
@@ -42,8 +65,7 @@ CREATE TABLE `usuarios` (
   `login` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(32) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `activo` char(1) NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -198,7 +220,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_Usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

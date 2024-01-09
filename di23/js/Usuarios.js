@@ -26,27 +26,6 @@ function buscar(numeroPagina) {
 
 
 
-// function buscarTelefonoyUsuario(numeroPagina) {
-//     let opciones = { method: "GET" };
-//     let parametros = "controlador=Usuarios&metodo=buscarTelefonoyUsuario";
-//     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
-//     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-
-//     fetch("C_Ajax.php?" + parametros, opciones)
-//         .then(res => {
-//             if (res.ok) {
-//                 console.log('respuesta ok Telefono y Usuario');
-//                 return res.text();
-//             }
-//         })
-//         .then(vista => {
-//             document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-//         })
-//         .catch(err => {
-//             console.log("Error al realizar la petición", err.message);
-//         });
-// }
-
 function buscarTelefonoyUsuario(numeroPagina) {
     let opciones = { method: "GET" };
     let parametrosFormularioTelefono = new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
@@ -111,26 +90,6 @@ function cambiarPagina(pagina) {
 }
 
 
-// function buscarTelefono(numeroPagina) {
-//     let opciones = { method: "GET" };
-//     let parametros = "controlador=Usuarios&metodo=buscarTelefono";
-//     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
-
-//     fetch("C_Ajax.php?" + parametros, opciones)
-//         .then(res => {
-//             if (res.ok) {
-//                 console.log('respuesta ok Telefono');
-//                 return res.text();
-//             }
-//         })
-//         .then(vista => {
-//             document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-//         })
-//         .catch(err => {
-//             console.log("Error al realizar la petición", err.message);
-//         });
-// }
-
 function buscarTelefono(numeroPagina) {
     let opciones = { method: "GET" };
     let parametrosFormularioTelefono = new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
@@ -165,36 +124,6 @@ function buscarTelefono(numeroPagina) {
 
 let sexoSeleccionado = '';
 
-
-// function insertarUsuario() {
-
-//     if (validarFormulario() != 1) {
-
-//     } else {
-
-
-//         let opciones = { method: "GET" };
-//         let parametros = "controlador=Usuarios&metodo=insertarUsuario";
-//         parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertar"))).toString();
-     
-
-//         console.log(parametros)
-
-//         fetch("C_Ajax.php?" + parametros, opciones)
-//             .then(res => {
-//                 if (res.ok) {
-//                     console.log('respuesta ok Insertar');
-//                     return res.text();
-//                 }
-//             })
-//             .then(vista => {
-//                 document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-//             })
-//             .catch(err => {
-//                 console.log("Error al realizar la petición", err.message);
-//             });
-//     }
-// }
 
 function insertarUsuario() {
     if (validarFormulario() != 1) {
