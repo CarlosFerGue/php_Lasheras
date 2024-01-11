@@ -15,6 +15,10 @@
         }
         
 
-        public function buscarMenus
+        public function getVistaMenus($filtros=array()){
+            $menus=$this->modelo->buscarMenus($filtros);
+
+            Vista::render('vistas/Menus/V_Menus.php', array('menus' => $menus));
+        }
     }
 ?>

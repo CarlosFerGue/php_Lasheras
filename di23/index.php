@@ -81,6 +81,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
+                        <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')"></button>
                     </ul>
                 </div>
             </div>
@@ -88,9 +89,9 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
     </section>
 
     <?php 
-         require_once 'controladores/C_Menus.php';
-         $menu = new C_Menus();
-         $menu->getMenuBD(); 
+        //  require_once 'controladores/C_Menus.php';
+        //  $menu = new C_Menus();
+        //  $menu->getMenuBD(); 
     ?> 
 
 

@@ -13,7 +13,26 @@
         }
 
 
-        public function 
+        public function buscarMenus($filtro = array()){
+
+            $b_texto = '';
+            $usuario = '';
+            $pass = '';
+
+            extract($filtro);
+
+            $SQL = "SELECT * FROM menus WHERE 1=1";
+
+            if ($usuario != '' && $pass != '') {
+                $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+                $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+                $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+            }
+
+            $menus = $this->DAO->consultar($SQL);
+
+            return $menus;
+        }
     }
 
 
