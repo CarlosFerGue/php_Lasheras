@@ -88,10 +88,10 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
     </section>
 
     <?php 
-        require_once 'controladores/C_Menus.php';
-        $menu = new C_Menus();
-        $menu->getMenuBD(); 
-    ?>
+         require_once 'controladores/C_Menus.php';
+         $menu = new C_Menus();
+         $menu->getMenuBD(); 
+    ?> 
 
 
     <section id="secContenidoPagina" class="container-fluid"></section>
