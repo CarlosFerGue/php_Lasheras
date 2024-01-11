@@ -14,5 +14,7 @@
             Vista::render('vistas/Menus/V_Menus');
         }
         
+
+        public function buscarMenus
     }
 ?>
