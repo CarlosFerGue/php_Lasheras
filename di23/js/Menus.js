@@ -1,7 +1,5 @@
 function buscarMenus(){
     let opciones = { method: "GET" };
-    let parametrosFormularioTelefono = new URLSearchParams(new FormData(document.getElementById("formularioBuscarTelefono"))).toString();
-
 
     if (numeroPagina == null) {
         numeroPagina = 0;

@@ -5,21 +5,21 @@
 
     foreach ($menus as $fila) {
         echo '<tr class="filaTr">';
-        echo '<td>' . $fila['id_Menu'] . '</td>';
         echo '<td>' . $fila['nombre'] . '</td>';
-        echo '<td>' . $fila['id_Padre'] . '</td>';
         echo '<td>' . $fila['accion'] . '</td>';
-        echo '<td>' . returnActivo($fila) . '</td>';
+        echo '<td>' . returnPrivado($fila) . '</td>';
         echo '</tr>';
+        echo '<tr><td colspan="5"><br></td></tr>';  // Agregar un salto de línea en la fila siguiente
+
     }
     
     echo '</table>';
 
     function returnPrivado($fila){
-        if () {
-            
-        }elseif(){
-
+        if ($fila['privado'] == 'N') {
+            return "Publico";
+        }elseif($fila['privado'] == 'S'){
+            return "Privado";
         }
 
     }
