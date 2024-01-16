@@ -45,7 +45,7 @@
 
     <section id="secContenidoPagina" class="container-fluid">
         <div class="d-flex justify-content-center mt-5">
-            <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3"></button>
+            <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
             <button type="button" class="btn btn-secondary">Entrar como invitado</button>
         </div>
     </section>
