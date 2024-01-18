@@ -15,7 +15,6 @@
 
         public function buscarMenus($filtro = array()){
 
-            $b_texto = '';
             $usuario = '';
             $pass = '';
 

@@ -1,15 +1,3 @@
-<?php session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
-    //esta logeado
-} else {
-    //header('Location: login.php');
-}
-// https://es.cooltext.com/
-?>
-<!DOCTYPE html>
-<html lang="es">
-<html>
-
 <head>
     <link rel="icon" href="imagenes/87.ico" type="image/x-icon">
     <link rel="shortcut icon" href="imagenes/87.ico" type="image/x-icon">
@@ -25,7 +13,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
 <body>
     <section id="secEncabezadoPagina" class="container-fluid">
         <div class="row">
-            
+
             <div class="divLogotipo col-lg-2 col-md-2 col-sm-10">
                 <img src="imagenes/logo.png">
             </div>
@@ -54,70 +42,47 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
             </div>
         </div>
     </section>
+
     <section id="secMenuPagina" class="container-fluid">
 
-        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;" aria-label="Fourth navbar example">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div id="navBarRellenar" class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;" aria-label="Fourth navbar example">
+            <!-- <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')"></button>
+        <div class="collapse navbar-collapse" id="navbarsExample04" >
+             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
+                        <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaInserciones')">Inserciones</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </li>
+                <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')"></button>
+            </ul>  
+        </div>
+    </div> -->
+        </div>
     </section>
 
-    <?php 
-        //  require_once 'controladores/C_Menus.php';
-        //  $menu = new C_Menus();
-        //  $menu->getMenuBD(); 
-
-        $menus = $datos['menus'];
-
-
-        foreach ($menus as $fila) {
-            echo '<tr class="filaTr">';
-            echo '<td>' . $fila['nombre'] . '</td>';
-            echo '<td>' . $fila['accion'] . '</td>';
-            echo '<td>' . returnPrivado($fila) . '</td>';
-            echo '</tr>';
-            echo '<tr><td colspan="5"><br></td></tr>';  // Agregar un salto de línea en la fila siguiente
-    
-        }
-        
-        echo '</table>';
-    
-        function returnPrivado($fila){
-            if ($fila['privado'] == 'N') {
-                return "Publico";
-            }elseif($fila['privado'] == 'S'){
-                return "Privado";
-            }
-        }
-    ?> 
-
-    
+    <section id="secContenidoPagina" class="container-fluid">
+        <div class="d-flex justify-content-center mt-5">
+            <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
+            <button type="button" class="btn btn-secondary">Entrar como invitado</button>
+        </div>
+    </section>
 
 
     <section id="secContenidoPagina" class="container-fluid"></section>

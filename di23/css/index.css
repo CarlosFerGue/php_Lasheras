@@ -36,7 +36,8 @@
 }
 
 .navbar {
-    background-color: #4c7faf; 
+    background-color: #4c7faf;
+    height:4vh;
 }
 
 .nav-link {

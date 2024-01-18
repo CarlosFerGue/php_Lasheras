@@ -16,7 +16,7 @@ function buscarMenus(){
             }
         })
         .then(vista => {
-            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+            document.getElementById("navBarRellenar").innerHTML = vista;
         })
         .catch(err => {
             console.log("Error al realizar la petición", err.message);

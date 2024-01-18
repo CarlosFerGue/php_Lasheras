@@ -31,7 +31,6 @@ CREATE TABLE `menus` (
   `id_Menu` int(11) UNSIGNED NOT NULL,
   `nombre` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `id_Padre` int(11) UNSIGNED NOT NULL,
-  `accion` varchar(200) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `orden` int(11) UNSIGNED NOT NULL,
   `privado` char(1) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -40,12 +39,13 @@ CREATE TABLE `menus` (
 -- Volcado de datos para la tabla `menus`
 --
 
-INSERT INTO `menus` (`id_Menu`, `nombre`, `id_Padre`, `accion`, `orden`, `privado`) VALUES
-(1, 'menu 1', 1, 'accion 1', 1, 'N'),
-(2, 'menu 2', 1, 'accion 2', 2, 'S'),
-(3, 'menu 3', 2, 'accion 3', 1, 'N'),
-(4, 'menu 4', 3, 'accion 4', 1, 'S'),
-(5, 'menu 5', 3, 'accion 5', 2, 'N');
+INSERT INTO `menus` (`id_Menu`, `nombre`, `id_Padre`, `orden`, `privado`) VALUES
+(1, 'Home', 0, 1, 'S'),
+(2, 'Link', 0, 2, 'N'),
+(3, 'Link1', 2, 1, 'N'),
+(4, 'CRUDs', 0, 1, 'S'),
+(5, 'Usuarios', 4, 1, 'S'),
+(6, 'Inserciones', 4, 2, 'S');
 
 -- --------------------------------------------------------
 
