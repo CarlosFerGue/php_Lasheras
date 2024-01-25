@@ -22,7 +22,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     <?php if ($index === 0) : ?>
-                        <a class="nav-link active" aria-current="page" href="<?php echo $fila['URL']; ?>"><?php echo $fila['nombre']; ?></a>
+                        <a class="nav-link active" aria-current="page" onclick="<?php echo $fila['URL']; ?>"><?php echo $fila['nombre']; ?></a>
                     <?php else : ?>
                         <a class="nav-link" href="<?php echo $fila['URL']; ?>"><?php echo $fila['nombre']; ?></a>
                     <?php endif; ?>
