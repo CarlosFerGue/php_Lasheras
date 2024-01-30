@@ -57,13 +57,19 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
     <section id="secMenuPagina" class="container-fluid">
 
         <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;" aria-label="Fourth navbar example">
-            <div class="container-fluid">
+            
+        
+        <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
                 <div class="collapse navbar-collapse" id="navbarsExample04">
+
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
@@ -81,17 +87,25 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
+
+
+
+
                         <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')"></button>
+
                     </ul>
+
+
+
                 </div>
             </div>
         </nav>
+
+
     </section>
 
     <?php 
-        //  require_once 'controladores/C_Menus.php';
-        //  $menu = new C_Menus();
-        //  $menu->getMenuBD(); 
+        
     ?> 
 
     
