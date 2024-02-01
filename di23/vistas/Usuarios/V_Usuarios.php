@@ -6,7 +6,6 @@
 </head>
 
 <body>
-
     <div id="container">
         <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
             <label for="b_texto">Buscar por nombre:</label>
@@ -27,9 +26,6 @@
     <div id="CapaResultadoBusqueda">
 
     </div>
-
-
-
 </body>
 
 </html>

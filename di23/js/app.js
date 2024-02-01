@@ -16,6 +16,28 @@ function getVistaMenuSeleccionado(controlador, metodo){
             }
         })
         .then(vista=>{
+            document.getElementById("secMenusPagina").innerHTML=vista;
+            cargarUnScript('js/'+controlador+'.js');
+           
+        })
+        .catch(err=>{
+            console.log("Error al realizar la petición", err.message);
+        });
+
+}
+
+
+function getVistaUsuariosSeleccionado(controlador, metodo){
+    let opciones={method: "GET"};
+    let parametros= "controlador="+controlador+"&metodo="+metodo;
+    fetch("C_Ajax.php?"+parametros, opciones)
+        .then(res => {
+            if(res.ok){
+                console.log('respuesta ok APP');
+                return res.text();
+            }
+        })
+        .then(vista=>{
             document.getElementById("secContenidoPagina").innerHTML=vista;
             cargarUnScript('js/'+controlador+'.js');
            

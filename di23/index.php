@@ -43,17 +43,21 @@
         </div>
     </section>
 
-    <section id="secContenidoPagina" class="container-fluid">
+    <section id="secMenusPagina" class="container-fluid">
         <div class="d-flex justify-content-center mt-5">
             <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
             <button type="button" class="btn btn-secondary">Entrar como invitado</button>
         </div>
     </section>
 
-    
+    <section id="secContenidoPagina" class="container-fluid">
+
+    </section>
+
+
 
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-    
+
 </body>
 
 </html>

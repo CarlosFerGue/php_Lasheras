@@ -25,7 +25,7 @@
                         ?>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" 
-                                onclick="getVistaMenuSeleccionado('<?php echo $menu['controlador']; ?>', '<?php echo $menu['model']; ?>')">
+                                onclick="getVistaUsuariosSeleccionado('<?php echo $menu['controlador']; ?>', '<?php echo $menu['model']; ?>')">
                                     <?php echo $menu['nombre']; ?>
                                 </a>
                             </li>
@@ -38,7 +38,11 @@
         </nav>
     </section>
 
-    
+    <section id="secContenidoPagina">
+        
+    </section>
+
+
 
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
