@@ -22,14 +22,46 @@
                         $menus = $datos['menus'];
 
                         foreach ($menus as $menu) {
+                            // Agrega un condicional if para verificar si id_Padre es igual a 0
+                            if ($menu['id_Padre'] == 0) {
                         ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" 
-                                onclick="getVistaUsuariosSeleccionado('<?php echo $menu['controlador']; ?>', '<?php echo $menu['model']; ?>')">
-                                    <?php echo $menu['nombre']; ?>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <?php
+                                    // Verifica si hay submenús para crear el desplegable
+                                    $submenuItems = obtenerSubMenu($menus, $menu['id_Menu']);
+                                    if (!empty($submenuItems)) {
+                                    ?>
+                                        <div class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <?php echo $menu['nombre']; ?>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <?php
+                                                // Itera sobre los submenús
+                                                foreach ($submenuItems as $submenu) {
+                                                ?>
+                                                    <li>
+                                                        <a class="dropdown-item" onclick="getVistaUsuariosSeleccionado('<?php echo $submenu['controlador']; ?>', '<?php echo $submenu['model']; ?>')">
+                                                            <?php echo $submenu['nombre']; ?>
+                                                        </a>
+                                                    </li>
+                                                <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <a class="nav-link active" aria-current="page" onclick="getVistaUsuariosSeleccionado('<?php echo $menu['controlador']; ?>', '<?php echo $menu['model']; ?>')">
+                                            <?php echo $menu['nombre']; ?>
+                                        </a>
+                                    <?php
+                                    }
+                                    ?>
+                                </li>
                         <?php
+                            }
                         }
                         ?>
                     </ul>
@@ -38,8 +70,22 @@
         </nav>
     </section>
 
+    <?php
+    // Función para obtener los submenús de un menú específico
+    function obtenerSubMenu($menus, $idPadre)
+    {
+        $submenu = array();
+        foreach ($menus as $menu) {
+            if ($menu['id_Padre'] == $idPadre) {
+                $submenu[] = $menu;
+            }
+        }
+        return $submenu;
+    }
+    ?>
+
     <section id="secContenidoPagina">
-        
+
     </section>
 
 
