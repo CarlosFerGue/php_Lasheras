@@ -1,16 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <link rel="icon" href="imagenes/87.ico" type="image/x-icon">
     <link rel="shortcut icon" href="imagenes/87.ico" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    </link>
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/menu.css">
+
+    <?php
+    // Inicia la sesión en PHP
+    session_start();
+
+    // Comprueba si la variable de sesión 'usuario' está establecida
+    $scriptComprobarLogin = isset($_SESSION['usuario']) ? 'alert("Ya has iniciado sesión");' : 'alert("Debes iniciar sesión");';
+    ?>
+
+    <script>
+        function redirectToLogin() {
+            window.location.href = "login.php";
+        }
+
+        function comprobarLogin() {
+            <?php echo $scriptComprobarLogin; ?>
+        }
+    </script>
 </head>
 
-<body>
+<body onload="comprobarLogin()">
+
+
     <section id="secEncabezadoPagina" class="container-fluid">
         <div class="row">
 
@@ -43,9 +65,17 @@
         </div>
     </section>
 
+    <!-- 
     <section id="secMenusPagina" class="container-fluid">
         <div class="d-flex justify-content-center mt-5">
             <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
+            <button type="button" class="btn btn-secondary">Entrar como invitado</button>
+        </div>
+    </section> -->
+
+    <section id="secMenusPagina" class="container-fluid">
+        <div class="d-flex justify-content-center mt-5">
+            <button onclick="redirectToLogin()" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
             <button type="button" class="btn btn-secondary">Entrar como invitado</button>
         </div>
     </section>
