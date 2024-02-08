@@ -16,7 +16,13 @@
     session_start();
 
     // Comprueba si la variable de sesión 'usuario' está establecida
-    $scriptComprobarLogin = isset($_SESSION['usuario']) ? 'alert("Ya has iniciado sesión");' : 'alert("Debes iniciar sesión");';
+    if (isset($_SESSION['usuario'])) {
+        // Si el usuario ha iniciado sesión, genera un script para llamar a la función deseada
+        $scriptComprobarLogin = 'getVistaMenuSeleccionado("Menus", "getVistaMenus");';
+    } else {
+        // Si el usuario no ha iniciado sesión, muestra una alerta
+        $scriptComprobarLogin = 'alert("Debes iniciar sesión");';
+    }
     ?>
 
     <script>
@@ -28,6 +34,7 @@
             <?php echo $scriptComprobarLogin; ?>
         }
     </script>
+
 </head>
 
 <body onload="comprobarLogin()">

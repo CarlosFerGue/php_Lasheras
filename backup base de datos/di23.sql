@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2024 a las 12:03:02
+-- Tiempo de generación: 01-02-2024 a las 10:04:58
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `menus` (
   `id_Menu` int(11) UNSIGNED NOT NULL,
   `nombre` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `controlador` text DEFAULT NULL,
+  `model` text DEFAULT NULL,
   `id_Padre` int(11) UNSIGNED NOT NULL,
   `orden` int(11) UNSIGNED NOT NULL,
   `privado` char(1) NOT NULL DEFAULT 'N'
@@ -39,13 +41,13 @@ CREATE TABLE `menus` (
 -- Volcado de datos para la tabla `menus`
 --
 
-INSERT INTO `menus` (`id_Menu`, `nombre`, `id_Padre`, `orden`, `privado`) VALUES
-(1, 'Home', 0, 1, 'S'),
-(2, 'Link', 0, 2, 'N'),
-(3, 'Link1', 2, 1, 'N'),
-(4, 'CRUDs', 0, 1, 'S'),
-(5, 'Usuarios', 4, 1, 'S'),
-(6, 'Inserciones', 4, 2, 'S');
+INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`) VALUES
+(1, 'Home', NULL, NULL, 0, 1, 'S'),
+(2, 'Link', NULL, NULL, 0, 2, 'N'),
+(3, 'Link1', NULL, NULL, 2, 1, 'N'),
+(4, 'CRUDs', NULL, NULL, 0, 1, 'S'),
+(5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S'),
+(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S');
 
 -- --------------------------------------------------------
 
