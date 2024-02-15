@@ -1,6 +1,8 @@
 <?php session_start();
 $usuario = '';
 $pass = '';
+$rol = '';
+$permiso = '';
 extract($_POST);
 //var_dump($_POST);
 if ($usuario == '' || $pass == '') {
@@ -10,17 +12,38 @@ if ($usuario == '' || $pass == '') {
     $objUsuarios = new C_Usuarios();
     $datos['usuario'] = $usuario;
     $datos['pass'] = $pass;
+    $datos['id_Rol'] = $rol;
+    $datos['id_Permiso'] = $permiso;
     //$resultado=$objUsuarios->validarUsuario($datos);
 
     $resultado = $objUsuarios->validarUsuario(array(
         'usuario' => $usuario,
         'pass' => $pass
+        'id_Rol' => $rol
     ));
 
+   //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
         header('Location: index.php');
     } else {
-        $mensa = 'Datos incorrectos';
+       $mensa = 'Datos incorrectos, intentalo de nuevo';
+    }
+
+    ///////////////////////////////////////////////
+
+    switch ($rol) {
+        case 1:
+            $mensa = "rol 1";
+            break;
+        case 2:
+            $mensa = "rol 2";
+            break;
+        case 3:
+            $mensa = "rol 3";
+            break;
+        default:
+            $mensa = "no tiene permisos";
+            break;
     }
 }
 ?>
