@@ -26,6 +26,8 @@ if ($usuario == '' || $pass == '') {
         'pass' => $pass,
     ));
 
+    $rolesYpermisos = $datos['usuarios'];
+
    //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
         // header('Location: index.php');
