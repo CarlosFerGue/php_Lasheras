@@ -10,6 +10,8 @@
             $this->modelo = new M_Usuarios();
         }
 
+        //Funcion para ver que el usuario es correcto en el login
+
         public function validarUsuario($filtros){
 
             $valido='N';
@@ -19,6 +21,13 @@
                 $_SESSION['usuario']=$usuarios[0]['login'];
             } 
             return $valido;
+        }
+
+        //Funcion que devuelve los permisos y roles de un usario
+        public function getRolesyPermisos($filtro = array()) {
+            $rolesYpermisos = $this->modelo->getRolesyPermisos($filtro);
+            echo json_encode($rolesYpermisos);
+            array('rolesYpermisos' => $rolesYpermisos);
         }
 
         public function getVistaUsuarios(){

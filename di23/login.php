@@ -18,13 +18,17 @@ if ($usuario == '' || $pass == '') {
 
     $resultado = $objUsuarios->validarUsuario(array(
         'usuario' => $usuario,
-        'pass' => $pass
-        'id_Rol' => $rol
+        'pass' => $pass,
+    ));
+
+    $resultadoRolPermiso = $objUsuarios->getRolesyPermisos(array(
+        'usuario' => $usuario,
+        'pass' => $pass,
     ));
 
    //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
-        header('Location: index.php');
+        // header('Location: index.php');
     } else {
        $mensa = 'Datos incorrectos, intentalo de nuevo';
     }
@@ -32,13 +36,13 @@ if ($usuario == '' || $pass == '') {
     ///////////////////////////////////////////////
 
     switch ($rol) {
-        case 1:
+        case '1':
             $mensa = "rol 1";
             break;
-        case 2:
+        case '2':
             $mensa = "rol 2";
             break;
-        case 3:
+        case '3':
             $mensa = "rol 3";
             break;
         default:

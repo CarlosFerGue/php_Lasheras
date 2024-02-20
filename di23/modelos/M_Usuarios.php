@@ -37,6 +37,27 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }
 
+    //Recuperar rol y persimos
+    public function getRolesyPermisos($filtro = array())
+    {
+        $b_texto = '';
+        $usuario = '';
+        $pass = '';
+        extract($filtro);
+
+        $SQL = "SELECT id_Permiso, id_Rol FROM usuarios WHERE 1=1";
+
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
+
+        echo $SQL;
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+
  public function buscarUsuarios($filtro = array())
     {
         $b_texto = '';
