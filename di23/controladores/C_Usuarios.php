@@ -26,8 +26,8 @@
         //Funcion que devuelve los permisos y roles de un usario
         public function getRolesyPermisos($filtro = array()) {
             $rolesYpermisos = $this->modelo->getRolesyPermisos($filtro);
-            echo json_encode($rolesYpermisos);
-            array('rolesYpermisos' => $rolesYpermisos);
+            return $rolesYpermisos;
+            // return $rolesYpermisos;
         }
 
         public function getVistaUsuarios(){

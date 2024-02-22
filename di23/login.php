@@ -12,8 +12,6 @@ if ($usuario == '' || $pass == '') {
     $objUsuarios = new C_Usuarios();
     $datos['usuario'] = $usuario;
     $datos['pass'] = $pass;
-    $datos['id_Rol'] = $rol;
-    $datos['id_Permiso'] = $permiso;
     //$resultado=$objUsuarios->validarUsuario($datos);
 
     $resultado = $objUsuarios->validarUsuario(array(
@@ -26,13 +24,23 @@ if ($usuario == '' || $pass == '') {
         'pass' => $pass,
     ));
 
-    $rolesYpermisos = $datos['usuarios'];
 
-   //Este es el lugar donde procesaremos los permisos
+    var_dump($resultadoRolPermiso);
+
+    $rol = $resultadoRolPermiso[0]['id_Rol'];
+    $permiso = $resultadoRolPermiso[0]['id_Permiso'];
+
+    echo $rol;
+    echo $permiso;
+
+
+
+
+    //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
         // header('Location: index.php');
     } else {
-       $mensa = 'Datos incorrectos, intentalo de nuevo';
+        $mensa = 'Datos incorrectos, intentalo de nuevo';
     }
 
     ///////////////////////////////////////////////

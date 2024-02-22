@@ -53,7 +53,6 @@ class M_Usuarios extends Modelo
             $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
         }
 
-        echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
