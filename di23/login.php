@@ -48,12 +48,15 @@ if ($usuario == '' || $pass == '') {
     switch ($rol) {
         case '1':
             $mensa = "rol 1";
+            header('Location: index.php');
             break;
         case '2':
             $mensa = "rol 2";
+            header('Location: login.php');
             break;
         case '3':
             $mensa = "rol 3";
+            header('Location: lal.php');
             break;
         default:
             $mensa = "no tiene permisos";
