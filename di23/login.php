@@ -25,16 +25,14 @@ if ($usuario == '' || $pass == '') {
     ));
 
 
-    var_dump($resultadoRolPermiso);
+    
 
     $rol = $resultadoRolPermiso[0]['id_Rol'];
     $permiso = $resultadoRolPermiso[0]['id_Permiso'];
 
-    echo $rol;
-    echo $permiso;
-
-
-
+    // echo $rol;
+    // echo $permiso;
+    //var_dump($resultadoRolPermiso);
 
     //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
