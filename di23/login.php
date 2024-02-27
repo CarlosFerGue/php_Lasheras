@@ -3,6 +3,8 @@ $usuario = '';
 $pass = '';
 $rol = '';
 $permiso = '';
+$rolYPermisos = '';
+$mensa = '';
 extract($_POST);
 //var_dump($_POST);
 if ($usuario == '' || $pass == '') {
@@ -25,41 +27,56 @@ if ($usuario == '' || $pass == '') {
     ));
 
 
-    
 
-    $rol = $resultadoRolPermiso[0]['id_Rol'];
-    $permiso = $resultadoRolPermiso[0]['id_Permiso'];
-
-    // echo $rol;
-    // echo $permiso;
-    //var_dump($resultadoRolPermiso);
 
     //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
         // header('Location: index.php');
+        $rol = $resultadoRolPermiso[0]['id_Rol'];
+        $permiso = $resultadoRolPermiso[0]['id_Permiso'];
+
+
+
+        switch ($rol) {
+            case '1':
+                $rolYPermisos = "rol 1";
+                //header('Location: index.php');
+                break;
+            case '2':
+                $rolYPermisos = "rol 2";
+                //header('Location: login.php');
+                break;
+            case '3':
+                $rolYPermisos = "rol 3";
+                //header('Location: lal.php');
+                break;
+            default:
+                $rolYPermisos = "no tiene permisos";
+                break;
+        }
+    
+        switch ($permiso) {
+            case '1':
+                $rolYPermisos .= "permiso 1";
+                break;
+            case '2':
+                $rolYPermisos .= "permiso 2";
+                break;
+            case '3':
+                $rolYPermisos .= "permiso 3";
+                break;
+            default:
+                $rolYPermisos .= "no tiene permisos";
+                break;
+        }
+
+
+
     } else {
         $mensa = 'Datos incorrectos, intentalo de nuevo';
     }
 
-    ///////////////////////////////////////////////
 
-    switch ($rol) {
-        case '1':
-            $mensa = "rol 1";
-            header('Location: index.php');
-            break;
-        case '2':
-            $mensa = "rol 2";
-            header('Location: login.php');
-            break;
-        case '3':
-            $mensa = "rol 3";
-            header('Location: lal.php');
-            break;
-        default:
-            $mensa = "no tiene permisos";
-            break;
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -78,6 +95,12 @@ if ($usuario == '' || $pass == '') {
                 document.getElementById("formularioLogin").submit();
             }
             document.getElementById("msj").innerHTML = mensaje;
+        }
+
+        function getPermisos(permiso) {
+            permisoDevuelto = '';
+
+            return permisoDevuelto;
         }
     </script>
     <link rel="stylesheet" href="css/login.css">
@@ -101,6 +124,7 @@ if ($usuario == '' || $pass == '') {
             <label for="pass">Contraseña:</label><br>
             <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
             <span id="msj"><?php echo $mensa; ?></span>
+            <span id="msj"><?php echo $rolYPermisos; ?></span>
 
             <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
 
