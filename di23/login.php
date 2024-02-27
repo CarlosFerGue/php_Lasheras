@@ -6,7 +6,8 @@ $permiso = '';
 $rolYPermisos = '';
 $mensa = '';
 extract($_POST);
-//var_dump($_POST);
+
+
 if ($usuario == '' || $pass == '') {
     $mensa = 'Debes completar los campos';
 } else {
@@ -14,7 +15,7 @@ if ($usuario == '' || $pass == '') {
     $objUsuarios = new C_Usuarios();
     $datos['usuario'] = $usuario;
     $datos['pass'] = $pass;
-    //$resultado=$objUsuarios->validarUsuario($datos);
+
 
     $resultado = $objUsuarios->validarUsuario(array(
         'usuario' => $usuario,
@@ -35,48 +36,44 @@ if ($usuario == '' || $pass == '') {
         $rol = $resultadoRolPermiso[0]['id_Rol'];
         $permiso = $resultadoRolPermiso[0]['id_Permiso'];
 
-
+        $_SESSION['rol'] = $rol;
+        $_SESSION['permiso'] = $permiso;
 
         switch ($rol) {
             case '1':
-                $rolYPermisos = "rol 1";
-                //header('Location: index.php');
+                $rolYPermisos = "rol 1 ";
+                header('Location: index.php');
                 break;
             case '2':
-                $rolYPermisos = "rol 2";
-                //header('Location: login.php');
+                $rolYPermisos = "rol 2 ";
+                header('Location: login.php');
                 break;
             case '3':
-                $rolYPermisos = "rol 3";
-                //header('Location: lal.php');
+                $rolYPermisos = "rol 3 ";
+                header('Location: lal.php');
                 break;
             default:
-                $rolYPermisos = "no tiene permisos";
+                $rolYPermisos = "no tiene permisos ";
                 break;
         }
-    
-        switch ($permiso) {
-            case '1':
-                $rolYPermisos .= "permiso 1";
-                break;
-            case '2':
-                $rolYPermisos .= "permiso 2";
-                break;
-            case '3':
-                $rolYPermisos .= "permiso 3";
-                break;
-            default:
-                $rolYPermisos .= "no tiene permisos";
-                break;
-        }
-
-
-
     } else {
-        $mensa = 'Datos incorrectos, intentalo de nuevo';
+        $mensa = 'Datos incorrectos, inténtalo de nuevo';
     }
 
-
+    switch ($permiso) {
+        case '1':
+            $rolYPermisos .= " permiso 1";
+            break;
+        case '2':
+            $rolYPermisos .= " permiso 2";
+            break;
+        case '3':
+            $rolYPermisos .= " permiso 3";
+            break;
+        default:
+            $rolYPermisos .= " no tiene permisos";
+            break;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -95,12 +92,6 @@ if ($usuario == '' || $pass == '') {
                 document.getElementById("formularioLogin").submit();
             }
             document.getElementById("msj").innerHTML = mensaje;
-        }
-
-        function getPermisos(permiso) {
-            permisoDevuelto = '';
-
-            return permisoDevuelto;
         }
     </script>
     <link rel="stylesheet" href="css/login.css">
