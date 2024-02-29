@@ -14,6 +14,8 @@
     <?php
     // Inicia la sesión en PHP
     session_start();
+    $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
+    $permiso = isset($_SESSION['permiso']) ? $_SESSION['permiso'] : '';
 
     // Comprueba si la variable de sesión 'usuario' está establecida
     if (isset($_SESSION['usuario'])) {
