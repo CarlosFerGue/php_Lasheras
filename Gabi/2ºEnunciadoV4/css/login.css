@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(103, 214, 255);
+    text-align: center;
+}
+#formularioLogin{
+    border: solid 3px black;
+    height: 240px;
+    width: 300px;
+    background-color: rgb(197, 253, 255);
+    border-radius: 7px;
+    margin: 0 auto 0 auto;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.537);
+}
+input{
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+    border: solid 2px black;
+    border-radius: 5px;
+    margin: 0 0 10px 0;
+}
+h1{
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(255, 254, 254), -1px -1px 1px rgb(255, 255, 255);
+    margin: 20px 0 10px 0;
+}
+label{
+    font-weight: bold;
+}
+button{
+    margin: 5px 0 0 0;
+    background: rgba(67,241,255,1);
+    border: solid 2px black;
+    border-radius: 4px;
+    font-weight: bold;
+}
+button:hover{
+    background: rgb(59, 193, 255);
+}
+#msj{
+    font-style: italic;
+}

@@ -1,0 +1,44 @@
+#formularioPaginador{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0 0;
+}
+.texto_paginador{
+    font-weight: bold;
+}
+.input_paginador{
+    width: 25px;
+    height: 25px;
+    margin: 0 0 0 4px;
+    text-align: center;
+    border: black solid 1px;
+    border-radius: 3px;
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+}
+.boton_paginador{
+    width: 25px;
+    height: 25px;
+    margin: 0 1px 0 1px;
+    text-align: center;
+    border: solid black 2px;
+    background-color: rgb(93, 217, 255);
+    cursor:pointer;
+    font-weight: bold;
+    box-sizing: content-box;
+    border-radius: 4px;
+    margin: 0 1px 0 1px;
+}
+.boton_paginador:hover, #boton_pagina_actual{
+    background-color: rgb(62, 178, 255);
+}
+#paginas_totales, #resultados_totales{
+    margin: 0 15px 0 15px ;
+}
+#aplicarRango{
+    height: 21px;
+    width: auto;
+    margin: 0 0 0 4px;
+    padding: 0 4px 0 4px;
+    line-height: 1px;
+    font-size: 13px;
+}

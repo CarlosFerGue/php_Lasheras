@@ -1,0 +1,320 @@
+input{
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+#formularioMenu{
+    margin: 0 0 10px 0;
+}
+#crearMenu{
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+        padding: 0 3px 0 3px;
+}
+.editTh{
+    width: 50px;
+}
+.tdNum{
+    text-align: right;
+}
+input, select{
+    height: 25px;
+    margin-top: 0;
+}
+
+/* Estilos para cada contenedor de opciones de menú */
+.contenedor-opcion {
+    padding: 7px;
+    border: #000000 3px solid;
+    border-radius: 8px;
+    margin: 3px 0 3px 0;
+}
+.contenedor-subopcion {
+    padding: 4px;
+    border: #272727 2px solid;
+    text-align: left;
+    border-radius: 5px;
+    margin: 2px 0 2px 0;
+}
+.formulario-opcion{
+    display: flex;
+    width: 100%;
+}
+.editar-opcion, .editar-accion{
+    width: 100%;
+    display: flex;
+}
+.editar-accion{
+    padding: 0;
+}
+.titulo-opcion{
+    font-weight: bold;
+    font-size: large;
+    margin-right: 15px;
+    width: 140px;
+}
+#privado, .accion{
+    border: 2px solid black;
+    border-radius: 3px;
+    margin-right: 15px;
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+}
+.accion{
+    width: 100%;
+    margin: 0 15px auto 5px;
+}
+.icono-opcion{
+    width: 19px;
+    height: 19px;
+    margin: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.05s;
+}
+.icono-opcion:hover{
+    transform: scale(110%);
+}
+.icono-opcion-deshabilitado{
+    width: 19px;
+    height: 19px;
+    margin: 3px;
+    margin-left: 10px;
+    filter: grayscale(100%) opacity(50%);
+}
+.contenedor-hijos{
+    margin: 10px auto auto 20px;
+    text-align: center;
+    padding-top: 0px;
+}
+.add-subopcion{
+    width: 120px;
+    font-size: 12px;
+    padding: 0 6px 0 6px;
+    cursor: pointer;
+    margin: 0 0 0 2px;
+    background: rgba(67,241,255,1);
+    border: solid 2px black;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+}
+.add-subopcion:hover{
+    transform: scale(102%);
+    background: rgb(137, 247, 255);
+}
+/* Estilos para el acordeón */
+.acordeon{
+    background: #6cd8ff;
+    margin: 55px 0 10px 0;
+}
+.acordeon .label_acordeon{
+    display: block;
+    padding: 20px;
+    font-size: 15px;
+    background-color: rgb(0, 183, 255);
+    color: #000000;
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: all 200ms ease;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.acordeon .contenido-acordeon{
+    padding: 0px;
+    margin: 0px 20px;
+    max-height: 0px;
+    overflow: hidden;
+    background: #ffffff00;
+    transition: all 300ms ease;
+}
+.btn-acordeon:checked ~ .contenido-acordeon{
+    max-height: 500px;
+    overflow: scroll;
+    padding: 15px 0px;
+}
+.btn-acordeon{
+    display: none;
+}
+
+/* Para el formulario de añadir menús */
+.form-añadir{
+    width: 100% !important;
+    display: flex;
+    margin: 7px 0 7px 0;
+}
+
+.form-new-input{
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+    border: solid 2px black;
+    border-radius: 5px;
+    margin:0 20px 0 7px !important;
+    width: 100%;
+    color: black !important;
+    text-shadow: none !important;
+}
+
+.btn_añadir_menu{
+    width: 80px;
+    font-size: 13px;
+    padding: 0 6px 0 6px;
+    cursor: pointer;
+    margin: 0 0 2px 2px;
+    background: rgba(67,241,255,1);
+    border: solid 2px black;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+    display: block;
+}
+.btn_añadir_menu:hover{
+    transform: translateY(-2%);
+    background: rgb(137, 247, 255);
+}
+
+/* Para los permisos de cada opcion en el menú de gestión de permisos */
+.lista-permisos-opcion{
+    display: flex;
+    margin: 2px 0 5px 0;
+    padding: 0 0 0 5px;
+    font-weight: 700;
+}
+
+.icono-permiso{
+    width: 13px;
+    height: 13px;
+    margin:6px 0 0 3px;
+    transition: transform 0.1s;
+}
+.icono-permiso:hover{
+    transform: scale(110%);
+}
+
+.contenedor-permisos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.label-permiso{
+    display: flex;
+    height: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    margin:0 0 0 20px;
+    font-style: italic;
+    line-height: 23px;
+}
+
+.select{
+    border: 2px solid black;
+    border-radius: 3px;
+    margin-right: 15px;
+    background: linear-gradient(0deg, rgba(198,251,255,1) 22%, rgba(67,241,255,1) 100%);
+    height: auto;
+}
+
+.añadir-permiso{
+    width: 110px;
+    font-size: 12px;
+    padding: 0 6px 0 6px;
+    cursor: pointer;
+    margin: 0 0 0 2px;
+    background: rgb(67, 202, 255);
+    border: solid 2px black;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+}
+.añadir-permiso:hover{
+    transform: scale(104%);
+    background: rgb(151, 229, 255);
+}
+
+/* Asignación y revocación de roles a usuarios */
+#rol-usuario{
+    display: inline-block;
+}
+
+.rol-usuario{
+    width: 120px;
+    font-size: 14.5px;
+    padding: 2px 6px 1px 6px;
+    cursor: pointer;
+    margin: 0 0 0 2px;
+    background: rgb(67, 255, 86);
+    border: solid 2px black;
+    border-radius: 4px;
+    font-weight: bolder;
+    text-align: center;
+    transition: transform 0.3s;
+    font-style: italic;
+}
+#revocar-rol{
+    background: rgb(255, 76, 67);
+}
+
+/* Contenido de los formularios de creación y edición para permisos y roles */
+#form-permisos{
+    width: 440px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 200px;
+    padding: 25px 0 30px 0;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: rgb(197, 253, 255);
+    border: solid black 3px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.537);
+}
+
+#form-roles{
+    width: 440px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 200px;
+    padding: 25px 0 30px 0;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: rgb(197, 253, 255);
+    border: solid black 3px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.537);
+}
+
+#close_form{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    left: 400px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.537);
+    transition: transform 0.2s;
+}
+
+#label-idPermiso, #label-idMenu, #label-idRol{
+    display: none;
+}
+
+.icono-form{
+    width: 20px;
+    height: 20px;
+    margin: 0 15px 6px -10px;
+    cursor: pointer;
+    transition: transform 0.05s;
+}
+.icono-form:hover{
+    transform: scale(105%);
+}
