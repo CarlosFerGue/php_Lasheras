@@ -60,6 +60,8 @@ if ($usuario == '' || $pass == '') {
         $mensa = 'Datos incorrectos, inténtalo de nuevo';
     }
 
+
+    //Aqui procesamos la logica de los permisos que son inferiores a los roles
     switch ($permiso) {
         case '1':
             $rolYPermisos .= " permiso 1";
@@ -76,6 +78,12 @@ if ($usuario == '' || $pass == '') {
     }
 }
 ?>
+
+
+
+
+<!-- Aqui esta el front y back del login -->
+
 <!DOCTYPE html>
 <html>
 
