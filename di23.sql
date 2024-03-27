@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 16:06:12
+-- Tiempo de generación: 27-03-2024 a las 17:55:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,7 +56,7 @@ INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `o
 --
 
 CREATE TABLE `permisos` (
-  `Id` enum('1','2','3','4') NOT NULL,
+  `Id` enum('1','2','3','4','5') NOT NULL,
   `permiso` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -65,9 +65,11 @@ CREATE TABLE `permisos` (
 --
 
 INSERT INTO `permisos` (`Id`, `permiso`) VALUES
-('1', 'Buscar'),
+('', 'Eliminar'),
+('1', 'Consultar'),
 ('2', 'Editar'),
-('3', 'Anadir');
+('3', 'Crear'),
+('4', 'Modificar');
 
 -- --------------------------------------------------------
 
@@ -86,8 +88,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`Id`, `Nombre`) VALUES
 ('1', 'Administrador'),
-('2', 'Cliente'),
-('3', 'demo');
+('2', 'Staff'),
+('3', 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -108,7 +110,12 @@ INSERT INTO `roles_permisos` (`Id_Rol`, `Id_Permiso`) VALUES
 ('1', '1'),
 ('1', '2'),
 ('1', '3'),
-('2', '1');
+('1', '4'),
+('2', '1'),
+('2', '2'),
+('2', '3'),
+('2', '4'),
+('3', '1');
 
 -- --------------------------------------------------------
 
@@ -304,7 +311,10 @@ CREATE TABLE `usuarios_roles` (
 INSERT INTO `usuarios_roles` (`id_Usuario`, `Id_roles`) VALUES
 (1, '1'),
 (1, '2'),
-(2, '3');
+(2, '3'),
+(3, '2'),
+(4, '3'),
+(5, '2');
 
 --
 -- Índices para tablas volcadas

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 13:04:13
+-- Tiempo de generación: 27-03-2024 a las 16:06:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,8 +43,6 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`) VALUES
 (1, 'Home', NULL, NULL, 0, 1, 'S'),
-(2, 'Link', NULL, NULL, 0, 2, 'N'),
-(3, 'Link1', NULL, NULL, 2, 1, 'N'),
 (4, 'CRUDs', NULL, NULL, 0, 1, 'S'),
 (5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S'),
 (6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S'),
@@ -306,7 +304,7 @@ CREATE TABLE `usuarios_roles` (
 INSERT INTO `usuarios_roles` (`id_Usuario`, `Id_roles`) VALUES
 (1, '1'),
 (1, '2'),
-(3, '3');
+(2, '3');
 
 --
 -- Índices para tablas volcadas
@@ -342,9 +340,7 @@ ALTER TABLE `roles_permisos`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_Usuario`),
-  ADD UNIQUE KEY `login` (`login`),
-  ADD KEY `id_Permiso` (`id_Permiso`),
-  ADD KEY `id_Rol` (`id_Rol`);
+  ADD UNIQUE KEY `login` (`login`);
 
 --
 -- Indices de la tabla `usuarios_permisos`
