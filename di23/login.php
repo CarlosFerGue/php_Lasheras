@@ -7,7 +7,6 @@ $rolYPermisos = '';
 $mensa = '';
 extract($_POST);
 
-
 if ($usuario == '' || $pass == '') {
     $mensa = 'Debes completar los campos';
 } else {
@@ -16,84 +15,68 @@ if ($usuario == '' || $pass == '') {
     $datos['usuario'] = $usuario;
     $datos['pass'] = $pass;
 
-
     $resultado = $objUsuarios->validarUsuario(array(
         'usuario' => $usuario,
         'pass' => $pass,
     ));
 
-    //login.php - C_Usuarios - M_Usuarios Ruta que sigue hasta el fondo del back
     $resultadoRolPermiso = $objUsuarios->getRolesyPermisos(array(
         'usuario' => $usuario,
         'pass' => $pass, 
     ));
 
-
-
-
-    //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
         $usuarioRoles = array();
         $usuarioPermisos = array();
 
-        var_dump($resultadoRolPermiso);
-    
         foreach ($resultadoRolPermiso as $row) {
-            // Obtener los roles del usuario
             if (!in_array($row['rol_dominante'], $usuarioRoles) && $row['rol_dominante'] !== null) {
                 $usuarioRoles[] = $row['rol_dominante'];
             }
-    
-            // Obtener los permisos del usuario
+
             if (!in_array($row['Id_permisos'], $usuarioPermisos) && $row['Id_permisos'] !== null) {
                 $usuarioPermisos[] = $row['Id_permisos'];
             }
         }
-    
-        // Ahora puedes manejar los roles y permisos obtenidos
-        // Por ejemplo, almacenarlos en variables de sesión, realizar redireccionamientos, etc.
-    
-        // Redireccionar según el primer rol obtenido (asumiendo que es el principal)
+
+        //Aqui le pasamos el ROL mas grande del usuario (si es admin y cliente, domina el admin)
+        echo "Rol: ";
         switch ($usuarioRoles[0]) {
             case '1':
-                //header('Location: index.php');
                 echo "rol 1";
                 break;
             case '2':
-                //header('Location: login.php');
                 echo "rol 2";
                 break;
             case '3':
-                //header('Location: lal.php');
                 echo "rol 3";
                 break;
             default:
-                //header('Location: no-permisos.php');
                 echo "no rol";
                 break;
         }
     }
 
-
-    //Aqui procesamos la logica de los permisos que son inferiores a los roles
-    switch ($permiso) {
-        case '1':
-            $rolYPermisos .= " permiso 1";
-            break;
-        case '2':
-            $rolYPermisos .= " permiso 2";
-            break;
-        case '3':
-            $rolYPermisos .= " permiso 3";
-            break;
-        default:
-            $rolYPermisos .= " no tiene permisos";
-            break;
+    // Aqui le pasamos los PERMISOS del usuario en bucle y en base a ellos decidiremos que hacer
+    echo ", Permisos: ";
+    foreach ($usuarioPermisos as $permiso) {
+        switch ($permiso) {
+            case '1':
+                echo "permiso 1 ";
+                break;
+            case '2':
+                echo "permiso 2 ";
+                break;
+            case '3':
+                echo "permiso 3 ";
+                break;
+            default:
+                echo "no tiene permisos ";
+                break;
+        }
     }
 }
 ?>
-
-
 
 
 <!-- Aqui esta el front y back del login -->
