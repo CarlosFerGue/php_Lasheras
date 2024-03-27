@@ -35,11 +35,13 @@ if ($usuario == '' || $pass == '') {
     if ($resultado == 'S') {
         $usuarioRoles = array();
         $usuarioPermisos = array();
+
+        var_dump($resultadoRolPermiso);
     
         foreach ($resultadoRolPermiso as $row) {
             // Obtener los roles del usuario
-            if (!in_array($row['Id_roles'], $usuarioRoles) && $row['Id_roles'] !== null) {
-                $usuarioRoles[] = $row['Id_roles'];
+            if (!in_array($row['rol_dominante'], $usuarioRoles) && $row['rol_dominante'] !== null) {
+                $usuarioRoles[] = $row['rol_dominante'];
             }
     
             // Obtener los permisos del usuario
@@ -54,16 +56,20 @@ if ($usuario == '' || $pass == '') {
         // Redireccionar según el primer rol obtenido (asumiendo que es el principal)
         switch ($usuarioRoles[0]) {
             case '1':
-                header('Location: index.php');
+                //header('Location: index.php');
+                echo "rol 1";
                 break;
             case '2':
-                header('Location: login.php');
+                //header('Location: login.php');
+                echo "rol 2";
                 break;
             case '3':
-                header('Location: lal.php');
+                //header('Location: lal.php');
+                echo "rol 3";
                 break;
             default:
-                header('Location: no-permisos.php');
+                //header('Location: no-permisos.php');
+                echo "no rol";
                 break;
         }
     }

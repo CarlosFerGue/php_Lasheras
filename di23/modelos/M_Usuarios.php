@@ -58,18 +58,46 @@ class M_Usuarios extends Modelo
     //     return $usuarios;
     // }
 
-    // Recuperar rol y permisos
+    // // Recuperar rol y permisos
+    // public function getRolesyPermisos($filtro = array())
+    // {
+    //     $usuario = '';
+    //     $pass = '';
+    //     extract($filtro);
+
+    //     $SQL = "SELECT ur.Id_roles, up.Id_permisos 
+    //             FROM usuarios u 
+    //             LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario
+    //             LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario
+    //             WHERE 1=1";
+
+    //     if ($usuario != '' && $pass != '') {
+    //         $usuario = addslashes($usuario);
+    //         $pass = addslashes($pass);
+    //         $SQL .= " AND u.login = '$usuario' AND u.pass = MD5('$pass') ";
+    //     }
+
+    //     //Query de ejemplo:
+    //     /*SELECT ur.Id_roles, up.Id_permisos FROM usuarios u 
+    //     LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario 
+    //     LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario WHERE 1=1 
+    //     AND u.login = 'javier' AND u.pass = MD5('1234');*/
+
+    //     $usuarios = $this->DAO->consultar($SQL);
+    //     return $usuarios;
+    // }
+
     public function getRolesyPermisos($filtro = array())
     {
         $usuario = '';
         $pass = '';
         extract($filtro);
 
-        $SQL = "SELECT ur.Id_roles, up.Id_permisos 
-                FROM usuarios u 
-                LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario
-                LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario
-                WHERE 1=1";
+        $SQL = "SELECT MIN(ur.Id_roles) AS rol_dominante, up.Id_permisos 
+            FROM usuarios u 
+            LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario
+            LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario
+            WHERE 1=1";
 
         if ($usuario != '' && $pass != '') {
             $usuario = addslashes($usuario);
@@ -78,7 +106,7 @@ class M_Usuarios extends Modelo
         }
 
         //Query de ejemplo:
-        /*SELECT ur.Id_roles, up.Id_permisos FROM usuarios u 
+        /*SELECT MIN(ur.Id_roles) AS rol_dominante, up.Id_permisos FROM usuarios u 
         LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario 
         LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario WHERE 1=1 
         AND u.login = 'javier' AND u.pass = MD5('1234');*/
@@ -86,6 +114,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
+
 
 
 
