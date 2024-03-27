@@ -3,7 +3,6 @@ $usuario = '';
 $pass = '';
 $rol = '';
 $permiso = '';
-$rolYPermisos = '';
 $mensa = '';
 extract($_POST);
 
@@ -20,9 +19,10 @@ if ($usuario == '' || $pass == '') {
         'pass' => $pass,
     ));
 
+    //login.php --> C_Usuarios.php --> M_Usuarios.php --> vuelve
     $resultadoRolPermiso = $objUsuarios->getRolesyPermisos(array(
         'usuario' => $usuario,
-        'pass' => $pass, 
+        'pass' => $pass,
     ));
 
     if ($resultado == 'S') {
@@ -38,6 +38,10 @@ if ($usuario == '' || $pass == '') {
                 $usuarioPermisos[] = $row['Id_permisos'];
             }
         }
+
+        // Almacena el rol y los permisos en sesiones
+        $_SESSION['rol'] = $usuarioRoles[0]; // El primer rol obtenido
+        $_SESSION['permisos'] = $usuarioPermisos; // Todos los permisos obtenidos   
 
         //Aqui le pasamos el ROL mas grande del usuario (si es admin y cliente, domina el admin)
         echo "Rol: ";
@@ -120,7 +124,7 @@ if ($usuario == '' || $pass == '') {
             <label for="pass">Contraseña:</label><br>
             <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
             <span id="msj"><?php echo $mensa; ?></span>
-            <span id="msj"><?php echo $rolYPermisos; ?></span>
+
 
             <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
 

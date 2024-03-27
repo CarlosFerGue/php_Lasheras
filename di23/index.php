@@ -14,8 +14,17 @@
     <?php
     // Inicia la sesión en PHP
     session_start();
+    // Obtiene el rol y los permisos de las sesiones
     $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
-    $permiso = isset($_SESSION['permiso']) ? $_SESSION['permiso'] : '';
+    $permisos = isset($_SESSION['permisos']) ? $_SESSION['permisos'] : array();
+
+    // Ahora puedes utilizar $rol y $permisos en tu segundo código como lo necesites
+    // Por ejemplo, puedes mostrar el rol y los permisos en tu página HTML
+    echo "Rol: " . $rol . "<br>";
+    echo "Permisos: ";
+    foreach ($permisos as $permiso) {
+        echo $permiso . " ";
+    }
 
     // Comprueba si la variable de sesión 'usuario' está establecida
     if (isset($_SESSION['usuario'])) {
