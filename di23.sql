@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2024 a las 12:23:06
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 27-03-2024 a las 13:04:13
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -275,15 +275,17 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 
 CREATE TABLE `usuarios_permisos` (
   `id_Usuario` int(11) UNSIGNED NOT NULL,
-  `Id` enum('1','2','3','4') NOT NULL
+  `Id_permisos` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios_permisos`
 --
 
-INSERT INTO `usuarios_permisos` (`id_Usuario`, `Id`) VALUES
+INSERT INTO `usuarios_permisos` (`id_Usuario`, `Id_permisos`) VALUES
 (1, '1'),
+(1, '2'),
+(1, '3'),
 (2, '1');
 
 -- --------------------------------------------------------
@@ -294,15 +296,16 @@ INSERT INTO `usuarios_permisos` (`id_Usuario`, `Id`) VALUES
 
 CREATE TABLE `usuarios_roles` (
   `id_Usuario` int(11) UNSIGNED NOT NULL,
-  `Id` enum('1','2','3','4') NOT NULL
+  `Id_roles` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios_roles`
 --
 
-INSERT INTO `usuarios_roles` (`id_Usuario`, `Id`) VALUES
+INSERT INTO `usuarios_roles` (`id_Usuario`, `Id_roles`) VALUES
 (1, '1'),
+(1, '2'),
 (3, '3');
 
 --
@@ -347,15 +350,15 @@ ALTER TABLE `usuarios`
 -- Indices de la tabla `usuarios_permisos`
 --
 ALTER TABLE `usuarios_permisos`
-  ADD PRIMARY KEY (`id_Usuario`,`Id`),
-  ADD KEY `Id` (`Id`);
+  ADD PRIMARY KEY (`id_Usuario`,`Id_permisos`),
+  ADD KEY `Id` (`Id_permisos`);
 
 --
 -- Indices de la tabla `usuarios_roles`
 --
 ALTER TABLE `usuarios_roles`
-  ADD PRIMARY KEY (`id_Usuario`,`Id`),
-  ADD KEY `Id` (`Id`);
+  ADD PRIMARY KEY (`id_Usuario`,`Id_roles`),
+  ADD KEY `Id` (`Id_roles`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -390,14 +393,14 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `usuarios_permisos`
   ADD CONSTRAINT `usuarios_permisos_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_Usuario`),
-  ADD CONSTRAINT `usuarios_permisos_ibfk_2` FOREIGN KEY (`Id`) REFERENCES `permisos` (`Id`);
+  ADD CONSTRAINT `usuarios_permisos_ibfk_2` FOREIGN KEY (`Id_permisos`) REFERENCES `permisos` (`Id`);
 
 --
 -- Filtros para la tabla `usuarios_roles`
 --
 ALTER TABLE `usuarios_roles`
   ADD CONSTRAINT `usuarios_roles_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_Usuario`),
-  ADD CONSTRAINT `usuarios_roles_ibfk_2` FOREIGN KEY (`Id`) REFERENCES `roles` (`Id`);
+  ADD CONSTRAINT `usuarios_roles_ibfk_2` FOREIGN KEY (`Id_roles`) REFERENCES `roles` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

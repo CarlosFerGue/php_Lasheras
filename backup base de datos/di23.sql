@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2024 a las 10:52:05
+-- Tiempo de generación: 26-03-2024 a las 12:23:06
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,7 +47,9 @@ INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `o
 (3, 'Link1', NULL, NULL, 2, 1, 'N'),
 (4, 'CRUDs', NULL, NULL, 0, 1, 'S'),
 (5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S'),
-(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S');
+(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S'),
+(7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S'),
+(8, 'Mantenimiento Menu y Permisos', 'MSeguridad', 'getMenuMMenu', 7, 2, 'S');
 
 -- --------------------------------------------------------
 

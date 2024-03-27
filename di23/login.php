@@ -22,9 +22,10 @@ if ($usuario == '' || $pass == '') {
         'pass' => $pass,
     ));
 
+    //login.php - C_Usuarios - M_Usuarios Ruta que sigue hasta el fondo del back
     $resultadoRolPermiso = $objUsuarios->getRolesyPermisos(array(
         'usuario' => $usuario,
-        'pass' => $pass,
+        'pass' => $pass, 
     ));
 
 
@@ -32,32 +33,39 @@ if ($usuario == '' || $pass == '') {
 
     //Este es el lugar donde procesaremos los permisos
     if ($resultado == 'S') {
-        // header('Location: index.php');
-        $rol = $resultadoRolPermiso[0]['id_Rol'];
-        $permiso = $resultadoRolPermiso[0]['id_Permiso'];
-
-        $_SESSION['rol'] = $rol;
-        $_SESSION['permiso'] = $permiso;
-
-        switch ($rol) {
+        $usuarioRoles = array();
+        $usuarioPermisos = array();
+    
+        foreach ($resultadoRolPermiso as $row) {
+            // Obtener los roles del usuario
+            if (!in_array($row['Id_roles'], $usuarioRoles) && $row['Id_roles'] !== null) {
+                $usuarioRoles[] = $row['Id_roles'];
+            }
+    
+            // Obtener los permisos del usuario
+            if (!in_array($row['Id_permisos'], $usuarioPermisos) && $row['Id_permisos'] !== null) {
+                $usuarioPermisos[] = $row['Id_permisos'];
+            }
+        }
+    
+        // Ahora puedes manejar los roles y permisos obtenidos
+        // Por ejemplo, almacenarlos en variables de sesión, realizar redireccionamientos, etc.
+    
+        // Redireccionar según el primer rol obtenido (asumiendo que es el principal)
+        switch ($usuarioRoles[0]) {
             case '1':
-                $rolYPermisos = "rol 1 ";
                 header('Location: index.php');
                 break;
             case '2':
-                $rolYPermisos = "rol 2 ";
                 header('Location: login.php');
                 break;
             case '3':
-                $rolYPermisos = "rol 3 ";
                 header('Location: lal.php');
                 break;
             default:
-                $rolYPermisos = "no tiene permisos ";
+                header('Location: no-permisos.php');
                 break;
         }
-    } else {
-        $mensa = 'Datos incorrectos, inténtalo de nuevo';
     }
 
 
