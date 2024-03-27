@@ -47,13 +47,13 @@ if ($usuario == '' || $pass == '') {
         echo "Rol: ";
         switch ($usuarioRoles[0]) {
             case '1':
-                echo "rol 1";
+                echo "Admin";
                 break;
             case '2':
-                echo "rol 2";
+                echo "Staff";
                 break;
             case '3':
-                echo "rol 3";
+                echo "Cliente";
                 break;
             default:
                 echo "no rol";
