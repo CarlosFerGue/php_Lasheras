@@ -18,7 +18,20 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+
+                        <!-- ////////////////////////////////////////////////// -->
+
                         <?php
+
+                        // Inicia la sesión
+                        session_start();
+
+                        // Obtén el rol y los permisos del usuario de las sesiones
+                        $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
+                        $permisos = isset($_SESSION['permisos']) ? $_SESSION['permisos'] : array();
+
+
                         $menus = $datos['menus'];
 
                         foreach ($menus as $menu) {
@@ -39,13 +52,19 @@
                                                 <?php
                                                 // Itera sobre los submenús
                                                 foreach ($submenuItems as $submenu) {
+                                                    // Agrega la lógica de permisos aquí
+                                                    foreach ($permisos as $permiso) {
+                                                        if ($permiso == $submenu['permiso_requerido']) {
                                                 ?>
-                                                    <li>
-                                                        <a class="dropdown-item" onclick="getVistaUsuariosSeleccionado('<?php echo $submenu['controlador']; ?>', '<?php echo $submenu['model']; ?>')">
-                                                            <?php echo $submenu['nombre']; ?>
-                                                        </a>
-                                                    </li>
+                                                            <li>
+                                                                <a class="dropdown-item" onclick="getVistaUsuariosSeleccionado('<?php echo $submenu['controlador']; ?>', '<?php echo $submenu['model']; ?>')">
+                                                                    <?php echo $submenu['nombre']; ?>
+                                                                </a>
+                                                            </li>
                                                 <?php
+                                                            break; // Rompe el bucle una vez que se encuentra un permiso válido
+                                                        }
+                                                    }
                                                 }
                                                 ?>
                                             </ul>
@@ -64,6 +83,11 @@
                             }
                         }
                         ?>
+
+
+                        <!-- ////////////////////////////////////////////////// -->
+
+
                     </ul>
                 </div>
             </div>

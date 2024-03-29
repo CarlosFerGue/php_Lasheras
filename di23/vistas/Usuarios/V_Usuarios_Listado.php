@@ -40,22 +40,36 @@ echo '<table id=lista_usuarios>
 
 
 
-// Impresion linea por linea de los usuarios
-foreach ($usuariosPagina as $fila) {
-    echo '<tr class="filaTr">';
-    echo '<td>' . $fila['nombre'] . '</td>';
-    echo '<td>' . $fila['apellido_1'] . ' ' . $fila['apellido_2'] . '</td>';
-    echo '<td>' . returnGenero($fila) . '</td>';
-    echo '<td>' . $fila['mail'] . '</td>';
-    echo '<td>' . $fila['movil'] . '</td>';
-    echo '<td>' . returnActivo($fila) . '</td>';
-    echo '<td class="editTd"><img src="imagenes/editar.png" type="button" ';
-    echo 'onclick="mostrarEditar(' . $fila['id_Usuario'] . ', \'' . $fila['nombre'] . '\', \'' . $fila['apellido_1'] . '\', \'' . $fila['apellido_2'] . '\', \'' . $fila['sexo'] . '\', \'' . $fila['mail'] . '\', \'' . $fila['movil'] . '\', \'' . $fila['activo'] . '\');" ';
-    echo 'class="editBtn"></td>';
-    echo '</tr>';
-}
+    // Impresion linea por linea de los usuarios
+    foreach ($usuariosPagina as $fila) {
+        echo '<tr class="filaTr">';
+        echo '<td>' . $fila['nombre'] . '</td>';
+        echo '<td>' . $fila['apellido_1'] . ' ' . $fila['apellido_2'] . '</td>';
+        echo '<td>' . returnGenero($fila) . '</td>';
+        echo '<td>' . $fila['mail'] . '</td>';
+        echo '<td>' . $fila['movil'] . '</td>';
+        echo '<td>' . returnActivo($fila) . '</td>';
 
-echo '</table>';
+        // Obtiene el rol y los permisos de las sesiones
+        $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
+        $permisos = isset($_SESSION['permisos']) ? $_SESSION['permisos'] : array();
+
+        //Depende el rol y permisos que tenga podra editar o no usuarios
+        foreach ($permisos as $permiso) {
+            if ($rol == 1 || $rol == 2 || $permiso == 2) {
+                echo '<td class="editTd"><img src="imagenes/editar.png" type="button" ';
+                echo 'onclick="mostrarEditar(' . $fila['id_Usuario'] . ', \'' . $fila['nombre'] . '\', \'' . $fila['apellido_1'] . '\', \'' . $fila['apellido_2'] . '\', \'' . $fila['sexo'] . '\', \'' . $fila['mail'] . '\', \'' . $fila['movil'] . '\', \'' . $fila['activo'] . '\');" ';
+                echo 'class="editBtn"></td>';
+            }
+        }
+    
+    //  echo '<td class="editTd"><img src="imagenes/editar.png" type="button" ';
+    //  echo 'onclick="mostrarEditar(' . $fila['id_Usuario'] . ', \'' . $fila['nombre'] . '\', \'' . $fila['apellido_1'] . '\', \'' . $fila['apellido_2'] . '\', \'' . $fila['sexo'] . '\', \'' . $fila['mail'] . '\', \'' . $fila['movil'] . '\', \'' . $fila['activo'] . '\');" ';
+    //  echo 'class="editBtn"></td>';
+        echo '</tr>';
+    }
+
+    echo '</table>';
 
 function returnGenero($fila) {
     if ($fila['sexo'] == 'H') {

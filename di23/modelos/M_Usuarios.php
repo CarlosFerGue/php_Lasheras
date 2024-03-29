@@ -37,55 +37,6 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-
-    //Recuperar rol y persimos
-    // public function getRolesyPermisos($filtro = array())
-    // {
-    //     $b_texto = '';
-    //     $usuario = '';
-    //     $pass = '';
-    //     extract($filtro);
-
-    //     $SQL = "SELECT id_Permiso, id_Rol FROM usuarios WHERE 1=1";
-
-    //     if ($usuario != '' && $pass != '') {
-    //         $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
-    //         $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
-    //         $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
-    //     }
-
-    //     $usuarios = $this->DAO->consultar($SQL);
-    //     return $usuarios;
-    // }
-
-    // // Recuperar rol y permisos
-    // public function getRolesyPermisos($filtro = array())
-    // {
-    //     $usuario = '';
-    //     $pass = '';
-    //     extract($filtro);
-
-    //     $SQL = "SELECT ur.Id_roles, up.Id_permisos 
-    //             FROM usuarios u 
-    //             LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario
-    //             LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario
-    //             WHERE 1=1";
-
-    //     if ($usuario != '' && $pass != '') {
-    //         $usuario = addslashes($usuario);
-    //         $pass = addslashes($pass);
-    //         $SQL .= " AND u.login = '$usuario' AND u.pass = MD5('$pass') ";
-    //     }
-
-    //     //Query de ejemplo:
-    //     /*SELECT ur.Id_roles, up.Id_permisos FROM usuarios u 
-    //     LEFT JOIN usuarios_roles ur ON u.id_Usuario = ur.id_Usuario 
-    //     LEFT JOIN usuarios_permisos up ON u.id_Usuario = up.id_Usuario WHERE 1=1 
-    //     AND u.login = 'javier' AND u.pass = MD5('1234');*/
-
-    //     $usuarios = $this->DAO->consultar($SQL);
-    //     return $usuarios;
-    // }
     
     public function getRolesyPermisos($filtro = array())
     {

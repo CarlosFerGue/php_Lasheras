@@ -43,41 +43,8 @@ if ($usuario == '' || $pass == '') {
         $_SESSION['rol'] = $usuarioRoles[0]; // El primer rol obtenido
         $_SESSION['permisos'] = $usuarioPermisos; // Todos los permisos obtenidos   
 
-        //Aqui le pasamos el ROL mas grande del usuario (si es admin y cliente, domina el admin)
-        echo "Rol: ";
-        switch ($usuarioRoles[0]) {
-            case '1':
-                echo "Admin";
-                break;
-            case '2':
-                echo "Staff";
-                break;
-            case '3':
-                echo "Cliente";
-                break;
-            default:
-                echo "no rol";
-                break;
-        }
-    }
+        header("Location: index.php");
 
-    // Aqui le pasamos los PERMISOS del usuario en bucle y en base a ellos decidiremos que hacer
-    echo ", Permisos: ";
-    foreach ($usuarioPermisos as $permiso) {
-        switch ($permiso) {
-            case '1':
-                echo "permiso 1 ";
-                break;
-            case '2':
-                echo "permiso 2 ";
-                break;
-            case '3':
-                echo "permiso 3 ";
-                break;
-            default:
-                echo "no tiene permisos ";
-                break;
-        }
     }
 }
 ?>

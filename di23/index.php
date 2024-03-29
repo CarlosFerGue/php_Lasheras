@@ -32,7 +32,7 @@
         $scriptComprobarLogin = 'getVistaMenuSeleccionado("Menus", "getVistaMenus");';
     } else {
         // Si el usuario no ha iniciado sesión, muestra una alerta
-        $scriptComprobarLogin = 'alert("Debes iniciar sesión");';
+        $scriptComprobarLogin = 'alert("Si tienes cuenta puedes iniciar sesión, sino puedes entrar como invitado");';
     }
     ?>
 
