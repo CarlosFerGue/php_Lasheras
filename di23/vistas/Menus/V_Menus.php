@@ -50,9 +50,23 @@
                                                 <?php
                                                 // Itera sobre los submenús
                                                 foreach ($submenuItems as $submenu) {
-                                                    if ($submenu['nombre'] == "Inserciones" && $rol != 1) {
-                                                        break;
+                                                    //Si el usuario no tiene permisos para insertar usuario no mostramos el submenu Inserciones
+                                                    $noTienePermiso = true;
+
+                                                    foreach ($permisos as $permiso) {
+                                                        if ($permiso == 3) {
+                                                            $noTienePermiso = false;
+                                                        }
                                                     }
+
+                                                    if (
+                                                        $submenu['nombre'] == "Inserciones" && $rol != 1
+                                                        && $rol != 2 && $noTienePermiso ==  true
+                                                    ) {
+                                                        continue;
+                                                    }
+
+
                                                 ?>
                                                     <li>
                                                         <a class="dropdown-item" onclick="getVistaUsuariosSeleccionado('<?php echo $submenu['controlador']; ?>', '<?php echo $submenu['model']; ?>')">
