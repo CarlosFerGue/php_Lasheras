@@ -60,6 +60,7 @@ echo '<table id=lista_usuarios>
                 echo '<td class="editTd"><img src="imagenes/editar.png" type="button" ';
                 echo 'onclick="mostrarEditar(' . $fila['id_Usuario'] . ', \'' . $fila['nombre'] . '\', \'' . $fila['apellido_1'] . '\', \'' . $fila['apellido_2'] . '\', \'' . $fila['sexo'] . '\', \'' . $fila['mail'] . '\', \'' . $fila['movil'] . '\', \'' . $fila['activo'] . '\');" ';
                 echo 'class="editBtn"></td>';
+                break;
             }
         }
     
