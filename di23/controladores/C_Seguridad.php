@@ -7,10 +7,14 @@ class C_Seguridad extends Controlador
 {
     private $modelo;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->modelo = new M_Seguridad();
     }
 
-    
+    public function getVistaSeguridad()
+    {
+        Vista::render('vistas/Menus/V_MttoMenus.php');
+    }
 }
