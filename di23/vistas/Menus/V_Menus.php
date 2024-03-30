@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <!-- ////////////////////////////////////////////////// -->
 
     <section id="secMenuPagina" class="container-fluid">
         <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;" aria-label="Fourth navbar example">
@@ -53,12 +52,14 @@
                                                     //Si el usuario no tiene permisos para insertar usuario no mostramos el submenu Inserciones
                                                     $noTienePermiso = true;
 
+                                                    //Si tiene el permiso 3 podra insertar usuarios, asi que hacemos una bandera para confirmarlo
                                                     foreach ($permisos as $permiso) {
                                                         if ($permiso == 3) {
                                                             $noTienePermiso = false;
                                                         }
                                                     }
 
+                                                    //Aqui comprobamos si tiene rol de staff o admin o ha salido que tiene permiso 3 (insertar/crear)
                                                     if (
                                                         $submenu['nombre'] == "Inserciones" && $rol != 1
                                                         && $rol != 2 && $noTienePermiso ==  true
@@ -100,11 +101,7 @@
             </div>
         </nav>
     </section>
-
     <?php
-
-    var_dump($submenuItems);
-
 
     // Función para obtener los submenús de un menú específico
     function obtenerSubMenu($menus, $idPadre)
@@ -119,7 +116,6 @@
     }
     ?>
 
-    <!-- ////////////////////////////////////////////////// -->
     <section id="secContenidoPagina">
 
     </section>
