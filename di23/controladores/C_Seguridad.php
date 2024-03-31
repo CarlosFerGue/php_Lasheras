@@ -21,7 +21,7 @@ class C_Seguridad extends Controlador
     //Con esto buscamos todos los menus cada uno en su card
     public function buscarMenusCards($filtros=array()){
         $menus=$this->modelo->buscarMenusCards($filtros);
-        echo json_encode($menus);
+        //echo json_encode($menus);
         Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus));
     }
 }
