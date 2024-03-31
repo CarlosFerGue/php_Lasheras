@@ -13,7 +13,7 @@
         }
 
 
-        public function buscarMenus($filtro = array()){
+        public function buscarMenusCards($filtro = array()){
 
             $usuario = '';
             $pass = '';
@@ -29,6 +29,8 @@
             }
 
             $menus = $this->DAO->consultar($SQL);
+
+            
 
             return $menus;
         }

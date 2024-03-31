@@ -21,5 +21,5 @@ function buscarMenus(){
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
-    
 }
+

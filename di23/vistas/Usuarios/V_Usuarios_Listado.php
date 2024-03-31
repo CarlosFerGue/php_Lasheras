@@ -122,9 +122,5 @@ function returnActivo($fila){
     }
 }
 
-// echo "Numero users: " . $numUsuarios . " ";
-// echo "Numero paginas: " . $numPaginas . " ";
-// echo "Pagina actual: " . $paginaActual . " ";
-// echo "Inicio: " . $inicio . " ";
 ?>
 

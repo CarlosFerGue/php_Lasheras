@@ -7,9 +7,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/menu.css">
+    <script src="js/app.js"></script>
 
     <?php
     // Inicia la sesión en PHP
@@ -103,7 +103,7 @@
     </section>
 
 
-
+ 
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

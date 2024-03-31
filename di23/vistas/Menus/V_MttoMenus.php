@@ -19,7 +19,7 @@
 
         </form> -->
 
-        <button type="button" onclick="buscar()">Buscar</button>
+        <button type="button" onclick="buscarMenusCards()">Buscar</button>
 
     </div>
 
