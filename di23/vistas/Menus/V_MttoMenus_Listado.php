@@ -7,8 +7,10 @@ foreach ($menus as $menu) {
     // Si el menú tiene id_Padre igual a 0, lo mostramos como una tarjeta principal
     if ($menu['id_Padre'] == 0) {
 ?>
+        <button>Añadir Opción</button>
         <div class="tarjeta">
             <h3><?php echo $menu['nombre']; ?></h3>
+            <button>Añadir permiso</button>
             <!-- Mostrar el contenido adicional de la tarjeta si es necesario -->
             
             <!-- Buscar y mostrar submenús -->
@@ -25,4 +27,3 @@ foreach ($menus as $menu) {
     }
 }
 ?>
-
