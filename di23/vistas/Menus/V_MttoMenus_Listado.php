@@ -10,15 +10,16 @@ foreach ($menus as $menu) {
         <button>Añadir Opción</button>
         <div class="tarjeta">
             <h3><?php echo $menu['nombre']; ?></h3>
-            <button>Añadir permiso</button>
+            <button class="boton_permiso">Añadir permiso menu</button>
             <!-- Mostrar el contenido adicional de la tarjeta si es necesario -->
-            
+
             <!-- Buscar y mostrar submenús -->
             <?php foreach ($menus as $submenu) {
                 if ($submenu['id_Padre'] == $menu['id_Menu']) { ?>
                     <div class="subtarjeta">
                         <p><?php echo $submenu['nombre']; ?></p>
                         <!-- Mostrar el contenido adicional de la subtarjeta si es necesario -->
+                        <button class="boton_subpermiso">Añadir permiso submenu</button>
                     </div>
             <?php }
             } ?>
