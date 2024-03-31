@@ -1,4 +1,4 @@
- #container{
+#container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,6 +24,20 @@ input[type="text"] {
     border-radius: 5px;
 }
 
+.tarjeta {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.subtarjeta {
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+}
+
+
 button {
     background-color: #0074d9;
     color: #fff;
@@ -43,18 +57,3 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
 }
-
-#popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-
