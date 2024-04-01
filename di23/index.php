@@ -41,6 +41,13 @@
             window.location.href = "login.php";
         }
 
+        function redirectToInvitado() {
+            // Simulamos el envío del formulario con usuario invitado y contraseña predefinida
+            document.getElementById('usuario').value = 'Invitado';
+            document.getElementById('pass').value = '1234';
+            document.getElementById('formularioLogin').submit();
+        }
+
         function comprobarLogin() {
             <?php echo $scriptComprobarLogin; ?>
         }
@@ -83,18 +90,10 @@
         </div>
     </section>
 
-    <!-- 
-    <section id="secMenusPagina" class="container-fluid">
-        <div class="d-flex justify-content-center mt-5">
-            <button onclick="getVistaMenuSeleccionado('Menus', 'getVistaMenus')" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
-            <button type="button" class="btn btn-secondary">Entrar como invitado</button>
-        </div>
-    </section> -->
-
     <section id="secMenusPagina" class="container-fluid">
         <div class="d-flex justify-content-center mt-5">
             <button onclick="redirectToLogin()" type="button" class="btn btn-primary me-3">Tengo cuenta</button>
-            <button type="button" class="btn btn-secondary">Entrar como invitado</button>
+            <button onclick="redirectToInvitado()" type="button" class="btn btn-secondary">Entrar como invitado</button>
         </div>
     </section>
 
@@ -103,7 +102,14 @@
     </section>
 
 
- 
+    <div id="login_oculto" style="display: none;">
+        <!-- Código del formulario de login -->
+        <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">
+            <input type="hidden" id="usuario" name="usuario">
+            <input type="hidden" id="pass" name="pass">
+        </form>
+    </div>
+
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
