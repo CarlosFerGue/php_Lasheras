@@ -34,10 +34,9 @@
 
             return $menus;
         }
+
+        public function añadirPermisoMenu($id_Menu){
+            $            
+        }
     }
-
-
-
-
-
 ?>

@@ -10,7 +10,7 @@ foreach ($menus as $menu) {
         <button>Añadir Opción</button>
         <div class="tarjeta">
             <h3><?php echo $menu['nombre']; ?></h3>
-            <button class="boton_permiso">Añadir permiso menu</button>
+            <button class="boton_permiso" onclick="añdirPermisoMenu(<?php echo $menu['id_Menu']; ?>)">Añadir permiso menu</button>
             <!-- Mostrar el contenido adicional de la tarjeta si es necesario -->
 
             <!-- Buscar y mostrar submenús -->
@@ -19,7 +19,7 @@ foreach ($menus as $menu) {
                     <div class="subtarjeta">
                         <p><?php echo $submenu['nombre']; ?></p>
                         <!-- Mostrar el contenido adicional de la subtarjeta si es necesario -->
-                        <button class="boton_subpermiso">Añadir permiso submenu</button>
+                        <button class="boton_subpermiso" onclick="añadirPermisoSubmenu(<?php echo $submenu['id_Menu']; ?>)">Añadir permiso submenu</button>
                     </div>
             <?php }
             } ?>
