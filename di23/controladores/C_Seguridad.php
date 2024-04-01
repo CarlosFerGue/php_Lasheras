@@ -25,7 +25,7 @@ class C_Seguridad extends Controlador
         Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus));
     }
 
-    public function añadirPermisoMenu($id_Menu){
-        $menus=$this->modelo->añadirPermisoMenu($id_Menu); 
+    public function añadirPermisoMenu($filtros=array()){
+        $menus=$this->modelo->añadirPermisoMenu($filtros); 
     }
 }
