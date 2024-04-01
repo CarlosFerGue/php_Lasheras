@@ -11,7 +11,7 @@ foreach ($menus as $menu) {
         <div class="tarjeta">
             <h3><?php echo $menu['nombre']; ?></h3>
             <div class="permisos">
-            <button type="button" id="botonPermisoMenu" onclick="añadirPermisoMenu(<?php echo $menu['id_Menu']; ?>,<?php echo $menu['nombre']; ?>)">Añadir permiso</button>
+                <button type="button" id="botonPermisoMenu" onclick="añadirPermisoMenu(<?php echo $menu['id_Menu']; ?>,<?php echo $menu['nombre']; ?>)">Añadir permiso</button>
                 <label for="b_permisoMenu"></label>
                 <input type="text" id="<?php echo $menu['nombre']; ?>" name="b_permisoMenu">
             </div>
@@ -20,12 +20,12 @@ foreach ($menus as $menu) {
             <?php foreach ($menus as $submenu) {
                 if ($submenu['id_Padre'] == $menu['id_Menu']) { ?>
                     <div class="subtarjeta">
-                        <!-- <p><?php //echo $submenu['nombre']; ?></p>
-                        <button class="boton_subpermiso" onclick="añadirPermisoSubmenu(<?php //echo $submenu['id_Menu']; ?>)">Añadir permiso submenu</button>-->
+                        <!-- <p><?php //echo $submenu['nombre'];?></p><button class="boton_subpermiso" onclick="añadirPermisoSubmenu(<?php //echo $submenu['id_Menu']; ?>)">Añadir permiso submenu</button>-->
+
                         <div class="permisos">
-                            <button type="button" id="botonPermisoSubMenu" onclick="añadirPermisoSubmenu(<?php echo $submenu['id_Menu']; ?>)">Añadir permiso submenu</button>
-                            <label for="b_permisoSubMenu"></label>
-                            <input type="text" id="b_permisoSubMenu" name="b_permisoSubMenu">
+                            <button type="button" id="botonPermisoMenu" onclick="añadirPermisoSubMenu(<?php echo $submenu['id_Menu']; ?>,<?php echo $submenu['nombre']; ?>)">Añadir permiso</button>
+                            <label for="b_permisoMenu"></label>
+                            <input type="text" id="<?php echo $submenu['nombre']; ?>" name="b_permisoMenu">
                         </div>
 
 

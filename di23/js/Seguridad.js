@@ -49,13 +49,14 @@ function añadirPermisoMenu(id_Menu, b_nombre) {
         });
 }
 
-
-function añadirPermisoSubMenu(id_Menu) {
+function añadirPermisoSubMenu(id_Menu, b_nombre) {
+    // Obtener el ID del elemento
+    const idElemento = b_nombre.getAttribute("id");
 
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=añadirPermisoMenu&id_Menu=${id_Menu}`;
 
-    parametros += `&permiso=` + document.getElementById("b_permisoSubMenu").value;
+    parametros += `&permiso=` + document.getElementById(idElemento).value;
 
     console.log(parametros);
 
