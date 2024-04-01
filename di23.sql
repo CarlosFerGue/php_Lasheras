@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-03-2024 a las 18:36:42
+-- Tiempo de generación: 01-04-2024 a las 10:50:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -48,6 +48,31 @@ INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `o
 (6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S'),
 (7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S'),
 (8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menus_permisos`
+--
+
+CREATE TABLE `menus_permisos` (
+  `id_Menu` int(11) UNSIGNED NOT NULL,
+  `permiso` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `menus_permisos`
+--
+
+INSERT INTO `menus_permisos` (`id_Menu`, `permiso`) VALUES
+(1, 'Consultar'),
+(1, 'Editar'),
+(1, 'Añadir'),
+(4, 'Consultar'),
+(4, 'Editar'),
+(4, 'Añadir'),
+(5, 'Consultar'),
+(5, 'Editar');
 
 -- --------------------------------------------------------
 
@@ -149,6 +174,7 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 (3, 'Maria', 'Fernandez', 'Castro', 'H', '0000-00-00', 'mfernandez@2si2023.es', '2342423', 'Carlos', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '3', '3'),
 (4, 'Felipe', 'Smit', 'Fernandez', 'H', '2020-11-23', 'fsmit@2si2023.com', '976466599', 'Felipe', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '3', '1'),
 (5, 'Carine ', 'Schmitt', '', 'M', '2020-02-15', 'Schmitt@2si2023.es', '64103103', 'Sas', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '2', '3'),
+(6, 'Invitado', '', '', '', '0000-00-00', '', '', 'Invitado', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '1', '1'),
 (112, 'Jean', 'King', '', 'H', '2020-02-15', 'King@2si2023.es', '64112112', 'King', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
 (114, 'Peter', 'Ferguson', '', 'H', '2020-02-15', 'Ferguson@2si2023.es', '64114114', 'Ferguson', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
 (119, 'Janine ', 'Labrune', '', 'M', '2020-02-15', 'Labrune@2si2023.es', '64119119', 'Labrune', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
@@ -327,6 +353,12 @@ ALTER TABLE `menus`
   ADD PRIMARY KEY (`id_Menu`);
 
 --
+-- Indices de la tabla `menus_permisos`
+--
+ALTER TABLE `menus_permisos`
+  ADD KEY `id_Menu` (`id_Menu`);
+
+--
 -- Indices de la tabla `permisos`
 --
 ALTER TABLE `permisos`
@@ -379,6 +411,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `menus_permisos`
+--
+ALTER TABLE `menus_permisos`
+  ADD CONSTRAINT `menus_permisos_ibfk_1` FOREIGN KEY (`id_Menu`) REFERENCES `menus` (`id_Menu`);
 
 --
 -- Filtros para la tabla `roles_permisos`

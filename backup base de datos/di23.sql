@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2024 a las 18:21:50
+-- Tiempo de generación: 01-04-2024 a las 10:35:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -47,7 +47,7 @@ INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `o
 (5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S'),
 (6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S'),
 (7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S'),
-(8, 'Mantenimiento Menu y Permisos', 'MSeguridad', 'getMenuMMenu', 7, 2, 'S');
+(8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S');
 
 -- --------------------------------------------------------
 
@@ -149,6 +149,7 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 (3, 'Maria', 'Fernandez', 'Castro', 'H', '0000-00-00', 'mfernandez@2si2023.es', '2342423', 'Carlos', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '3', '3'),
 (4, 'Felipe', 'Smit', 'Fernandez', 'H', '2020-11-23', 'fsmit@2si2023.com', '976466599', 'Felipe', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '3', '1'),
 (5, 'Carine ', 'Schmitt', '', 'M', '2020-02-15', 'Schmitt@2si2023.es', '64103103', 'Sas', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '2', '3'),
+(6, 'Invitado', '', '', '', '0000-00-00', '', '', 'Invitado', '81dc9bdb52d04dc20036dbd8313ed055', 'S', '1', '1'),
 (112, 'Jean', 'King', '', 'H', '2020-02-15', 'King@2si2023.es', '64112112', 'King', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
 (114, 'Peter', 'Ferguson', '', 'H', '2020-02-15', 'Ferguson@2si2023.es', '64114114', 'Ferguson', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
 (119, 'Janine ', 'Labrune', '', 'M', '2020-02-15', 'Labrune@2si2023.es', '64119119', 'Labrune', '202cb962ac59075b964b07152d234b70', 'S', '1', '1'),
@@ -291,8 +292,7 @@ INSERT INTO `usuarios_permisos` (`id_Usuario`, `Id_permisos`) VALUES
 (1, '1'),
 (1, '2'),
 (1, '3'),
-(2, '1'),
-(4, '3');
+(2, '1');
 
 -- --------------------------------------------------------
 
