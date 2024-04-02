@@ -180,3 +180,7 @@ function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
     });
 }
 
+
+function añadirMenu(id_Menu, posicion){
+    console.log()
+};

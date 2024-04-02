@@ -12,12 +12,12 @@ form {
 }
 
 label {
-    display: block;
+    display: flex;
     font-weight: bold;
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     margin-bottom: 10px;
     border: 2px solid #4B4949;
@@ -49,6 +49,7 @@ button {
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
+    border-color: #4B4949;
     cursor: pointer;
     height: 30%;
     margin-right: 5%;
