@@ -77,10 +77,11 @@ function añadirPermisoSubMenu(id_Menu, nombreSubMenu) {
         });
 }
 
-function borrarPermiso(menu, permiso){
+function borrarPermiso(id_Menu, permiso){
     let opciones = { method: "GET" };
-    let parametros = `controlador=Seguridad&metodo=borrarPermisoMenu&menu=${menu}&permiso=${permiso}`;
-
+    let parametros = `controlador=Seguridad&metodo=borrarPermisoMenu&id_Menu=${id_Menu}&permisos=${permiso}`;
+    // Cambiado permisos por permiso
+    
     console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
@@ -98,3 +99,4 @@ function borrarPermiso(menu, permiso){
         console.log("Error al realizar la petición", err.message);
     });
 }
+

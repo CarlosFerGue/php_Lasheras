@@ -92,24 +92,15 @@ class M_Seguridad extends Modelo
 
     public function borrarPermisoMenu($filtro = array())
     {
-        $usuario = '';
-        $pass = '';
         $id_Menu = '';
-        $permiso = '';
+        $permisos = '';
     
         extract($filtro);
     
         $SQL = "";
     
-        //Esto es para que vea que estás logueado
-        if ($usuario != '' && $pass != '') {
-            $usuario = addslashes($usuario); //añade \ delante de caracteres especiales
-            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
-            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
-        }
-    
         // Eliminar el permiso del menú especificado
-        $SQL .= "DELETE FROM `menus_permisos` WHERE `id_Menu` = '$id_Menu' AND `permiso` = '$permiso'";
+        $SQL .= "DELETE FROM `menus_permisos` WHERE `id_Menu` = '$id_Menu' AND `permiso` = '$permisos'";
     
         $this->DAO->borrar($SQL);
     }
