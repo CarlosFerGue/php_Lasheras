@@ -23,14 +23,14 @@ function buscarMenusCards() {
         });
 }
 
-function añadirPermisoMenu(id_Menu, b_nombre) {
-    // Obtener el ID del elemento
-    const idElemento = b_nombre.getAttribute("id");
+function añadirPermisoMenu(id_Menu, nombreMenu) {
+    // Obtener el valor del permiso
+    const permiso = document.getElementById(`${nombreMenu}`).value;
 
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=añadirPermisoMenu&id_Menu=${id_Menu}`;
 
-    parametros += `&permiso=` + document.getElementById(idElemento).value;
+    parametros += `&permiso=${permiso}`;
 
     console.log(parametros);
 
@@ -38,6 +38,7 @@ function añadirPermisoMenu(id_Menu, b_nombre) {
         .then(res => {
             if (res.ok) {
                 console.log('Permiso añadido');
+                buscarMenusCards();
                 return res.text();
             }
         })
@@ -49,14 +50,14 @@ function añadirPermisoMenu(id_Menu, b_nombre) {
         });
 }
 
-function añadirPermisoSubMenu(id_Menu, b_nombre) {
-    // Obtener el ID del elemento
-    const idElemento = b_nombre.getAttribute("id");
+function añadirPermisoSubMenu(id_Menu, nombreSubMenu) {
+    // Obtener el valor del permiso
+    const permiso = document.getElementById(`${nombreSubMenu}`).value;
 
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=añadirPermisoMenu&id_Menu=${id_Menu}`;
 
-    parametros += `&permiso=` + document.getElementById(idElemento).value;
+    parametros += `&permiso=${permiso}`;
 
     console.log(parametros);
 
@@ -64,6 +65,7 @@ function añadirPermisoSubMenu(id_Menu, b_nombre) {
         .then(res => {
             if (res.ok) {
                 console.log('Permiso añadido');
+                buscarMenusCards();
                 return res.text();
             }
         })
@@ -73,4 +75,26 @@ function añadirPermisoSubMenu(id_Menu, b_nombre) {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+}
+
+function borrarPermiso(menu, permiso){
+    let opciones = { method: "GET" };
+    let parametros = `controlador=Seguridad&metodo=borrarPermisoMenu&menu=${menu}&permiso=${permiso}`;
+
+    console.log(parametros);
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+    .then(res => {
+        if (res.ok) {
+            console.log('Permiso eliminado');
+            buscarMenusCards();
+            return res.text();
+        }
+    })
+    .then(vista => {
+        //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+    })
+    .catch(err => {
+        console.log("Error al realizar la petición", err.message);
+    });
 }
