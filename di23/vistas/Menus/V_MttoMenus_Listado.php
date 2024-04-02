@@ -46,7 +46,7 @@ foreach ($menus as $menu) {
                                     <div id="<?php echo $submenu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
                                         <p>Permiso: <?php echo $permiso['permiso']; ?></p>
                                         <!-- Botón para borrar permiso -->
-                                        <button type="button" onclick="borrarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>
+                                        <button type="button" onclick="borrarPermiso('<?php echo $submenu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>
 
                                     </div>
                             <?php }
