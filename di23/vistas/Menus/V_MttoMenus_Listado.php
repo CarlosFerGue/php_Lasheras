@@ -20,10 +20,10 @@ foreach ($menus as $menu) {
                 <?php foreach ($permisos as $permiso) {
                     if ($permiso['id_Menu'] == $menu['id_Menu']) { ?>
                         <div id="<?php echo $menu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
-                            <p>Permiso: <?php echo $permiso['permiso']; ?></p>
+                            <p><?php echo $permiso['permiso']; ?></p>
                             <!-- Botón para borrar permiso -->
                             <button type="button" onclick="borrarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>
-
+                            <button type="button" onclick="editarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">E</button>
                         </div>
                 <?php }
                 } ?>
@@ -32,6 +32,7 @@ foreach ($menus as $menu) {
             <!-- Buscar y mostrar submenús -->
             <?php foreach ($menus as $submenu) {
                 if ($submenu['id_Padre'] == $menu['id_Menu']) { ?>
+                    <button>Añadir Opción</button>
                     <div class="subtarjeta">
                         <!-- Mostrar nombre del submenú -->
                         <h5><?php echo $submenu['nombre']; ?></h5>
@@ -44,19 +45,32 @@ foreach ($menus as $menu) {
                             <?php foreach ($permisos as $permiso) {
                                 if ($permiso['id_Menu'] == $submenu['id_Menu']) { ?>
                                     <div id="<?php echo $submenu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
-                                        <p>Permiso: <?php echo $permiso['permiso']; ?></p>
+                                        <p><?php echo $permiso['permiso']; ?></p>
                                         <!-- Botón para borrar permiso -->
                                         <button type="button" onclick="borrarPermiso('<?php echo $submenu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>
-
+                                        <button type="button" onclick="editarPermiso('<?php echo $submenu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">E</button>
                                     </div>
                             <?php }
                             } ?>
                         </div>
                     </div>
+                    <button>Añadir Opción</button>
             <?php }
             } ?>
         </div>
+
 <?php
     }
 }
 ?>
+<button>Añadir Opción</button>
+
+<div id="popup2" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="cerrarPopup()">&times;</span>
+        <h2>Editar Permiso</h2>
+        <input type="text" id="nuevoPermiso" placeholder="Nuevo valor del permiso">
+        <button onclick="guardarNuevoPermiso()">Guardar</button>
+        <button onclick="cerrarPopup()">Cancelar</button>
+    </div>
+</div>

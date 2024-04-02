@@ -29,8 +29,10 @@ class C_Seguridad extends Controlador
     }
 
     public function borrarPermisoMenu($filtros=array()){
-        echo json_encode($filtros);
         $menus=$this->modelo->borrarPermisoMenu($filtros); 
-        echo json_encode($menus);
+    }
+
+    public function editarPermisoMenu($filtros=array()){
+        $menus=$this->modelo->editarPermisoMenu($filtros); 
     }
 }
