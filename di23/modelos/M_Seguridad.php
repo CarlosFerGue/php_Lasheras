@@ -96,23 +96,22 @@ class M_Seguridad extends Modelo
         $pass = '';
         $id_Menu = '';
         $permiso = '';
-
+    
         extract($filtro);
-
+    
         $SQL = "";
-
-        //Esto es para que vea que estas logea
+    
+        //Esto es para que vea que estás logueado
         if ($usuario != '' && $pass != '') {
-            $usuario = addslashes($usuario); //añade \ delante de caracterres especiales
+            $usuario = addslashes($usuario); //añade \ delante de caracteres especiales
             $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
             $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
         }
-
-        $SQL = "DELETE FROM `menus_permisos` WHERE `id_Menu` = $id_Menu AND `permiso` = $permiso";
-
-
+    
+        // Eliminar el permiso del menú especificado
+        $SQL .= "DELETE FROM `menus_permisos` WHERE `id_Menu` = '$id_Menu' AND `permiso` = '$permiso'";
+    
         $this->DAO->borrar($SQL);
-
-        
     }
+    
 }
