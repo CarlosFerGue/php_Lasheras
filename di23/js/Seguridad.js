@@ -112,8 +112,6 @@ function borrarPermiso(id_Menu, permiso) {
         });
 }
 
-
-
 function mostrarPopup() {
     document.getElementById('popup2').style.display = 'block';
 }
@@ -122,13 +120,29 @@ function cerrarPopup() {
     document.getElementById('popup2').style.display = 'none';
 }
 
-
-
-
-function añadirMenu(id_Menu, posicion) {
+function añadirMenu(id_Menu, posicion, nombreMenu) {
     console.log(id_Menu, posicion);
 
+    let opciones = { method: "GET" };
 
+    let parametros = `controlador=Seguridad&metodo=añadirMenu&id_Menu=${id_Menu}&posicion=${posicion} &nombreMenu=${nombreMenu}`;
+
+    console.log(parametros);
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Menu añadido');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
 };
 
 function eliminarMenu(id_Menu) {
@@ -210,4 +224,34 @@ function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+}
+
+
+// Función para mostrar el popup de añadir menú
+function mostrarPopupAñadirMenu() {
+    document.getElementById('popupAñadirMenu').style.display = 'block';
+}
+
+// Función para cerrar cualquier popup por su ID
+function cerrarPopup(idPopup) {
+    document.getElementById(idPopup).style.display = 'none';
+}
+
+// Función para añadir un nuevo menú
+function guardarNuevoMenu() {
+    // Obtener el nombre del menú desde el campo de entrada
+    const nombreMenu = document.getElementById('nombreMenu').value;
+
+    // Verificar si el campo de nombre del menú está vacío
+    if (!nombreMenu.trim()) {
+        console.log('El campo de nombre del menú está vacío. No se añadirá ningún menú.');
+        return; // Salir de la función si el campo está vacío
+    }
+
+    // Aquí puedes llamar a la función que procesa la creación del menú
+    // Por ejemplo, puedes llamar a la función añadirMenu() pasando el nombreMenu como parámetro
+    // añadirMenu(nombreMenu);
+
+    // Cerrar el popup después de añadir el menú
+    cerrarPopup('popupAñadirMenu');
 }

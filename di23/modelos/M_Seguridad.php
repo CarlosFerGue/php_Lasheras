@@ -125,5 +125,10 @@ class M_Seguridad extends Modelo
         $SQL_menu = "DELETE FROM `menus` WHERE `id_Menu` = '$id_Menu'";
         $this->DAO->borrar($SQL_menu);
     }
+
+    public function añadirMenu($filtro = array())
+    {
+
+    }
     
 }
