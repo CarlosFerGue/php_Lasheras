@@ -26,7 +26,7 @@ foreach ($menus as $menu) {
                             <button type="button" onclick="editarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">E</button>
                         </div>
                 <?php }
-                } ?>6
+                } ?>
             </div>
 
             <!-- Buscar y mostrar submenús -->
