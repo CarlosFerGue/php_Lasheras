@@ -203,20 +203,25 @@ function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
 
 
 
-function añadirMenu(id_Menu, posicion) {
-    const nombreMenu = document.getElementById(`nombreMenu_${id_Menu}`).value; // Obtener el valor del cuadro de texto
+function añadirMenu(esSubmenu, id_Menu, posicion) {
 
-    añadirMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu);
+    if (esSubmenu == 0) {
+        const nombreMenu = document.getElementById(`nombreMenu_${id_Menu}`).value; // Obtener el valor del cuadro de texto
+        añadirMenuEnBaseDeDatos(id_Menu,posicion, nombreMenu);
+        
+
+    } else {
+        const nombreMenu = document.getElementById(`nombreSubMenu_${id_Menu}`).value; // Obtener el valor del cuadro de texto
+        añadirSubMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu);
+
+    }
+
 }
 
 function añadirMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu) {
 
-
-    //METER UN IF PARA VER SI ES SUBMENU
-
-
     let opciones = { method: "GET" };
-    let parametros = `controlador=Seguridad&metodo=añdirMenus&id_Menu=${id_Menu}&posicion=${posicion}&nombreMenu=${nombreMenu}`;
+    let parametros = `controlador=Seguridad&metodo=añadirMenus&id_Menu=${id_Menu}&posicion=${posicion}&nombreMenu=${nombreMenu}`;
     // Cambiado permisos por permiso
 
     console.log(parametros);
@@ -236,6 +241,32 @@ function añadirMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu) {
             console.log("Error al realizar la petición", err.message);
         });
 }
+
+function añadirSubMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu) {
+
+    let opciones = { method: "GET" };
+    let parametros = `controlador=Seguridad&metodo=añadirSubMenus&id_Menu=${id_Menu}&posicion=${posicion}&nombreMenu=${nombreMenu}`;
+    // Cambiado permisos por permiso
+
+    console.log(parametros);
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Menu añadido');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
+
+
 
 
 

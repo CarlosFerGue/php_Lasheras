@@ -156,4 +156,41 @@ class M_Seguridad extends Modelo
                                        ('$proximoID', 'Cambiar $nombreMenu')";
         $this->DAO->insertar($insertarPermisosSQL);
     }
+
+    public function añadirSubMenus($filtro = array())
+    {
+        $posicion = '';
+        $nombreMenu = '';
+        $id_Menu = '';
+
+        extract($filtro);
+
+        // Actualizar las posiciones de los menús existentes que estén por encima de la posición proporcionada
+        $actualizarSQL = "UPDATE `menus` SET `posicion` = `posicion` + 1 WHERE `posicion` >= $posicion";
+        $this->DAO->insertar($actualizarSQL);
+
+        // Obtener el próximo valor de id_Menu
+        $consultaIDSQL = "SELECT MAX(`id_Menu`) AS max_id FROM `menus`";
+        $resultadoConsulta = $this->DAO->consultar($consultaIDSQL);
+        $proximoID = $resultadoConsulta[0]['max_id'] + 1;
+
+        // Obtener el id del orden del padre
+        $consultaOrdenPadreSQL = "SELECT `orden` FROM `menus` WHERE `id_Menu` = $id_Menu";
+        $resultadoConsulta = $this->DAO->consultar($consultaOrdenPadreSQL);
+        $ordenPadre = $resultadoConsulta[0]['orden'];
+
+        // Insertar el nuevo menú con el próximo valor de id_Menu y la posición proporcionada
+        $insertarMenuSQL = "INSERT INTO `menus`(`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`, `posicion`) 
+                            VALUES ('$proximoID', '$nombreMenu', '', '', '$id_Menu', '$ordenPadre', '','$posicion')";
+        $this->DAO->insertar($insertarMenuSQL);
+
+        // Insertar permisos para el nuevo menú en la tabla menus_permisos
+        $insertarPermisosSQL = "INSERT INTO `menus_permisos`(`id_Menu`, `permiso`) 
+                                VALUES ('$proximoID', 'Consultar $nombreMenu'),
+                                       ('$proximoID', 'Editar $nombreMenu'),
+                                       ('$proximoID', 'Crear $nombreMenu'),
+                                       ('$proximoID', 'Modificar $nombreMenu'),
+                                       ('$proximoID', 'Cambiar $nombreMenu')";
+        $this->DAO->insertar($insertarPermisosSQL);
+    }
 }

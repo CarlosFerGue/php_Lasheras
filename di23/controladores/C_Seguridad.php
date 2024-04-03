@@ -18,29 +18,40 @@ class C_Seguridad extends Controlador
         Vista::render('vistas/Menus/V_MttoMenus.php');
     }
 
-    public function buscarMenusCards($filtros=array()){
+    public function buscarMenusCards($filtros = array())
+    {
         list($menus, $permisos) = $this->modelo->buscarMenusCards($filtros);
         Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus, 'permisos' => $permisos));
     }
-    
 
-    public function añadirPermisoMenu($filtros=array()){
-        $menus=$this->modelo->añadirPermisoMenu($filtros); 
+
+    public function añadirPermisoMenu($filtros = array())
+    {
+        $menus = $this->modelo->añadirPermisoMenu($filtros);
     }
 
-    public function borrarPermisoMenu($filtros=array()){
-        $menus=$this->modelo->borrarPermisoMenu($filtros); 
+    public function borrarPermisoMenu($filtros = array())
+    {
+        $menus = $this->modelo->borrarPermisoMenu($filtros);
     }
 
-    public function editarPermisoMenu($filtros=array()){
-        $menus=$this->modelo->editarPermisoMenu($filtros); 
+    public function editarPermisoMenu($filtros = array())
+    {
+        $menus = $this->modelo->editarPermisoMenu($filtros);
     }
 
-    public function borrarMenu($filtros=array()){
+    public function borrarMenu($filtros = array())
+    {
         $this->modelo->borrarMenu($filtros);
     }
 
-    public function añdirMenus($filtros=array()){
+    public function añadirMenus($filtros = array())
+    {
         $this->modelo->añadirMenu($filtros);
+    }
+
+    public function añadirSubMenus($filtros = array())
+    {
+        $this->modelo->añadirSubMenus($filtros);
     }
 }

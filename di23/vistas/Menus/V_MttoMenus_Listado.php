@@ -4,7 +4,8 @@ $menus = $datos['menus'];
 $permisos = $datos['permisos'];
 
 // Función para ordenar los menús por su posición
-function compararPosiciones($a, $b) {
+function compararPosiciones($a, $b)
+{
     return $a['posicion'] - $b['posicion'];
 }
 
@@ -16,7 +17,7 @@ foreach ($menus as $menu) {
     // Si el menú tiene id_Padre igual a 0, lo mostramos como una tarjeta principal
     if ($menu['id_Padre'] == 0) {
 ?>
-        <button type="button" onclick="añadirMenu(<?php echo $menu['id_Menu']; ?>, '<?php echo $menu['posicion']; ?>')">Añadir Menu</button>
+        <button type="button" onclick="añadirMenu(0, <?php echo $menu['id_Menu']; ?>, '<?php echo $menu['posicion']; ?>')">Añadir Menu</button>
         <!-- Agregar cuadro de texto para el nombre del nuevo menú -->
         <input type="text" id="nombreMenu_<?php echo $menu['id_Menu']; ?>" placeholder="Nombre del menú">
 
@@ -44,13 +45,13 @@ foreach ($menus as $menu) {
                 <button type="button" id="botonPermisoMenu" onclick="eliminarMenu(<?php echo $menu['id_Menu']; ?>)">Borrar menu</button>
             </div>
 
+            <button type="button" onclick="añadirMenu(1, <?php echo $menu['id_Menu']; ?>, <?php echo $menu['posicion']; ?>)">Añadir Submenu</button>
+            <!-- Agregar cuadro de texto para el nombre del nuevo submenú -->
+            <input type="text" id="nombreSubMenu_<?php echo $menu['id_Menu']; ?>" placeholder="Nombre del submenú">
+
             <!-- Buscar y mostrar submenús -->
             <?php foreach ($menus as $submenu) {
                 if ($submenu['id_Padre'] == $menu['id_Menu']) { ?>
-                     <button type="button" onclick="añadirMenu(<?php echo $submenu['id_Menu']; ?>, '<?php echo $submenu['posicion']; ?>')">Añadir Submenu</button> 
-                    <!-- Agregar cuadro de texto para el nombre del nuevo submenú -->
-                    <input type="text" id="nombreSubMenu_<?php echo $submenu['id_Menu']; ?>" placeholder="Nombre del submenú">
-
                     <div class="subtarjeta">
                         <!-- Mostrar nombre del submenú -->
                         <h5><?php echo $submenu['nombre']; ?></h5>
@@ -73,9 +74,12 @@ foreach ($menus as $menu) {
                         </div>
 
                         <div class="eliminarMenu">
-                            <button type="button" id="botonPermisoMenu" onclick="eliminarMenu(<?php echo $submenu['id_Menu']; ?>)">Borrar submenu</button> 
+                            <button type="button" id="botonPermisoMenu" onclick="eliminarMenu(<?php echo $submenu['id_Menu']; ?>)">Borrar submenu</button>
                         </div>
                     </div>
+                    <button type="button" onclick="añadirMenu(1, <?php echo $submenu['id_Menu']; ?>, <?php echo $submenu['posicion']; ?>)">Añadir Submenu</button>
+                    <!-- Agregar cuadro de texto para el nombre del nuevo submenú -->
+                    <input type="text" id="nombreSubMenu_<?php echo $submenu['id_Menu']; ?>" placeholder="Nombre del submenú">
             <?php }
             } ?>
         </div>
@@ -83,8 +87,8 @@ foreach ($menus as $menu) {
     }
 }
 ?>
-<button type="button" onclick="añadirMenu(<?php echo $menu['id_Menu']; ?>, '<?php echo $menu['posicion']; ?>')">Añadir Menu</button> 
-
+<button type="button" onclick="añadirMenu(0, <?php echo $menu['id_Menu']; ?>, '<?php echo $menu['posicion']; ?>')">Añadir Menu</button>
+<input type="text" id="nombreMenu_<?php echo $menu['id_Menu']; ?>" placeholder="Nombre del menú">
 
 
 <!-- Ventanita donde editas los permisos que de normal esta oculta -->
