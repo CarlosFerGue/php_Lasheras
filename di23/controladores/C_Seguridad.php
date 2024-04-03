@@ -54,4 +54,9 @@ class C_Seguridad extends Controlador
     {
         $this->modelo->añadirSubMenus($filtros);
     }
+
+    public function guardarNombre($filtros = array())
+    {
+        $this->modelo->guardarNombre($filtros);
+    }
 }

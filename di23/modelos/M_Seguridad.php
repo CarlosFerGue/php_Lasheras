@@ -197,4 +197,17 @@ class M_Seguridad extends Modelo
             $this->DAO->insertar($insertarPermisosSQL);
         }
     }
+
+    public function guardarNombre($filtro = array())
+    {
+        $id_Menu = '';
+        $nombreActual = '';
+        $nuevoNombre = '';
+
+        extract($filtro);
+
+        $SQL = "UPDATE `menus` SET `nombre`='$nuevoNombre' WHERE `id_Menu` = '$id_Menu' AND `nombre` = '$nombreActual'";
+
+        $this->DAO->actualizar($SQL);
+    }
 }

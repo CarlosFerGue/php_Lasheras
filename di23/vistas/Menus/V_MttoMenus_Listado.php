@@ -22,7 +22,17 @@ foreach ($menus as $menu) {
         <input type="text" id="nombreMenu_<?php echo $menu['id_Menu']; ?>" placeholder="Nombre del menú">
 
         <div class="tarjeta">
-            <h3><?php echo $menu['nombre']; ?></h3>
+
+            <div>
+
+                <h3><?php echo $menu['nombre']; ?></h3>
+
+                <button type="button" onclick="editarNombre('<?php echo $menu['id_Menu']; ?>', '<?php echo $menu['nombre']; ?>')">E</button>
+
+            </div>
+
+
+
             <div class="permisos">
                 <button type="button" id="botonPermisoMenu" onclick="añadirPermisoMenu(<?php echo $menu['id_Menu']; ?>, '<?php echo $menu['nombre']; ?>')">Añadir permiso</button>
                 <label for="b_permisoMenu"></label>
@@ -54,7 +64,15 @@ foreach ($menus as $menu) {
                 if ($submenu['id_Padre'] == $menu['id_Menu']) { ?>
                     <div class="subtarjeta">
                         <!-- Mostrar nombre del submenú -->
-                        <h5><?php echo $submenu['nombre']; ?></h5>
+                        <div>
+
+                            <h5><?php echo $submenu['nombre']; ?></h5>
+
+                            <button type="button" onclick="editarNombre('<?php echo $submenu['id_Menu']; ?>', '<?php echo $submenu['nombre']; ?>')">E</button>
+
+                        </div>
+
+
                         <div class="permisos">
                             <button type="button" id="botonPermisoMenu" onclick="añadirPermisoSubMenu(<?php echo $submenu['id_Menu']; ?>, '<?php echo $submenu['nombre']; ?>')">Añadir permiso</button>
                             <label for="b_permisoMenu"></label>
@@ -99,5 +117,17 @@ foreach ($menus as $menu) {
         <input type="text" id="nuevoPermiso" placeholder="Nuevo valor del permiso">
         <button onclick="guardarNuevoPermiso()">Guardar</button>
         <button onclick="cerrarPopup()">Cancelar</button>
+    </div>
+</div>
+
+
+<!-- Ventanita donde editas los nombres que de normal esta oculta -->
+<div id="popup3" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="cerrarPopup3()">&times;</span>
+        <h2>Editar Permiso</h2>
+        <input type="text" id="nuevoNombre" placeholder="Nuevo valor del permiso">
+        <button onclick="nuevoNombre()">Guardar</button>
+        <button onclick="cerrarPopup3()">Cancelar</button>
     </div>
 </div>

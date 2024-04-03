@@ -175,15 +175,8 @@ function guardarNuevoPermiso() {
 
 function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
 
-    // console.log(`ID del menú: ${id_Menu}`);
-    // console.log(`Permiso actual: ${permisoActual}`);
-    // console.log(`Nuevo permiso: ${nuevoPermiso}`);
-
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=editarPermisoMenu&id_Menu=${id_Menu}&permisos=${permisoActual}&permisoNuevo=${nuevoPermiso}`;
-    // Cambiado permisos por permiso
-
-    console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
@@ -267,9 +260,60 @@ function añadirSubMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu) {
 }
 
 
+function editarNombre(id_Menu, nombre){
+        mostrarPopup3();
+
+        document.getElementById('nuevoNombre').value = nombre;
+    
+        document.getElementById('popup3').dataset.idMenu = id_Menu;
+        document.getElementById('popup3').dataset.nombreActual = nombre;
+}
 
 
+function nuevoNombre() {
+    // Obtener el nuevo valor del permiso desde el campo de entrada
+    const nuevoNombre = document.getElementById('nuevoNombre').value;
+
+    // Obtener el ID del menú y el permiso actual desde los atributos de datos del popup
+    const id_Menu = document.getElementById('popup3').dataset.idMenu;
+    const nombreActual = document.getElementById('popup3').dataset.nombreActual;
+
+    // Verificar si el nuevo permiso es diferente al permiso actual
+    if (nuevoNombre.trim() !== nombreActual) {
+        // Llamar a la función para guardar el nuevo permiso
+        guardarNombre(id_Menu, nombreActual, nuevoNombre);
+    }
+
+    // Cerrar el popup después de guardar el permiso
+    cerrarPopup3();
+}
+
+function mostrarPopup3() {
+    document.getElementById('popup3').style.display = 'block';
+}
+
+function cerrarPopup3() {
+    document.getElementById('popup3').style.display = 'none';
+}
 
 
+function guardarNombre(id_Menu, nombreActual, nuevoNombre){
 
+    let opciones = { method: "GET" };
+    let parametros = `controlador=Seguridad&metodo=guardarNombre&id_Menu=${id_Menu}&nombreActual=${nombreActual}&nuevoNombre=${nuevoNombre}`;
 
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Menu editado');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
