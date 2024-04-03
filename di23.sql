@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2024 a las 11:18:16
+-- Tiempo de generación: 03-04-2024 a las 14:14:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,12 +43,12 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`, `posicion`) VALUES
-(1, 'Home', NULL, NULL, 0, 1, 'S', 10),
-(4, 'CRUDs', NULL, NULL, 0, 1, 'S', 20),
-(5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S', 30),
-(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S', 40),
-(7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S', 50),
-(8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S', 60);
+(1, 'Home', NULL, NULL, 0, 1, 'S', 1),
+(4, 'CRUDs', NULL, NULL, 0, 1, 'S', 2),
+(5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S', 3),
+(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S', 4),
+(7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S', 5),
+(8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S', 6);
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,8 @@ CREATE TABLE `menus_permisos` (
 --
 
 INSERT INTO `menus_permisos` (`id_Menu`, `permiso`) VALUES
-(1, 'sa');
+(1, 'sa'),
+(1, 'permision 2');
 
 -- --------------------------------------------------------
 
