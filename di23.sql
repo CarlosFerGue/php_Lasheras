@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2024 a las 10:50:16
+-- Tiempo de generación: 03-04-2024 a las 11:18:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,20 +34,21 @@ CREATE TABLE `menus` (
   `model` text DEFAULT NULL,
   `id_Padre` int(11) UNSIGNED NOT NULL,
   `orden` int(11) UNSIGNED NOT NULL,
-  `privado` char(1) NOT NULL DEFAULT 'N'
+  `privado` char(1) NOT NULL DEFAULT 'N',
+  `posicion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `menus`
 --
 
-INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`) VALUES
-(1, 'Home', NULL, NULL, 0, 1, 'S'),
-(4, 'CRUDs', NULL, NULL, 0, 1, 'S'),
-(5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S'),
-(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S'),
-(7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S'),
-(8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S');
+INSERT INTO `menus` (`id_Menu`, `nombre`, `controlador`, `model`, `id_Padre`, `orden`, `privado`, `posicion`) VALUES
+(1, 'Home', NULL, NULL, 0, 1, 'S', 10),
+(4, 'CRUDs', NULL, NULL, 0, 1, 'S', 20),
+(5, 'Usuarios', 'Usuarios', 'getVistaUsuarios', 4, 1, 'S', 30),
+(6, 'Inserciones', 'Usuarios', 'getVistaInserciones', 4, 2, 'S', 40),
+(7, 'Menu Seguridad', '', 'getMenuSeguridad', 0, 1, 'S', 50),
+(8, 'Mantenimiento Menu y Permisos', 'Seguridad', 'getVistaSeguridad', 7, 2, 'S', 60);
 
 -- --------------------------------------------------------
 
@@ -65,14 +66,7 @@ CREATE TABLE `menus_permisos` (
 --
 
 INSERT INTO `menus_permisos` (`id_Menu`, `permiso`) VALUES
-(1, 'Consultar'),
-(1, 'Editar'),
-(1, 'Añadir'),
-(4, 'Consultar'),
-(4, 'Editar'),
-(4, 'Añadir'),
-(5, 'Consultar'),
-(5, 'Editar');
+(1, 'sa');
 
 -- --------------------------------------------------------
 
