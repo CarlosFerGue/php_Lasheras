@@ -51,8 +51,7 @@ button {
     border-radius: 5px;
     border-color: #4B4949;
     cursor: pointer;
-    height: 30%;
-    margin-right: 5%;
+    margin: 5px;
 }
 
 button:hover {

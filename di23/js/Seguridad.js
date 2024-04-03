@@ -89,27 +89,27 @@ function añadirPermisoSubMenu(id_Menu, nombreSubMenu) {
         });
 }
 
-function borrarPermiso(id_Menu, permiso){
+function borrarPermiso(id_Menu, permiso) {
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=borrarPermisoMenu&id_Menu=${id_Menu}&permisos=${permiso}`;
     // Cambiado permisos por permiso
-    
+
     console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
-    .then(res => {
-        if (res.ok) {
-            console.log('Permiso eliminado');
-            buscarMenusCards();
-            return res.text();
-        }
-    })
-    .then(vista => {
-        //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-    })
-    .catch(err => {
-        console.log("Error al realizar la petición", err.message);
-    });
+        .then(res => {
+            if (res.ok) {
+                console.log('Permiso eliminado');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
 }
 
 
@@ -121,6 +121,38 @@ function mostrarPopup() {
 function cerrarPopup() {
     document.getElementById('popup2').style.display = 'none';
 }
+
+
+
+
+function añadirMenu(id_Menu, posicion) {
+    console.log(id_Menu, posicion);
+
+
+};
+
+function eliminarMenu(id_Menu) {
+    let opciones = { method: "GET" };
+    let parametros = `controlador=Seguridad&metodo=borrarMenu&id_Menu=${id_Menu}`;
+
+    console.log(parametros);
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Menu eliminado');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
+
 
 function editarPermiso(id_Menu, permiso) {
     // Mostrar el popup de edición
@@ -153,7 +185,7 @@ function guardarNuevoPermiso() {
 }
 
 function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
-    
+
     // console.log(`ID del menú: ${id_Menu}`);
     // console.log(`Permiso actual: ${permisoActual}`);
     // console.log(`Nuevo permiso: ${nuevoPermiso}`);
@@ -161,26 +193,21 @@ function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=editarPermisoMenu&id_Menu=${id_Menu}&permisos=${permisoActual}&permisoNuevo=${nuevoPermiso}`;
     // Cambiado permisos por permiso
-    
+
     console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
-    .then(res => {
-        if (res.ok) {
-            console.log('Permiso editado');
-            buscarMenusCards();
-            return res.text();
-        }
-    })
-    .then(vista => {
-        //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-    })
-    .catch(err => {
-        console.log("Error al realizar la petición", err.message);
-    });
+        .then(res => {
+            if (res.ok) {
+                console.log('Permiso editado');
+                buscarMenusCards();
+                return res.text();
+            }
+        })
+        .then(vista => {
+            //document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
 }
-
-
-function añadirMenu(id_Menu, posicion){
-    console.log()
-};

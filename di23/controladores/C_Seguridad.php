@@ -35,4 +35,8 @@ class C_Seguridad extends Controlador
     public function editarPermisoMenu($filtros=array()){
         $menus=$this->modelo->editarPermisoMenu($filtros); 
     }
+
+    public function borrarMenu($filtros=array()){
+        $this->modelo->borrarMenu($filtros);
+    }
 }

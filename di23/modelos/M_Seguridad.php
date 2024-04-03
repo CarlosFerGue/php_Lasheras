@@ -109,4 +109,21 @@ class M_Seguridad extends Modelo
 
         $this->DAO->actualizar($SQL);
     }
+
+
+    public function borrarMenu($filtro = array())
+    {
+        $id_Menu = '';
+    
+        extract($filtro);
+    
+        // Eliminar los permisos asociados al menú
+        $SQL_permisos = "DELETE FROM `menus_permisos` WHERE `id_Menu` = '$id_Menu'";
+        $this->DAO->borrar($SQL_permisos);
+    
+        // Eliminar el menú especificado
+        $SQL_menu = "DELETE FROM `menus` WHERE `id_Menu` = '$id_Menu'";
+        $this->DAO->borrar($SQL_menu);
+    }
+    
 }
