@@ -20,11 +20,11 @@
 
     // Ahora puedes utilizar $rol y $permisos en tu segundo código como lo necesites
     // Por ejemplo, puedes mostrar el rol y los permisos en tu página HTML
-    echo "Rol: " . $rol . "<br>";
-    echo "Permisos: ";
-    foreach ($permisos as $permiso) {
-        echo $permiso . " ";
-    }
+    // echo "Rol: " . $rol . "<br>";
+    // echo "Permisos: ";
+    // foreach ($permisos as $permiso) {
+    //     echo $permiso . " ";
+    // }
 
     // Comprueba si la variable de sesión 'usuario' está establecida
     if (isset($_SESSION['usuario'])) {

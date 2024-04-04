@@ -47,25 +47,6 @@ class M_Seguridad extends Modelo
         return array($menus, $permisos, $roles, $usuarios); // Devolver un array con ambas variables
     }
 
-    public function buscarRoles($filtro = array())
-    {
-        $usuario = '';
-        $pass = '';
-
-        extract($filtro);
-
-        $SQL = "SELECT * FROM `roles` WHERE 1=1";
-
-        if ($usuario != '' && $pass != '') {
-            $usuario = addslashes($usuario); //añade \ delante de caracteres especiales
-            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
-            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
-        }
-
-        $roles = $this->DAO->consultar($SQL);
-
-        return $roles;
-    }
 
     public function añadirPermisoMenu($filtro = array())
     {
@@ -237,5 +218,17 @@ class M_Seguridad extends Modelo
         $SQL = "UPDATE `menus` SET `nombre`='$nuevoNombre' WHERE `id_Menu` = '$id_Menu' AND `nombre` = '$nombreActual'";
 
         $this->DAO->actualizar($SQL);
+    }
+
+    public function borrarRol($filtro = array())
+    {
+        $id_Rol = '';
+        $nombre = '';
+
+        extract($filtro);
+
+        $SQL = "DELETE FROM `roles` WHERE `Id` = '$id_Rol' AND `Nombre` = '$nombre'";
+
+        $this->DAO->borrar($SQL);
     }
 }

@@ -24,12 +24,6 @@ class C_Seguridad extends Controlador
         Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus, 'permisos' => $permisos, 'roles' => $roles, 'usuarios' => $usuarios));
     }
 
-    public function buscarRoles($filtros = array())
-    {
-        list($roles) = $this->modelo->buscarRoles($filtros);
-        Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('roles' => $roles));
-    }
-
     public function añadirPermisoMenu($filtros = array())
     {
         $menus = $this->modelo->añadirPermisoMenu($filtros);
@@ -63,5 +57,13 @@ class C_Seguridad extends Controlador
     public function guardarNombre($filtros = array())
     {
         $this->modelo->guardarNombre($filtros);
+    }
+
+
+    //Apartado de los roles
+
+    public function borrarRol($filtros = array())
+    {
+        $this->modelo->borrarRol($filtros);
     }
 }

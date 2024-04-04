@@ -8,7 +8,7 @@
         if (isset($roles) && !empty($roles)) {
             // Recorrer el array $roles para generar las opciones del desplegable
             foreach ($roles as $rol) {
-                echo "<option value='{$rol['Nombre']}'>{$rol['Nombre']}</option>";
+                echo "<option value='{$rol['Id']}-{$rol['Nombre']}'>{$rol['Nombre']}</option>";
             }
         } else {
             // Si la variable $roles no está definida o está vacía, mostrar un mensaje de error o manejar la situación según tus necesidades
@@ -16,6 +16,10 @@
         }
         ?>
     </select>
+
+    <button type="button" onclick="editarRol()">Editar</button>
+    <button type="button" onclick="añadirRol()">Añadir</button>
+    <button type="button" onclick="borrarRol()">X</button>
 
     <h3>Usuario:</h3>
     <select id="selectUsuario">
