@@ -2,6 +2,7 @@
 
     <h3>Rol:</h3>
     <select id="selectRol">
+        <option value="" selected>--Elija un rol</option>
         <?php
         $roles = $datos['roles'];
         // Verificar si la variable $roles está definida y no está vacía
@@ -17,12 +18,14 @@
         ?>
     </select>
 
+
     <button type="button" onclick="editarRol()">Editar</button>
     <button type="button" onclick="añadirRol()">Añadir</button>
     <button type="button" onclick="borrarRol()">X</button>
 
     <h3>Usuario:</h3>
     <select id="selectUsuario">
+        <option value="" selected>--Elija un usuario</option>
         <?php
         $usuarios = $datos['usuarios'];
 
@@ -40,6 +43,7 @@
 
 
 </div>
+
 
 <?php
 // Datos de los menús

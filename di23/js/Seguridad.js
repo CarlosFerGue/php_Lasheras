@@ -27,8 +27,14 @@ function buscarMenusCards() {
 
 
 /////////////////////////////////////////////// INICIO ROLES ///////////////////////////////////////////////////////////////////////////
+
+
+
+
 function mostrarPopup4() {
-    document.getElementById('popup4').style.display = 'block';
+    if (document.getElementById('selectRol').value != "") {
+        document.getElementById('popup4').style.display = 'block';
+    }
 }
 
 function cerrarPopup4() {
@@ -52,16 +58,6 @@ function editarRol() {
 }
 
 function editarRol1() {
-
-    // var selectedOption = document.getElementById('selectRol').value;
-
-    // var values = selectedOption.split('-');
-    // var id = values[0];
-    // var nombre = values[1];
-
-    // console.log("Id seleccionado:", id);
-    // console.log("Nombre seleccionado:", nombre);
-
     const nuevoRol = document.getElementById('nuevoRol').value;
     const id = document.getElementById('popup4').dataset.idMenu;
     const rolActual = document.getElementById('popup4').dataset.rolActual;
@@ -93,37 +89,53 @@ function editarRol1() {
 
 }
 
+function mostrarPopup5() {
+    document.getElementById('popup5').style.display = 'block';
+}
+
+function cerrarPopup5() {
+    document.getElementById('popup5').style.display = 'none';
+}
+
+
 function añadirRol() {
+    mostrarPopup5();
 
     var selectedOption = document.getElementById('selectRol').value;
 
     var values = selectedOption.split('-');
-    var id = values[0];
-    var nombre = values[1];
+    var id_Rol = values[0];
+    //var nombre = values[1];
 
-    console.log("Id seleccionado:", id);
-    console.log("Nombre seleccionado:", nombre);
+    document.getElementById('popup4').dataset.idMenu = id_Rol;
+    //document.getElementById('popup4').dataset.rolActual = nombre;
 
-    let opciones = { method: "GET" };
-    let parametros = `controlador=Seguridad&metodo=añadirRol`;
+}
 
+function nuevoRolCreado() {
+    const nuevoRol = document.getElementById('nuevoRolCreado').value;
 
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log('respuesta ok Roles');
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        });
+    if (nuevoRol.trim() != "") {
+        let opciones = { method: "GET" };
+        let parametros = `controlador=Seguridad&metodo=añadirRol&rol=${nuevoRol}`;
 
+        console.log(parametros);
 
-
+        fetch("C_Ajax.php?" + parametros, opciones)
+            .then(res => {
+                if (res.ok) {
+                    console.log('respuesta ok Roles');
+                    buscarMenusCards();
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
+    }
 }
 
 function borrarRol() {
@@ -476,3 +488,5 @@ function guardarNombre(id_Menu, nombreActual, nuevoNombre) {
 }
 
 /////////////////////////////////////////////// FIN MENUS ///////////////////////////////////////////////////////////////////////////
+
+

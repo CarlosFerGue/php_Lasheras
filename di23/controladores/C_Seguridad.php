@@ -73,4 +73,10 @@ class C_Seguridad extends Controlador
         echo json_encode($filtros);
         $this->modelo->editarRol($filtros);
     }
+
+    public function añadirRol($filtros = array())
+    {
+        echo json_encode($filtros);
+        $this->modelo->añadirRol($filtros);
+    }
 }

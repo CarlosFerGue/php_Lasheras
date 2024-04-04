@@ -243,4 +243,23 @@ class M_Seguridad extends Modelo
         $this->DAO->actualizar($SQL);
     }
     
+    public function añadirRol($filtros = array())
+    {
+        $rol = '';
+    
+        extract($filtros);
+    
+        // Obtener el máximo valor de Id en la tabla roles
+        $maxIdQuery = "SELECT MAX(Id) AS maxId FROM roles";
+        $maxIdResult = $this->DAO->consultar($maxIdQuery);
+        $maxId = $maxIdResult[0]['maxId'];
+    
+        // Sumar 1 al máximo Id para obtener el nuevo Id
+        $nuevoId = $maxId + 1;
+    
+        // Insertar el nuevo rol con el nuevo Id
+        $SQL = "INSERT INTO `roles`(`Id`, `Nombre`) VALUES ('$nuevoId','$rol')";
+        $this->DAO->insertar($SQL);
+    }
+    
 }
