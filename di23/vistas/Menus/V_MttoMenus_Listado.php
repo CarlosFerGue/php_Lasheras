@@ -90,11 +90,13 @@ foreach ($menus as $menu) {
                 <!-- Verificar si hay permisos asociados a este menú -->
                 <?php foreach ($permisos as $permiso) {
                     if ($permiso['id_Menu'] == $menu['id_Menu']) { ?>
-                        <div id="<?php echo $menu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
+                        <div class="permiso" id="<?php echo $menu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
                             <p><?php echo $permiso['permiso']; ?></p>
                             <!-- Botón para borrar permiso -->
+                            <div class="botonesPermisos">
                             <button type="button" onclick="borrarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>
                             <button type="button" onclick="editarPermiso('<?php echo $menu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">E</button>
+                            </div>
                         </div>
                 <?php }
                 } ?>
@@ -130,7 +132,7 @@ foreach ($menus as $menu) {
                             <!-- Verificar si hay permisos asociados a este submenú -->
                             <?php foreach ($permisos as $permiso) {
                                 if ($permiso['id_Menu'] == $submenu['id_Menu']) { ?>
-                                    <div id="<?php echo $submenu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
+                                    <div class="permiso" id="<?php echo $submenu['nombre']; ?>/<?php echo $permiso['permiso']; ?>">
                                         <p><?php echo $permiso['permiso']; ?></p>
                                         <!-- Botón para borrar permiso -->
                                         <button type="button" onclick="borrarPermiso('<?php echo $submenu['id_Menu']; ?>', '<?php echo $permiso['permiso']; ?>')">X</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2024 a las 19:24:05
+-- Tiempo de generación: 04-04-2024 a las 21:13:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -99,7 +99,6 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`Id`, `Nombre`) VALUES
-('', '--Elija un Rol'),
 ('1', 'Administrador'),
 ('2', 'Staff'),
 ('3', 'Cliente');
@@ -155,7 +154,6 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
-(0, '[value-2]', '[value-3]', '[value-4]', '[', '0000-00-00', '[value-7]', '[value-8]', '--Elija un usuario', '[value-10]', '['),
 (1, 'javier', 'xxxx', 'xx', 'H', '2020-10-01', 'javier@2si2023.es', '976466599', 'javier', '81dc9bdb52d04dc20036dbd8313ed055', 'S'),
 (2, 'admin', 'ad', 'ad', 'H', '2020-10-02', 'admin@2si2023.es', '976466590', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'S'),
 (3, 'Maria', 'Fernandez', 'Castro', 'H', '0000-00-00', 'mfernandez@2si2023.es', '2342423', 'Carlos', '81dc9bdb52d04dc20036dbd8313ed055', 'S'),

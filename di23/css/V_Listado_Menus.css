@@ -5,6 +5,21 @@
     align-items: center;
 }
 
+.permiso{
+    color: white;
+    margin-left: 10px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #4B4949;
+    padding: 10px;
+}
+
+.botonesPermisos{
+    display: flex;
+}
+
 
 form {
     margin: 10px 0;
