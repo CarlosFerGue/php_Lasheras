@@ -223,12 +223,24 @@ class M_Seguridad extends Modelo
     public function borrarRol($filtro = array())
     {
         $id_Rol = '';
-        $nombre = '';
-
+    
         extract($filtro);
-
-        $SQL = "DELETE FROM `roles` WHERE `Id` = '$id_Rol' AND `Nombre` = '$nombre'";
-
-        $this->DAO->borrar($SQL);
+    
+        // Borrar el rol de la tabla roles
+        $SQL_borrar_rol = "DELETE FROM `roles` WHERE `id` = '$id_Rol'";
+        $this->DAO->borrar($SQL_borrar_rol);
     }
+    
+    public function editarRol($filtros = array())
+    {
+        $id = '';
+        //$rolActual = '';
+        $nuevoRol = '';
+    
+        extract($filtros);
+    
+        $SQL = "UPDATE `roles` SET `nombre` = '$nuevoRol' WHERE `id` = '$id'";
+        $this->DAO->actualizar($SQL);
+    }
+    
 }

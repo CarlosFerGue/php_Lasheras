@@ -170,9 +170,33 @@ foreach ($menus as $menu) {
 <div id="popup3" class="popup">
     <div class="popup-content">
         <span class="close" onclick="cerrarPopup3()">&times;</span>
-        <h2>Editar Permiso</h2>
-        <input type="text" id="nuevoNombre" placeholder="Nuevo valor del permiso">
+        <h2>Editar Nombre</h2>
+        <input type="text" id="nuevoNombre" placeholder="Nuevo valor del nombre">
         <button onclick="nuevoNombre()">Guardar</button>
         <button onclick="cerrarPopup3()">Cancelar</button>
+    </div>
+</div>
+
+
+<!-- Ventanita donde editar los roles que de normal esta oculta -->
+<div id="popup4" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="cerrarPopup4()">&times;</span>
+        <h2>Editar Rol</h2>
+        <input type="text" id="nuevoRol" placeholder="Nuevo valor del rol">
+        <button onclick="editarRol1()">Guardar</button>
+        <button onclick="cerrarPopup4()">Cancelar</button>
+    </div>
+</div>
+
+
+<!-- Ventanita donde creas los roles que de normal esta oculta -->
+<div id="popup5" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="cerrarPopup5()">&times;</span>
+        <h2>Crear Rol</h2>
+        <input type="text" id="nuevoRolCreado" placeholder="Nuevo rol">
+        <button onclick="nuevoRolCreado()">Guardar</button>
+        <button onclick="cerrarPopup5()">Cancelar</button>
     </div>
 </div>

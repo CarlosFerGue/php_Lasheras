@@ -64,6 +64,13 @@ class C_Seguridad extends Controlador
 
     public function borrarRol($filtros = array())
     {
+        echo json_encode($filtros);
         $this->modelo->borrarRol($filtros);
+    }
+
+    public function editarRol($filtros = array())
+    {
+        echo json_encode($filtros);
+        $this->modelo->editarRol($filtros);
     }
 }

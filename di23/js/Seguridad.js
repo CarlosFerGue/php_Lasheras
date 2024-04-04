@@ -27,36 +27,70 @@ function buscarMenusCards() {
 
 
 /////////////////////////////////////////////// INICIO ROLES ///////////////////////////////////////////////////////////////////////////
+function mostrarPopup4() {
+    document.getElementById('popup4').style.display = 'block';
+}
+
+function cerrarPopup4() {
+    document.getElementById('popup4').style.display = 'none';
+}
 
 
 function editarRol() {
-    // Obtener el valor seleccionado del desplegable
+    mostrarPopup4();
+
     var selectedOption = document.getElementById('selectRol').value;
-    // Separar el Id y el Nombre del valor seleccionado
+
     var values = selectedOption.split('-');
-    var id = values[0];
-    var nombre = values[1];
-    // Llamar a la función editarRol con los argumentos necesarios
-    // Aquí puedes hacer lo que quieras con id y nombre, por ejemplo, enviarlos a través de una petición AJAX a tu backend
-    console.log("Id seleccionado:", id);
-    console.log("Nombre seleccionado:", nombre);
+    var id_Rol = values[0];
+    var rol = values[1];
 
-    let opciones = { method: "GET" };
-    let parametros = `controlador=Seguridad&metodo=editarRol&id=${id}&nombre=${nombre}`;
+    document.getElementById('nuevoRol').value = rol;
 
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log('respuesta ok Roles');
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        });
+    document.getElementById('popup4').dataset.idMenu = id_Rol;
+    document.getElementById('popup4').dataset.rolActual = rol;
+}
+
+function editarRol1() {
+
+    // var selectedOption = document.getElementById('selectRol').value;
+
+    // var values = selectedOption.split('-');
+    // var id = values[0];
+    // var nombre = values[1];
+
+    // console.log("Id seleccionado:", id);
+    // console.log("Nombre seleccionado:", nombre);
+
+    const nuevoRol = document.getElementById('nuevoRol').value;
+    const id = document.getElementById('popup4').dataset.idMenu;
+    const rolActual = document.getElementById('popup4').dataset.rolActual;
+
+
+    if (nuevoRol.trim() !== rolActual) {
+        let opciones = { method: "GET" };
+        let parametros = `controlador=Seguridad&metodo=editarRol&id=${id}&rolActual=${rolActual}&nuevoRol=${nuevoRol}`;
+
+        console.log(parametros);
+
+        fetch("C_Ajax.php?" + parametros, opciones)
+            .then(res => {
+                if (res.ok) {
+                    console.log('respuesta ok Roles');
+                    buscarMenusCards();
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("CapaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
+    }
+
+    cerrarPopup4();
+
 }
 
 function añadirRol() {
@@ -106,7 +140,7 @@ function borrarRol() {
 
 
     let opciones = { method: "GET" };
-    let parametros = `controlador=Seguridad&metodo=borrarRol&id_Rol=${id}$nombre=${nombre}`;
+    let parametros = `controlador=Seguridad&metodo=borrarRol&id_Rol=${id}`;
 
     console.log(parametros);
 
