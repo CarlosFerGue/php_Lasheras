@@ -1,7 +1,48 @@
+<div class="selector">
+
+    <h3>Rol:</h3>
+    <select id="selectRol">
+        <?php
+        $roles = $datos['roles'];
+        // Verificar si la variable $roles está definida y no está vacía
+        if (isset($roles) && !empty($roles)) {
+            // Recorrer el array $roles para generar las opciones del desplegable
+            foreach ($roles as $rol) {
+                echo "<option value='{$rol['Nombre']}'>{$rol['Nombre']}</option>";
+            }
+        } else {
+            // Si la variable $roles no está definida o está vacía, mostrar un mensaje de error o manejar la situación según tus necesidades
+            echo "<option value=''>No hay roles disponibles</option>";
+        }
+        ?>
+    </select>
+
+    <h3>Usuario:</h3>
+    <select id="selectUsuario">
+        <?php
+        $usuarios = $datos['usuarios'];
+
+        if (isset($usuarios) && !empty($usuarios)) {
+
+            foreach ($usuarios as $usuario) {
+                echo "<option value='{$usuario['login']}'>{$usuario['login']}</option>";
+            }
+        } else {
+
+            echo "<option value=''>No hay usuarios disponibles</option>";
+        }
+        ?>
+    </select>
+
+
+</div>
+
 <?php
 // Datos de los menús
 $menus = $datos['menus'];
 $permisos = $datos['permisos'];
+
+
 
 // Función para ordenar los menús por su posición
 function compararPosiciones($a, $b)

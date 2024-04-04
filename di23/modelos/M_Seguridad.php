@@ -36,7 +36,35 @@ class M_Seguridad extends Modelo
 
         $permisos = $this->DAO->consultar($SQL2);
 
-        return array($menus, $permisos); // Devolver un array con ambas variables
+        $SQL3 = "SELECT * FROM roles WHERE 1=1";
+
+        $roles = $this->DAO->consultar($SQL3);
+
+        $SQL4 = "SELECT * FROM usuarios WHERE 1=1";
+
+        $usuarios = $this->DAO->consultar($SQL4);
+
+        return array($menus, $permisos, $roles, $usuarios); // Devolver un array con ambas variables
+    }
+
+    public function buscarRoles($filtro = array())
+    {
+        $usuario = '';
+        $pass = '';
+
+        extract($filtro);
+
+        $SQL = "SELECT * FROM `roles` WHERE 1=1";
+
+        if ($usuario != '' && $pass != '') {
+            $usuario = addslashes($usuario); //añade \ delante de caracteres especiales
+            $pass = addslashes($pass);        // como la ' , "" para que pierda funcionalidad
+            $SQL .= " AND login = '$usuario' AND pass = MD5('$pass') ";
+        }
+
+        $roles = $this->DAO->consultar($SQL);
+
+        return $roles;
     }
 
     public function añadirPermisoMenu($filtro = array())

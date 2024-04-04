@@ -1,12 +1,9 @@
+/////////////////////////////////////////////// BUSCAR MENUS ///////////////////////////////////////////////////////////////////////////
 function buscarMenusCards() {
     let opciones = { method: "GET" };
 
-    //let parametrosFormulario = new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-
-    //let parametros = `controlador=Seguridad&metodo=buscarMenusCards=${parametrosFormulario}`;
     let parametros = `controlador=Seguridad&metodo=buscarMenusCards`;
 
-    //console.log(parametros);
 
     fetch(`C_Ajax.php?${parametros}`, opciones)
         .then(res => {
@@ -21,7 +18,33 @@ function buscarMenusCards() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+
 }
+
+/////////////////////////////////////////////// FIN BUSCAR MENUS ///////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// INICIO ROLES ///////////////////////////////////////////////////////////////////////////
+
+
+function roles(){
+    
+}
+
+
+
+
+/////////////////////////////////////////////// FIN ROLES ///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+/////////////////////////////////////////////// INICIO PERMISOS ///////////////////////////////////////////////////////////////////////////
 
 function añadirPermisoMenu(id_Menu, nombreMenu) {
     // Obtener el valor del permiso
@@ -195,13 +218,21 @@ function guardarPermiso(id_Menu, permisoActual, nuevoPermiso) {
 }
 
 
+/////////////////////////////////////////////// FINAL PERMISOS ///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+/////////////////////////////////////////////// INICIO MENUS ///////////////////////////////////////////////////////////////////////////
 
 function añadirMenu(esSubmenu, id_Menu, posicion) {
 
     if (esSubmenu == 0) {
         const nombreMenu = document.getElementById(`nombreMenu_${id_Menu}`).value; // Obtener el valor del cuadro de texto
-        añadirMenuEnBaseDeDatos(id_Menu,posicion, nombreMenu);
-        
+        añadirMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu);
+
 
     } else {
         const nombreMenu = document.getElementById(`nombreSubMenu_${id_Menu}`).value; // Obtener el valor del cuadro de texto
@@ -260,31 +291,28 @@ function añadirSubMenuEnBaseDeDatos(id_Menu, posicion, nombreMenu) {
 }
 
 
-function editarNombre(id_Menu, nombre){
-        mostrarPopup3();
+function editarNombre(id_Menu, nombre) {
+    mostrarPopup3();
 
-        document.getElementById('nuevoNombre').value = nombre;
-    
-        document.getElementById('popup3').dataset.idMenu = id_Menu;
-        document.getElementById('popup3').dataset.nombreActual = nombre;
+    document.getElementById('nuevoNombre').value = nombre;
+
+    document.getElementById('popup3').dataset.idMenu = id_Menu;
+    document.getElementById('popup3').dataset.nombreActual = nombre;
 }
 
 
 function nuevoNombre() {
-    // Obtener el nuevo valor del permiso desde el campo de entrada
     const nuevoNombre = document.getElementById('nuevoNombre').value;
 
-    // Obtener el ID del menú y el permiso actual desde los atributos de datos del popup
     const id_Menu = document.getElementById('popup3').dataset.idMenu;
     const nombreActual = document.getElementById('popup3').dataset.nombreActual;
 
-    // Verificar si el nuevo permiso es diferente al permiso actual
+
     if (nuevoNombre.trim() !== nombreActual) {
-        // Llamar a la función para guardar el nuevo permiso
+
         guardarNombre(id_Menu, nombreActual, nuevoNombre);
     }
 
-    // Cerrar el popup después de guardar el permiso
     cerrarPopup3();
 }
 
@@ -297,7 +325,7 @@ function cerrarPopup3() {
 }
 
 
-function guardarNombre(id_Menu, nombreActual, nuevoNombre){
+function guardarNombre(id_Menu, nombreActual, nuevoNombre) {
 
     let opciones = { method: "GET" };
     let parametros = `controlador=Seguridad&metodo=guardarNombre&id_Menu=${id_Menu}&nombreActual=${nombreActual}&nuevoNombre=${nuevoNombre}`;
@@ -317,3 +345,5 @@ function guardarNombre(id_Menu, nombreActual, nuevoNombre){
             console.log("Error al realizar la petición", err.message);
         });
 }
+
+/////////////////////////////////////////////// FIN MENUS ///////////////////////////////////////////////////////////////////////////

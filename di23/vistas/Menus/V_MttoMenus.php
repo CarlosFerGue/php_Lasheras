@@ -25,6 +25,7 @@
 
     <div id="CapaResultadoBusqueda">
 
+        <!-- Aqui se muestran los menus -->
     </div>
 </body>
 

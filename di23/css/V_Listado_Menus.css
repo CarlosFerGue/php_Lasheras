@@ -109,3 +109,12 @@ button:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* ---------------------------------------------------------------- */
+
+.selector{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}

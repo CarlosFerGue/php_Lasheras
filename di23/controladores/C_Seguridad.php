@@ -20,10 +20,15 @@ class C_Seguridad extends Controlador
 
     public function buscarMenusCards($filtros = array())
     {
-        list($menus, $permisos) = $this->modelo->buscarMenusCards($filtros);
-        Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus, 'permisos' => $permisos));
+        list($menus, $permisos, $roles, $usuarios) = $this->modelo->buscarMenusCards($filtros);
+        Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('menus' => $menus, 'permisos' => $permisos, 'roles' => $roles, 'usuarios' => $usuarios));
     }
 
+    public function buscarRoles($filtros = array())
+    {
+        list($roles) = $this->modelo->buscarRoles($filtros);
+        Vista::render('vistas/Menus/V_MttoMenus_Listado.php', array('roles' => $roles));
+    }
 
     public function añadirPermisoMenu($filtros = array())
     {
